@@ -1,10 +1,55 @@
-MSSQL is a suite of database software published by Microsoft and used extensively in
-enterprise world
-It includes:
-A relational database engine, which stores data in tables, columns and rows.
-• Integration Services (SSIS), which is a data movement tool for importing, exporting
-and transforming data
-• Reporting Services (SSRS), which is used to create reports and serve reports to end
-users
-• Analysis Services (SSAS), which is a multidimensional database used to query data
-from the main database engine.
+Section1: Introduction
+
+What is a Database 
+
+Data - is a collection of facts such as numbers, word, measurements, observations or just descriptions of 
+things.E.g. your name,age, height these are some data related to you, a pic, file, pdf can also be 
+considered data.
+Base - System, foundation, hub or a central location
+Database - is an organized and systematic collection of data generally stored and accessed electronically 
+from a computer syste.Databases make data management easy.
+
+Why use a database and not just a spreadsheet?
+-Databases store info more efficiently, databases can handle volumes of info that would be unmanageable 
+ in a spreedsheet.
+-compared to databases, spreadsheets can require a large amount of hard-drive space for data storage.
+-joining records is a lot easier in a DB than compared to text or spreadsheets.
+
+RDBMS 
+This stands for relational database management system
+-A relational database is a type of database. 
+-it uses a structure that allows us to identify and access data in relation to another piece of datain the database.Often data in a relational database is organized into tables
+
+What is SQL
+-SQL (Structured Query Language) is a programming language used to communicate with data stored in a 
+ relatoinal database management system. SQL syntax is similar to the English language, which makes it 
+ relatively easy to read,write,updae or translate data.
+-SQL is NOT a database, its a command line language that many RDBMSs use to access the data from tables.
+
+Intro to MSSQL Server
+-MSSQL is a suite of database software published by microsoft and usd extensiively in the enterprize world.
+
+It includes
+-a relational database engine, which stores data in tables, columns and rows.
+-integration services(SSIS), which is a data movement tool for importing, exporting and transforming data
+-reporting services (SSRS), which is used to create reports and serve reports to end users
+-analysis services (SSAS), which is a mulitdimensional database used to query data from main database engine
+
+Pros of MS SQL Server 
+-various supported editions
+-online product documentation
+-microsoft premier support
+-on premises and cloud database support 
+-plenty of tools and applications 
+-support for use on linux
+
+Cons of MS SQL Server 
+-expensive enterprise edition 
+-difficult licensing process thats always changing
+
+Editions of MSSQL Server
+-Enterprise
+-Standard
+-Web 
+-Developers
+-Express
