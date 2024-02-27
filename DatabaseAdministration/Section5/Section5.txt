@@ -1,0 +1,108 @@
+Section 5
+BASIC SQL COMMANDS
+What is a SQL Statement and types of SQL statements
+SQL Statements defined 
+-SQL is used to communicate with a database. It is the standard language for relational database management 
+systems.
+-SQL statements are used to perform tasks such as update data on a database, or retrieve data from a 
+database.
+
+TYPES OF SQL STATEMENTS
+-DML (Data Manipulation Language)
+-DDL (Data Definition Language)
+-DCL (Data Control Language)
+-TCL (Transaction Control Language)
+
+DML statements with examples
+-DML is short for Data Manipulation Language
+-deals with data manipulation, and includes most common SQL statements such as SELECT, INSERT, UPDATE, 
+DELETE, ect.
+it is used to store, modify, retrieve, delete and update data in a database.
+
+SELECT statement 
+-the SELECT statement is used to select records from the table, with or without a condition.
+-secect*from student ------ this gets all records of student table.
+-secect*from student where rank > 5 ------------ gets records with the condition where students rank 
+is greater than 5.
+
+INSERT statement 
+-insert statement is used to insert a set of values into a database table. insert statemets are used with 
+values.
+-insert into Student (Rank,StudentName,Mark) Values (1,'Pranav',450)
+
+UPDATE statement 
+-the UPDATE statement is ude to update exsisting values in a table, which is based on some condition.
+-update student set StudentName='Abbas' where StudentName-'Imran'
+-the query given above will update the student Name from Imran to Abbas
+
+DELETE statement
+-delete statement is used to delete the exsisting record in the table, which is based on some condition.
+-Delete from Student where StudentName='Abbas'
+-the query above will delete records which has StudentName as Abbas.
+
+DDL statements with examples
+-DDL is short for Data Definition Language
+-it deals with database schemas and descriptions
+-How the data should reside in the database
+-CREATE, ALTER, DROP, TRUNCATE.
+
+CREATE statement 
+-is used to create a new table in an existing database. Create statement is also used to create 
+other database objects such as a stored procedure, function.
+- create Table Student (Rank Int, StudentName varchar(50), Mark Float)
+
+ALTER statement
+-alter statement can add a column, modify a column, drop a column, rename a column or rename a table
+-alter Tble Student Add (StudentAddress varchar(100))
+
+DROP statement
+-is used to remove a table definition and all the data, indexes, triggers, constraints and 
+permission specifications for the table.
+-Drop table student
+-Drop database AdventureWorks
+
+TRUNCATE statement 
+-TRUNCATE SQL query removes all rows froma table, without logging the individual row deletions.
+-once truncate is executed you cannot retrive the data unlike the DELETE STATEMENT 
+(with this you can, with delete statement you can delete a certian row using the were class but with 
+truncat you cannot use the were class).
+-Truncate Table Tabel_Name
+
+DCL STATEMENTS 
+-DCL is short for DATA CONTROL LANGUAGE
+-it defines the control over the data in the database.
+-GRANT, REVOKE
+
+GRANT statements 
+-GRANT statement used to grant SQL SELECT, UPDATE, INSERT, DELETE, and other privileges on tables or views.
+-GRANT UPDATE ON ORDER_BACKLOG TO JONES WITH GRANT OPTION 
+-GRANT SELECT ON TABLE Q.STAFF TO PUBLIC
+
+REVOKE statement 
+-used to cancel previously granted or denied permissions.
+-REVOKE DELETE ON employees FROM anderson;
+-REVOKE ALL ON employees FROM anderson;
+
+TCL statements 
+-TCL is short fot Transactions Control Language.
+-These commands are used to manage the transactions in the database.
+-Used to manage the changes made by DML statements.
+-It also allows the statements to be grouped together into logical transactions.
+
+COMMIT statements 
+-commit command is used to permanemtly save any transaction into the database.
+-when we use Commit in any query then the changes made by that query will be permanent and visible.
+-begin tran d 
+ update emp set empName-'D' where empid=11
+ commit tran d
+
+ROLLBACK statements
+-Rollback is used to undo changes made by any command but onlu before a commit is done.
+-We cannot Rollback data which has been committed in the database with the help of the commit keyword.
+
+SAVEPOINT statement 
+-SAVEPOINT command is used to temporarily save a transaction so that you can roll back to that point 
+whenever necessary.
+-Savepoint names must be distinct within a given transaction.
+-After a savepoint has been created, you can either continue processing, commit your work, 
+roll back the entire transaction, or roll back to the savepoint.
