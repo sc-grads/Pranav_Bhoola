@@ -1,6 +1,0 @@
-Section 3
-Download, install and configur Microsoft SQL
-
-Latest version is MSSQL 2022
-
-Download and install AdventureWorks Database
