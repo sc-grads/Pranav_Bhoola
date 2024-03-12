@@ -1,0 +1,27 @@
+name: Update Database
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-database:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '14'
+
+    - name: Install dependencies
+      run: npm install -g mssql-cli
+
+    - name: Update Database
+      run: |
+        mssql-cli -S <DESKTOP-3949U90> -d <StudentDatabase> -U <sa> -P <P@$$word2024> -i path/to/your/UpdateScrip.sql 
+
