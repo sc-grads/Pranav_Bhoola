@@ -26,4 +26,4 @@ jobs:
 
     - name: Update Database
       run: |
-        mssql-cli -S <DESKTOP-3949U90> -d <StudentDatabase> -U <sa> -P <P@$$word2024> -i path/to/your/UpdateScrip.sql
+        mssql-cli -S DESKTOP-3949U90 -d StudentDatabase -U <sa> -P P@$$word2024 -i path/to/your/UpdateScrip.sql
