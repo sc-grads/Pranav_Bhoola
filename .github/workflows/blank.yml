@@ -1,0 +1,30 @@
+name: MSSQL Server Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Docker
+      uses: actions/setup-docker@v2
+
+    - name: Start MSSQL container
+      run: |
+        docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=YourStrongPassword" -p 1433:1433 --name sql_server -d mcr.microsoft.com/mssql/server:latest
+
+    - name: Wait for MSSQL to start
+      run: |
+        sleep 60 # Adjust this based on your system's startup time
+        docker ps -a
+
+    - name: Run SQL script
+      run: |
+        docker exec -it sql_server /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P YourStrongPassword -d master -i path/to/your/script.sql
