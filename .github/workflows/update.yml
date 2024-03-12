@@ -21,6 +21,9 @@ jobs:
     - name: Install dependencies
       run: npm install -g mssql-cli
 
+      - name: List repository contents
+  run: ls -R
+
     - name: Update Database
       run: |
         mssql-cli -S <DESKTOP-3949U90> -d <StudentDatabase> -U <sa> -P <P@$$word2024> -i path/to/your/UpdateScrip.sql
