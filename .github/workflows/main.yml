@@ -23,4 +23,4 @@ jobs:
 
       - name: Run database query from file
         run: |
-          sqlcmd -S 6.tcp.eu.ngrok.io,19373 -U SA -P P@$$word2024 -i DatabaseAdministration/Script.sql
+          sqlcmd -S 6.tcp.eu.ngrok.io,19373 -U SA -P P@$$word20244 -i DatabaseAdministration/Script.sql
