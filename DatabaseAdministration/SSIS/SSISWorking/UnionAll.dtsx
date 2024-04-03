@@ -1,0 +1,1243 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/2/2024 9:51:35 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-3949U90"
+  DTS:CreatorName="DESKTOP-3949U90\Pranav Bhoola"
+  DTS:DTSID="{D5BB1BB1-5E70-4226-B1F1-266E430C15EB}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
+  DTS:LocaleID="7177"
+  DTS:ObjectName="SSISPackage"
+  DTS:PackageType="5"
+  DTS:VersionBuild="34"
+  DTS:VersionGUID="{20219BCF-76DE-4A44-B49D-E674CC9AB789}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{634EAF10-3C08-4970-B243-5C7974A597FF}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="7177"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\SSIS\Source Files\Source01.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="AddressID"
+              DTS:DTSID="{AF7637D4-FB3C-4F14-A4DE-FC2FF2B60A01}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="AddressLine1"
+              DTS:DTSID="{2E169918-ECC2-49B2-9C06-B9A72F7EC14E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="AddressLine2"
+              DTS:DTSID="{C8D070AA-E1FF-4559-B4CD-95BBFEF34622}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="City"
+              DTS:DTSID="{AF0CB1EA-68C1-4C03-8926-CBFF20817596}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="StateProvince"
+              DTS:DTSID="{B7058F1B-27F4-4967-9D4D-FF54DA6E63F3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CountryRegion"
+              DTS:DTSID="{A9843DD0-92E3-4009-9B51-A25A7C11DA7A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PostalCode"
+              DTS:DTSID="{B7D259C2-0E13-49FC-B4EC-51A9BF84094A}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager 1]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{92FCA7A5-A7D2-4AF2-86CC-6431924F374D}"
+      DTS:ObjectName="Flat File Connection Manager 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="7177"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\SSIS\Source Files\Source02.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="AddressID"
+              DTS:DTSID="{7B03B566-3E25-4F5D-A2BB-B69768F48419}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="AddressLine1"
+              DTS:DTSID="{4D9C62D4-6E60-4F37-8B4D-48CAB90A8C4B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="AddressLine2"
+              DTS:DTSID="{A3C4EC1C-A59D-46DF-8F97-99EF1C1ADFC8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="City"
+              DTS:DTSID="{F3D97EDC-1401-4E7E-8922-3A6054E2D878}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="StateProvince"
+              DTS:DTSID="{06BE4186-61D3-47C1-9591-7BC9C5940B79}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CountryRegion"
+              DTS:DTSID="{4B664898-D658-4793-91B8-8ABAA0613AD2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PostalCode"
+              DTS:DTSID="{96E7A3A5-7AD7-45E6-8A47-35C52C68EF55}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SSIS SQL Server]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{9510BEAF-467D-4527-B5AA-37105610D948}"
+      DTS:ObjectName="SSIS SQL Server">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-3949U90;Initial Catalog=SSIS;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-SSISPackage-{9510BEAF-467D-4527-B5AA-37105610D948}DESKTOP-3949U90.SSIS;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{7917BAE2-0B5D-42F5-A1CC-3EC6F9737281}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow\Derived Column.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow\Flat File Source"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="7177"
+              name="Flat File Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow\Flat File Source.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Output].Columns[AddressID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[AddressID]"
+                      length="50"
+                      lineageId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Output].Columns[AddressID]"
+                      name="AddressID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Output].Columns[AddressLine1]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[AddressLine1]"
+                      length="50"
+                      lineageId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Output].Columns[AddressLine1]"
+                      name="AddressLine1"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Output].Columns[AddressLine2]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[AddressLine2]"
+                      length="50"
+                      lineageId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Output].Columns[AddressLine2]"
+                      name="AddressLine2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Output].Columns[City]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[City]"
+                      length="50"
+                      lineageId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Output].Columns[City]"
+                      name="City"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvince]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[StateProvince]"
+                      length="50"
+                      lineageId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvince]"
+                      name="StateProvince"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Output].Columns[CountryRegion]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[CountryRegion]"
+                      length="50"
+                      lineageId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Output].Columns[CountryRegion]"
+                      name="CountryRegion"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Output].Columns[PostalCode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[PostalCode]"
+                      length="50"
+                      lineageId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Output].Columns[PostalCode]"
+                      name="PostalCode"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[AddressID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="AddressID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[AddressLine1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="AddressLine1" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[AddressLine2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="AddressLine2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[City]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[StateProvince]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="StateProvince" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[CountryRegion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CountryRegion" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[PostalCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="PostalCode" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow\Flat File Source 1"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="7177"
+              name="Flat File Source 1"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow\Flat File Source 1.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager 1]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Output].Columns[AddressID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[AddressID]"
+                      length="50"
+                      lineageId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Output].Columns[AddressID]"
+                      name="AddressID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Output].Columns[AddressLine1]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[AddressLine1]"
+                      length="50"
+                      lineageId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Output].Columns[AddressLine1]"
+                      name="AddressLine1"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Output].Columns[AddressLine2]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[AddressLine2]"
+                      length="50"
+                      lineageId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Output].Columns[AddressLine2]"
+                      name="AddressLine2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Output].Columns[City]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[City]"
+                      length="50"
+                      lineageId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Output].Columns[City]"
+                      name="City"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Output].Columns[StateProvince]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[StateProvince]"
+                      length="50"
+                      lineageId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Output].Columns[StateProvince]"
+                      name="StateProvince"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Output].Columns[CountryRegion]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[CountryRegion]"
+                      length="50"
+                      lineageId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Output].Columns[CountryRegion]"
+                      name="CountryRegion"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Output].Columns[PostalCode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[PostalCode]"
+                      length="50"
+                      lineageId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Output].Columns[PostalCode]"
+                      name="PostalCode"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[AddressID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="AddressID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[AddressLine1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="AddressLine1" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[AddressLine2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="AddressLine2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[City]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[StateProvince]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="StateProvince" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[CountryRegion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CountryRegion" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Output].ExternalColumns[PostalCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="PostalCode" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Data Flow\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow\Union All.Inputs[Union All Input 1].Columns[AddressID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="AddressID"
+                      lineageId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Output].Columns[AddressID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow\Union All.Outputs[Union All Output 1].Columns[AddressID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow\Union All.Inputs[Union All Input 1].Columns[AddressLine1]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="AddressLine1"
+                      lineageId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Output].Columns[AddressLine1]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow\Union All.Outputs[Union All Output 1].Columns[AddressLine1]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow\Union All.Inputs[Union All Input 1].Columns[AddressLine2]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="AddressLine2"
+                      lineageId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Output].Columns[AddressLine2]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow\Union All.Outputs[Union All Output 1].Columns[AddressLine2]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow\Union All.Inputs[Union All Input 1].Columns[City]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="City"
+                      lineageId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Output].Columns[City]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow\Union All.Outputs[Union All Output 1].Columns[City]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow\Union All.Inputs[Union All Input 1].Columns[StateProvince]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="StateProvince"
+                      lineageId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Output].Columns[StateProvince]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow\Union All.Outputs[Union All Output 1].Columns[StateProvince]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow\Union All.Inputs[Union All Input 1].Columns[CountryRegion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CountryRegion"
+                      lineageId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Output].Columns[CountryRegion]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow\Union All.Outputs[Union All Output 1].Columns[CountryRegion]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow\Union All.Inputs[Union All Input 1].Columns[PostalCode]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="PostalCode"
+                      lineageId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Output].Columns[PostalCode]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow\Union All.Outputs[Union All Output 1].Columns[PostalCode]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Data Flow\Union All.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow\Union All.Inputs[Union All Input 2].Columns[AddressID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="AddressID"
+                      lineageId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Output].Columns[AddressID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow\Union All.Outputs[Union All Output 1].Columns[AddressID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow\Union All.Inputs[Union All Input 2].Columns[AddressLine1]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="AddressLine1"
+                      lineageId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Output].Columns[AddressLine1]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow\Union All.Outputs[Union All Output 1].Columns[AddressLine1]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow\Union All.Inputs[Union All Input 2].Columns[AddressLine2]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="AddressLine2"
+                      lineageId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Output].Columns[AddressLine2]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow\Union All.Outputs[Union All Output 1].Columns[AddressLine2]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow\Union All.Inputs[Union All Input 2].Columns[City]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="City"
+                      lineageId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Output].Columns[City]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow\Union All.Outputs[Union All Output 1].Columns[City]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow\Union All.Inputs[Union All Input 2].Columns[StateProvince]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="StateProvince"
+                      lineageId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Output].Columns[StateProvince]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow\Union All.Outputs[Union All Output 1].Columns[StateProvince]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow\Union All.Inputs[Union All Input 2].Columns[CountryRegion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CountryRegion"
+                      lineageId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Output].Columns[CountryRegion]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow\Union All.Outputs[Union All Output 1].Columns[CountryRegion]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow\Union All.Inputs[Union All Input 2].Columns[PostalCode]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="PostalCode"
+                      lineageId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Output].Columns[PostalCode]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Data Flow\Union All.Outputs[Union All Output 1].Columns[PostalCode]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Data Flow\Union All.Inputs[Union All Input 3]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow\Union All.Outputs[Union All Output 1].Columns[AddressID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow\Union All.Outputs[Union All Output 1].Columns[AddressID]"
+                      name="AddressID" />
+                    <outputColumn
+                      refId="Package\Data Flow\Union All.Outputs[Union All Output 1].Columns[AddressLine1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow\Union All.Outputs[Union All Output 1].Columns[AddressLine1]"
+                      name="AddressLine1" />
+                    <outputColumn
+                      refId="Package\Data Flow\Union All.Outputs[Union All Output 1].Columns[AddressLine2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow\Union All.Outputs[Union All Output 1].Columns[AddressLine2]"
+                      name="AddressLine2" />
+                    <outputColumn
+                      refId="Package\Data Flow\Union All.Outputs[Union All Output 1].Columns[City]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow\Union All.Outputs[Union All Output 1].Columns[City]"
+                      name="City" />
+                    <outputColumn
+                      refId="Package\Data Flow\Union All.Outputs[Union All Output 1].Columns[StateProvince]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow\Union All.Outputs[Union All Output 1].Columns[StateProvince]"
+                      name="StateProvince" />
+                    <outputColumn
+                      refId="Package\Data Flow\Union All.Outputs[Union All Output 1].Columns[CountryRegion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow\Union All.Outputs[Union All Output 1].Columns[CountryRegion]"
+                      name="CountryRegion" />
+                    <outputColumn
+                      refId="Package\Data Flow\Union All.Outputs[Union All Output 1].Columns[PostalCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow\Union All.Outputs[Union All Output 1].Columns[PostalCode]"
+                      name="PostalCode" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow.Paths[Flat File Source Output]"
+              endId="Package\Data Flow\Union All.Inputs[Union All Input 1]"
+              name="Flat File Source Output"
+              startId="Package\Data Flow\Flat File Source.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Data Flow.Paths[Flat File Source Output1]"
+              endId="Package\Data Flow\Union All.Inputs[Union All Input 2]"
+              name="Flat File Source Output"
+              startId="Package\Data Flow\Flat File Source 1.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Data Flow.Paths[Union All Output 1]"
+              endId="Package\Data Flow\Derived Column.Inputs[Derived Column Input]"
+              name="Union All Output 1"
+              startId="Package\Data Flow\Union All.Outputs[Union All Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="128,42"
+          Id="Package\Data Flow"
+          TopLeft="72,33" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Data Flow\Flat File Source"
+          TopLeft="178,58" />
+        <NodeLayout
+          Size="165,42"
+          Id="Package\Data Flow\Flat File Source 1"
+          TopLeft="387.5,55.5" />
+        <NodeLayout
+          Size="123,42"
+          Id="Package\Data Flow\Union All"
+          TopLeft="307,159" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Data Flow\Derived Column"
+          TopLeft="289,251" />
+        <EdgeLayout
+          Id="Package\Data Flow.Paths[Flat File Source Output]"
+          TopLeft="256,100">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="112.5,59"
+              Start="0,0"
+              End="112.5,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.5"
+                    Point2="0,29.5"
+                    Point3="4,29.5" />
+                  <mssgle:LineSegment
+                    End="108.5,29.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="108.5,29.5"
+                    Point2="112.5,29.5"
+                    Point3="112.5,33.5" />
+                  <mssgle:LineSegment
+                    End="112.5,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow.Paths[Flat File Source Output1]"
+          TopLeft="470,97.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-82.3333333333334,61.5"
+              Start="0,0"
+              End="-82.3333333333334,54">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.4261637239165" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32.4261637239165"
+                    Point2="0,36.4261637239165"
+                    Point3="-4,36.4261637239165" />
+                  <mssgle:LineSegment
+                    End="-78.3333333333334,36.4261637239165" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-78.3333333333334,36.4261637239165"
+                    Point2="-82.3333333333334,36.4261637239165"
+                    Point3="-82.3333333333334,40.4261637239165" />
+                  <mssgle:LineSegment
+                    End="-82.3333333333334,54" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow.Paths[Union All Output 1]"
+          TopLeft="368.25,201">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50"
+              Start="0,0"
+              End="0,42.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,13.25,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
