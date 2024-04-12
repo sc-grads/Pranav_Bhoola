@@ -1,8 +1,8 @@
-Email,Address,Avatar,Avg. Session Length,Time on App,Time on Website,Length of Membership,Yearly Amount Spent
-"mstephenson@fernandez.com,""835 Frank Tunnel"
+Email,Address,Avatar,Avg Session Length,Time on App,Time on Website,Length of Membership,Yearly Amount Spent
+"mstephenson@fernandez.com,""835 Frank Tunnel,Blue123456789"
 "Wrightmouth, MI 82180-9605"",Violet,34.49726772511229,12.655651149166752,39.57766801952616,4.082620632952961,587.9510539684005"
 "hduke@hotmail.com,""4547 Archer Common"
-"Diazchester, CA 06566-8576"",DarkGreen,31.926272026360156,11.109460728682564,37.268958868297744,2.66403418213262,392.2049334443264"
+"Diazchester, CA 06566-8576"",blue,31.926272026360156,11.109460728682564,37.268958868297744,2.66403418213262,392.2049334443264"
 "pallen@yahoo.com,""24645 Valerie Unions Suite 582"
 "Cobbborough, DC 99414-7564"",Bisque,33.000914755642675,11.330278057777512,37.11059744212085,4.104543202376424,487.54750486747207"
 "riverarebecca@gmail.com,""1414 David Throughway"
@@ -18,3 +18,4 @@ Email,Address,Avatar,Avg. Session Length,Time on App,Time on Website,Length of M
 "vchurch@walter-martinez.com,""860 Lee Key"
 "West Debra, SD 97450-0495"",Salmon,33.98777289568564,13.386235275676434,37.534497341555735,3.2734335777477144,570.2004089636195"
 "bonnie69@lin.biz,""PSC 2734, Box 5255"
+"APO AA 98456-7482"" ,DarkBrown,31.936548618448914,11.814128294972196,37.14516822352819,3.202806071553459,427.19938489532814"
