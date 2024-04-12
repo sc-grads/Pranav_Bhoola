@@ -1,10 +1,10 @@
 # Variables
 $SSISNamespace = "Microsoft.SqlServer.Management.IntegrationServices"
 $TargetServerName = "DESKTOP-3949U90"
-$TargetFolderName = "TestProject"
-$ProjectFilePath = "C:\SSIS\Project\TestProject\TestProject\bin\Development\TestProject.ispac"
+$TargetFolderName = "CustomersTestProject"
+$ProjectFilePath = "C:\SSIS\Project\CustomersTestProject\CustomersTestProject\bin\Development\CustomersTestProject.ispac"
 
-$ProjectName = "TestProject"
+$ProjectName = "CustomersTestProject"
 
 
 Add-Type -Path "C:\Program Files (x86)\Microsoft SQL Server Management Studio 19\Common7\IDE\CommonExtensions\Microsoft\SSIS\160\Binn\150References\SMO\Microsoft.SqlServer.Dmf.Common.dll"
