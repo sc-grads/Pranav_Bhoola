@@ -1,13 +1,12 @@
 # Variables
 $SSISNamespace = "Microsoft.SqlServer.Management.IntegrationServices"
-$TargetServerName = "DESKTOP-3949U90"
+$TargetServerName = "7.tcp.eu.ngrok.io,13744"
 $TargetFolderName = "CustomersTestProject"
-$ProjectFilePath = "C:\SSIS\Project\CustomersTestProject\CustomersTestProject\bin\Development\CustomersTestProject.ispac"
+$ProjectFilePath = "DatabaseAdministration/SSIS/Project/CustomersTestProject.ispac"
 
 $ProjectName = "CustomersTestProject"
 
 
-Add-Type -Path "C:\Program Files (x86)\Microsoft SQL Server Management Studio 19\Common7\IDE\CommonExtensions\Microsoft\SSIS\160\Binn\150References\SMO\Microsoft.SqlServer.Dmf.Common.dll"
 
 # Load the IntegrationServices assembly
 $loadStatus = [System.Reflection.Assembly]::Load("Microsoft.SQLServer.Management.IntegrationServices, "+

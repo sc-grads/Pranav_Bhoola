@@ -1,24 +1,12 @@
-name: Deploy SSIS Package
-
-on:
-  push:
-    branches:
-      - main
-  workflow_dispatch: # This line correctly allows manual triggers from the GitHub UI
+name: CI
+on: [push, pull_request]
 
 jobs:
-  deploy:
-    runs-on: windows-latest # This will use the latest Windows server available on GitHub Actions
-
-    steps:
-      - uses: actions/checkout@v3
-        # This step checks out your repository content into the GitHub Actions runner.
-
-      - name: Setup PowerShell
-        uses: actions/setup-powershell@v2
-        # This action sets up a specified version of PowerShell. You might want to specify a PowerShell version if necessary.
-
-      - name: Deploy SSIS Package
-        run: .\AutomationScripts\DeploySSISProject.ps1 -ServerInstance "DESKTOP-3949U90" -PathToIspacFile "DatabaseAdministration\SSIS\Project\CustomersTestProject.ispac"
-        shell: pwsh
-        # Ensures that PowerShell Core is used to run the script.
+    build:
+      name: Run Script
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v1
+        - name: Script
+          run: ./AutomationScripts\DeploySSISProject.ps1
+          shell: pwsh
