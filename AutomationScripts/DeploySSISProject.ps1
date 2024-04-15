@@ -6,7 +6,7 @@ $ProjectFilePath = "DatabaseAdministration/SSIS/Project/CustomersTestProject.isp
 
 $ProjectName = "CustomersTestProject"
 
-
+Add-Type -Path "C:\Program Files (x86)\Microsoft SQL Server Management Studio 19\Common7\IDE\CommonExtensions\Microsoft\SSIS\160\Binn\150References\SMO\Microsoft.SqlServer.Dmf.Common.dll"
 
 # Load the IntegrationServices assembly
 $loadStatus = [System.Reflection.Assembly]::Load("Microsoft.SQLServer.Management.IntegrationServices, "+
