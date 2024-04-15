@@ -1,12 +1,43 @@
-name: CI
-on: [push, pull_request]
+name: Deploy SSIS Package
+
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-    build:
-      name: Run Script
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v1
-        - name: Script
-          run: ./AutomationScripts\DeploySSISProject.ps1
-          shell: pwsh
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup SQL Server Integration Services
+      uses: microsoft/sql-server-integration-services-docker@v1
+      with:
+        image: mcr.microsoft.com/ssis/runtime-ubuntu:latest
+        arguments: |
+          /bin/bash -c "
+          # Install the SQL Server Integration Services Catalog
+          sudo /opt/ssis/bin/ssis-conf.sh --action install
+          # Create a new SSISDB catalog
+          sudo /opt/ssis/bin/ssis-conf.sh --action create-ssisdb
+          # Create a new project and add your SSIS package
+          sudo /opt/ssis/bin/ssis-conf.sh --action create-project --name MySSISProject
+          sudo /opt/ssis/bin/ssis-conf.sh --action add-package --project MySSISProject --path /path/to/your/package.dtsx
+          "
+
+    - name: Deploy SSIS Package
+      uses: microsoft/sql-server-integration-services-docker@v1
+      with:
+        image: mcr.microsoft.com/ssis/runtime-ubuntu:latest
+        arguments: |
+          /bin/bash -c "
+          # Deploy the SSIS package
+          sudo /opt/ssis/bin/dtutil -s $(SSIS_SERVER_NAME) -u $(SSIS_USERNAME) -p $(SSIS_PASSWORD) -f DatabaseAdministration/SSIS/Project/CustomersTestProject/CustomersTestProject/Package.dtsx -i DatabaseAdministration/SSIS/Project/CustomersTestProject/CustomersTestProject/bin/Development/CustomersTestProject.ispac -k
+          "
+      env:
+        SSIS_SERVER_NAME: ${{ secrets.SQL_SERVER }}
+        SSIS_USERNAME: ${{ secrets.SQL_USERNAME }}
+        SSIS_PASSWORD: ${{ secrets.SQL_PASSWORD }}
