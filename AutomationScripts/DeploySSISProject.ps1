@@ -1,8 +1,8 @@
 # Variables
 $SSISNamespace = "Microsoft.SqlServer.Management.IntegrationServices"
-$TargetServerName = "DESKTOP-3949U90"
+$TargetServerName = "7.tcp.eu.ngrok.io,13744"
 $TargetFolderName = "CustomersTestProject"
-$ProjectFilePath = "C:\SSIS\Project\CustomersTestProject\CustomersTestProject\bin\Development\CustomersTestProject.ispac"
+$ProjectFilePath = "DatabaseAdministration/SSIS/Project/CustomersTestProject.ispac"
 
 $ProjectName = "CustomersTestProject"
 
