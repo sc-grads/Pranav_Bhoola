@@ -1,0 +1,54 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/10/2024 2:40:34 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-3949U90"
+  DTS:CreatorName="DESKTOP-3949U90\Pranav Bhoola"
+  DTS:DTSID="{E89B5171-28C1-4DB0-9FC6-85F06E623615}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
+  DTS:LocaleID="7177"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{9ED217E8-9DAC-4493-99C9-FF7269B77426}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Transfer Error Messages Task"
+      DTS:CreationName="Microsoft.TransferErrorMessagesTask"
+      DTS:Description="Transfer Error Messages Task"
+      DTS:DTSID="{6BDF06BC-9D0C-49A1-93E6-9BA13DB3F062}"
+      DTS:ExecutableType="Microsoft.TransferErrorMessagesTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transfer Error Messages Task"
+      DTS:TaskContact="Transfer Error Messages Task; Microsoft Corporation; SQL Server 2022; (c) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData />
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="227,42"
+          Id="Package\Transfer Error Messages Task"
+          TopLeft="335,58" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

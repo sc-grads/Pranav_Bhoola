@@ -1,0 +1,120 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/10/2024 8:19:03 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-3949U90"
+  DTS:CreatorName="DESKTOP-3949U90\Pranav Bhoola"
+  DTS:DTSID="{5266C7A5-F71B-4A3B-BD54-82AFE4F8CE36}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
+  DTS:LocaleID="7177"
+  DTS:ObjectName="06_WebServiceTaskDemo"
+  DTS:PackageType="5"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{06E98D3C-8357-46C5-B082-B89590210A8C}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Script Task"
+      DTS:CreationName="Microsoft.ScriptTask"
+      DTS:Description="Script Task"
+      DTS:DTSID="{5F6E4E33-099B-4B6C-AB06-CE0C34AF9F41}"
+      DTS:ExecutableType="Microsoft.ScriptTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Script Task"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ScriptProject
+          Name="ST_5b5b7e16640a4981b05c135130f132d4"
+          VSTAMajorVersion="16"
+          VSTAMinorVersion="0"
+          Language="CSharp" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Web Service Task"
+      DTS:CreationName="Microsoft.WebServiceTask"
+      DTS:Description="Web Service Task"
+      DTS:DTSID="{A841E11C-2C5B-4629-985D-D9D2DEE469B6}"
+      DTS:ExecutableType="Microsoft.WebServiceTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Web Service Task"
+      DTS:TaskContact="Web Service Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData />
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{DBE94677-7C44-43E7-ACE8-8FBB85D1A6E0}"
+      DTS:From="Package\Web Service Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Script Task" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="168,42"
+          Id="Package\Web Service Task"
+          TopLeft="347,50" />
+        <NodeLayout
+          Size="134,42"
+          Id="Package\Script Task"
+          TopLeft="434,206" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="431,92">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="70,114"
+              Start="0,0"
+              End="70,106.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,53"
+                    Point2="0,57"
+                    Point3="4,57" />
+                  <mssgle:LineSegment
+                    End="66,57" />
+                  <mssgle:CubicBezierSegment
+                    Point1="66,57"
+                    Point2="70,57"
+                    Point3="70,61" />
+                  <mssgle:LineSegment
+                    End="70,106.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
