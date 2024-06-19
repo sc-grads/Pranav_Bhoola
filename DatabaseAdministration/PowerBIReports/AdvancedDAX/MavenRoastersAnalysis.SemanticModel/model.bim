@@ -1,5 +1,5 @@
 {
-  "compatibilityLevel": 1550,
+  "compatibilityLevel": 1567,
   "model": {
     "annotations": [
       {
@@ -253,6 +253,110 @@
             "lineageTag": "87ff53a0-6df8-41fc-936b-0ba9836e0a3c",
             "sourceColumn": "Week_Year",
             "summarizeBy": "none"
+          },
+          {
+            "name": "ISNUMBER",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "boolean",
+            "expression": [
+              "",
+              "ISTEXT('Calendar'[Week_Desc])"
+            ],
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "isDataTypeInferred": true,
+            "lineageTag": "95640a9e-9ada-43b6-879e-13229648a9dc",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Date Format (yyyy-mm-dd)",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "expression": [
+              "",
+              "FORMAT(",
+              "    'Calendar'[Transaction_Date],",
+              "    \"yyyy-mm-dd\"",
+              ")"
+            ],
+            "isDataTypeInferred": true,
+            "lineageTag": "6804b28e-496a-4f02-ac31-d3721dcc5fa8",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Year Half",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "expression": [
+              "",
+              "SWITCH(",
+              "    'Calendar'[Month_ID],",
+              "    1, \"1H\",",
+              "    2, \"1H\",",
+              "    3, \"1H\",",
+              "    4, \"1H\",",
+              "    5, \"1H\",",
+              "    6, \"1H\",",
+              "    7, \"2H\",",
+              "    8, \"2H\",",
+              "    9, \"2H\",",
+              "    10, \"2H\",",
+              "    11, \"2H\",",
+              "    12, \"2H\",",
+              "    \"-\"",
+              ")"
+            ],
+            "isDataTypeInferred": true,
+            "lineageTag": "eabfde4a-6b68-4ac7-96f8-493e40c4b97a",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Quarter & Year",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "expression": [
+              "",
+              " VAR Q1 = 'Calendar'[Month_ID] IN {1,2,3}",
+              " VAR Q2 = 'Calendar'[Month_ID] IN {4,5,6}",
+              " VAR Q3 = 'Calendar'[Month_ID] IN {7,8,9}",
+              " VAR Q4 = 'Calendar'[Month_ID] IN {10,11,12}",
+              "",
+              " RETURN",
+              " SWITCH(",
+              "    TRUE(),",
+              "    Q1,\"Q1\" & \"-\" & 'Calendar'[Year_ID],",
+              "    Q2,\"Q2\" & \"-\" & 'Calendar'[Year_ID],",
+              "    Q3,\"Q3\" & \"-\" & 'Calendar'[Year_ID],",
+              "    Q4,\"Q4\" & \"-\" & 'Calendar'[Year_ID],",
+              "    \"-\"",
+              " )"
+            ],
+            "isDataTypeInferred": true,
+            "lineageTag": "59146ef2-9255-43a7-9c6c-2bfdd9704da8",
+            "summarizeBy": "none",
+            "type": "calculated"
           }
         ],
         "lineageTag": "135c37ae-a73a-4a30-95ca-041868cdd453",
@@ -416,6 +520,35 @@
             "lineageTag": "d2ca16c0-f162-46dc-b89f-690fa93c65ee",
             "sourceColumn": "birth_year",
             "summarizeBy": "none"
+          },
+          {
+            "name": "Current Age",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "int64",
+            "expression": [
+              "",
+              "FLOOR(",
+              "    DATEDIFF(",
+              "        'Customer Lookup'[birthdate],",
+              "        TODAY(),",
+              "        DAY",
+              "    )/365.25,",
+              "    1",
+              ")"
+            ],
+            "isDataTypeInferred": true,
+            "lineageTag": "82c46fe4-77c1-471e-8dc7-07fba8699da6",
+            "summarizeBy": "none",
+            "type": "calculated"
           }
         ],
         "lineageTag": "8342908d-eaca-454a-94ef-fc72763293bc",
@@ -963,10 +1096,14 @@
               {
                 "name": "UnderlyingDateTimeDataType",
                 "value": "Time"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isDateTimeCustom\":true}"
               }
             ],
             "dataType": "dateTime",
-            "formatString": "Long Time",
+            "formatString": "hh:nn:ss",
             "lineageTag": "cf58c306-11ee-4c6c-9699-122abf08d5c2",
             "sourceColumn": "transaction_time",
             "summarizeBy": "none"
@@ -1111,6 +1248,57 @@
             "lineageTag": "85a5a641-ec14-435d-ade2-0b746a511c13",
             "sourceColumn": "promo_item_yn",
             "summarizeBy": "none"
+          },
+          {
+            "name": "Time Group",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Time"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "DataType"
+              }
+            ],
+            "dataType": "dateTime",
+            "expression": [
+              "",
+              "FLOOR(",
+              "    'Sales by Store'[transaction_time],",
+              "    \"1:00\"",
+              ")"
+            ],
+            "formatString": "Long Time",
+            "lineageTag": "db95b458-214a-4238-9134-8b2c9a962cf1",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Total Revenue",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "decimal",
+            "expression": [
+              "",
+              "CURRENCY(",
+              "    'Sales by Store'[quantity_sold] * 'Sales by Store'[unit_price]",
+              ")"
+            ],
+            "formatString": "\\$#,0.###############;(\\$#,0.###############);\\$#,0.###############",
+            "isDataTypeInferred": true,
+            "lineageTag": "17225a84-2c57-4d64-97ad-1e588b5c85ab",
+            "summarizeBy": "sum",
+            "type": "calculated"
           }
         ],
         "lineageTag": "c9e89f13-5140-4b2f-ad4b-9f2470d801ba",
@@ -1332,12 +1520,6 @@
         "measures": [
           {
             "name": "Cost",
-            "annotations": [
-              {
-                "name": "PBI_FormatHint",
-                "value": "{\"isGeneralNumber\":true}"
-              }
-            ],
             "displayFolder": "Tips & Best Practices",
             "expression": [
               "",
@@ -1347,8 +1529,10 @@
               "    RELATED(",
               "        'Product Lookup'[current_cost]",
               "    )",
-              ")"
+              ")",
+              ""
             ],
+            "formatString": "\\$#,0.###############;(\\$#,0.###############);\\$#,0.###############",
             "lineageTag": "1ce7b783-56ee-4ba9-9941-db4f1f980b33"
           },
           {
@@ -1386,6 +1570,7 @@
           },
           {
             "name": "Customer Sales (Last Year)",
+            "displayFolder": "Tips & Best Practices",
             "expression": [
               "",
               " CALCULATE(",
@@ -1408,6 +1593,7 @@
                 "value": "{\"isGeneralNumber\":true}"
               }
             ],
+            "displayFolder": "Tips & Best Practices",
             "expression": [
               "",
               "IF(",
@@ -1422,6 +1608,7 @@
           },
           {
             "name": "% Quantity Sold to Females",
+            "displayFolder": "Tips & Best Practices",
             "expression": [
               "",
               "VAR TotalOrders_Female = ",
@@ -1452,6 +1639,7 @@
           },
           {
             "name": "Orders by Females (Wrong)",
+            "displayFolder": "Tips & Best Practices",
             "expression": [
               "",
               "VAR TotalOrder =",
@@ -1469,6 +1657,69 @@
             ],
             "formatString": "0",
             "lineageTag": "2b764be2-99f5-4100-8232-4e45214e6e71"
+          },
+          {
+            "name": "Total Customers",
+            "displayFolder": "Scalar Measures",
+            "expression": [
+              "",
+              "DISTINCTCOUNT(",
+              "    'Customer Lookup'[customer_id]",
+              ")"
+            ],
+            "formatString": "#,0",
+            "lineageTag": "2fe56cf2-0a95-4238-87c2-cb396d8eb223"
+          },
+          {
+            "name": "Total Employees",
+            "displayFolder": "Scalar Measures",
+            "expression": [
+              "",
+              " COUNTROWS(",
+              "    'Employee Lookup'",
+              " )"
+            ],
+            "formatString": "#,0",
+            "lineageTag": "305bcaf3-8762-455a-8040-d2ac231f8e2f"
+          },
+          {
+            "name": "Cost (Currency)",
+            "expression": [
+              "",
+              "ROUND(",
+              "    CURRENCY([Cost])",
+              "    ,2",
+              ")"
+            ],
+            "formatString": "\\$#,0.###############;(\\$#,0.###############);\\$#,0.###############",
+            "lineageTag": "5342fccb-b7b7-4751-8dbb-9ddb07a91a1f"
+          },
+          {
+            "name": "Customer Sales LY (COALESCE)",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": [
+              "",
+              "VAR Customer_Sales_LY =",
+              " CALCULATE(",
+              "    [Customer Sales],",
+              "    DATEADD(",
+              "        'Calendar'[Transaction_Date],",
+              "        -1, ",
+              "        YEAR",
+              "    )",
+              " )",
+              " RETURN",
+              " COALESCE(",
+              "    Customer_Sales_LY,",
+              "    \"-\"",
+              " )"
+            ],
+            "lineageTag": "97156cc1-9758-4fff-ab18-05af36aaf690"
           }
         ],
         "partitions": [
