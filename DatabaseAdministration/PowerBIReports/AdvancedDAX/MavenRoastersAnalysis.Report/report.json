@@ -25,7 +25,17 @@
       "filters": "[]",
       "height": 720.00,
       "name": "32108c9420a15a2d5b05",
-      "visualContainers": [],
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"6490fa2359f3d59c2642\",\"layouts\":[{\"id\":0,\"position\":{\"x\":182.88,\"y\":99.36,\"z\":1,\"width\":632.16,\"height\":398.88}}],\"singleVisual\":{\"visualType\":\"pivotTable\",\"projections\":{\"Rows\":[{\"queryRef\":\"Calendar.Transaction_Date\",\"active\":true}],\"Values\":[{\"queryRef\":\"Measure Table.Customer Sales\"},{\"queryRef\":\"Measure Table.Orders by Females\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"c\",\"Entity\":\"Calendar\",\"Type\":0},{\"Name\":\"m\",\"Entity\":\"Measure Table\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Transaction_Date\"},\"Name\":\"Calendar.Transaction_Date\",\"NativeReferenceName\":\"Transaction_Date\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Customer Sales\"},\"Name\":\"Measure Table.Customer Sales\",\"NativeReferenceName\":\"Customer Sales\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"% Quantity Sold to Females\"},\"Name\":\"Measure Table.Orders by Females\",\"NativeReferenceName\":\"% Quantity Sold to Females\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"columnWidth\":[{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"113.88000076013533D\"}}}},\"selector\":{\"metadata\":\"Calendar.Transaction_Date\"}}]}}}",
+          "filters": "[]",
+          "height": 398.88,
+          "width": 632.16,
+          "x": 182.88,
+          "y": 99.36,
+          "z": 1.00
+        }
+      ],
       "width": 1280.00
     }
   ]

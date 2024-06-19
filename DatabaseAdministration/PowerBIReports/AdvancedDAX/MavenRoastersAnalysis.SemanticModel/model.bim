@@ -12,7 +12,7 @@
       },
       {
         "name": "PBI_QueryOrder",
-        "value": "[\"Calendar\",\"Customer Lookup\",\"Employee Lookup\",\"Food Inventory\",\"Product Lookup\",\"Sales by Store\",\"Store Lookup\"]"
+        "value": "[\"Calendar\",\"Customer Lookup\",\"Employee Lookup\",\"Food Inventory\",\"Product Lookup\",\"Sales by Store\",\"Store Lookup\",\"Measure Table\"]"
       },
       {
         "name": "PBI_ProTooling",
@@ -120,10 +120,14 @@
               {
                 "name": "UnderlyingDateTimeDataType",
                 "value": "Date"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isDateTimeCustom\":true}"
               }
             ],
             "dataType": "dateTime",
-            "formatString": "Long Date",
+            "formatString": "dd/mm/yyyy",
             "lineageTag": "d8f53849-0bff-4903-9934-68e72903f74b",
             "sourceColumn": "Transaction_Date",
             "summarizeBy": "none"
@@ -1110,23 +1114,6 @@
           }
         ],
         "lineageTag": "c9e89f13-5140-4b2f-ad4b-9f2470d801ba",
-        "measures": [
-          {
-            "name": "Customer Sales",
-            "annotations": [
-              {
-                "name": "PBI_FormatHint",
-                "value": "{\"isGeneralNumber\":true}"
-              }
-            ],
-            "expression": [
-              "",
-              "SUMX('Sales by Store',",
-              "'Sales by Store'[quantity_sold] * 'Sales by Store'[unit_price])"
-            ],
-            "lineageTag": "1e775394-3774-47e5-8d4f-5a79dcf489fa"
-          }
-        ],
         "partitions": [
           {
             "name": "Sales by Store",
@@ -1327,6 +1314,175 @@
                 "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"store_id\", Int64.Type}, {\"store_type\", type text}, {\"store_square_feet\", Int64.Type}, {\"store_address\", type text}, {\"store_city\", type text}, {\"store_state_province\", type text}, {\"store_postal_code\", Int64.Type}, {\"store_longitude\", type number}, {\"store_latitude\", type number}, {\"manager\", Int64.Type}, {\"Neighorhood\", type text}})",
                 "in",
                 "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Measure Table",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "lineageTag": "1fbbe49d-603a-41d9-98bc-61faabeb9c3e",
+        "measures": [
+          {
+            "name": "Cost",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "Tips & Best Practices",
+            "expression": [
+              "",
+              "SUMX(",
+              "    'Sales by Store',                   -- Returns the Sales by Store table to ",
+              "    'Sales by Store'[quantity_sold] *   -- Evaluate expression sold times cost from a related table ",
+              "    RELATED(",
+              "        'Product Lookup'[current_cost]",
+              "    )",
+              ")"
+            ],
+            "lineageTag": "1ce7b783-56ee-4ba9-9941-db4f1f980b33"
+          },
+          {
+            "name": "Customer Sales",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "Tips & Best Practices",
+            "expression": [
+              "",
+              "SUMX(",
+              "    'Sales by Store', ",
+              "    'Sales by Store'[quantity_sold] * 'Sales by Store'[unit_price]",
+              ")"
+            ],
+            "lineageTag": "1e775394-3774-47e5-8d4f-5a79dcf489fa"
+          },
+          {
+            "name": "Profit",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "Tips & Best Practices",
+            "expression": [
+              "",
+              "[Customer Sales] - [Cost]"
+            ],
+            "lineageTag": "b9811985-9e25-4c0b-86dd-8fd2ff322e7f"
+          },
+          {
+            "name": "Customer Sales (Last Year)",
+            "expression": [
+              "",
+              " CALCULATE(",
+              "    [Customer Sales],",
+              "    DATEADD(",
+              "        'Calendar'[Transaction_Date],",
+              "        -1, ",
+              "        YEAR",
+              "    )",
+              " )"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "7a8f2428-5b83-4a83-8bd1-7887ce0875cf"
+          },
+          {
+            "name": "Customer Sales LY (ISBLANK)",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": [
+              "",
+              "IF(",
+              "    ISBLANK(",
+              "        [Customer Sales (Last Year)]",
+              "    ),",
+              "    \"No Sales\",",
+              "    [Customer Sales (Last Year)]",
+              ")"
+            ],
+            "lineageTag": "da76d839-88d9-4842-9b34-e814d745ccc6"
+          },
+          {
+            "name": "% Quantity Sold to Females",
+            "expression": [
+              "",
+              "VAR TotalOrders_Female = ",
+              "CALCULATE(",
+              "    SUM(",
+              "        'Sales by Store'[quantity_sold]",
+              "    ),",
+              "    FILTER(",
+              "        'Customer Lookup',",
+              "        'Customer Lookup'[gender] = \"F\"",
+              "    )",
+              ")",
+              "VAR QuantitySold =",
+              "SUM(",
+              "    'Sales by Store'[quantity_sold]",
+              ")",
+              "VAR Ratio = ",
+              "DIVIDE(",
+              "    TotalOrders_Female,",
+              "    QuantitySold,",
+              "    \"-\"",
+              ")",
+              "RETURN",
+              "Ratio"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "e464e672-257f-4542-9947-2fa8b2fcf75c"
+          },
+          {
+            "name": "Orders by Females (Wrong)",
+            "expression": [
+              "",
+              "VAR TotalOrder =",
+              "SUM(",
+              "    'Sales by Store'[quantity_sold]",
+              ")",
+              "RETURN",
+              "CALCULATE(",
+              "    TotalOrder,",
+              "    FILTER(",
+              "        'Customer Lookup',",
+              "        'Customer Lookup'[gender] =\"F\"",
+              "    )",
+              ")"
+            ],
+            "formatString": "0",
+            "lineageTag": "2b764be2-99f5-4100-8232-4e45214e6e71"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Measure Table",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"i45WCk7MLchJVYqNBQA=\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(Source,{{\"Column1\", type text}}),",
+                "    #\"Removed Columns\" = Table.RemoveColumns(#\"Changed Type\",{\"Column1\"})",
+                "in",
+                "    #\"Removed Columns\""
               ],
               "type": "m"
             }
