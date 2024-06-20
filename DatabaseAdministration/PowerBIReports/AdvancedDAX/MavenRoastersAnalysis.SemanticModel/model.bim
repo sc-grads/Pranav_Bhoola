@@ -791,6 +791,50 @@
             "lineageTag": "f2304a0a-1b64-4362-80f6-c006549ace75",
             "sourceColumn": "quantity_sold",
             "summarizeBy": "sum"
+          },
+          {
+            "name": "Quantity Sold (SUM)",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "expression": [
+              "",
+              "SUM(",
+              "    'Food Inventory'[quantity_sold]",
+              ")"
+            ],
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "lineageTag": "da5ef5a2-c60a-4bd6-8788-8fe3a0d7e4e8",
+            "summarizeBy": "sum",
+            "type": "calculated"
+          },
+          {
+            "name": "Quantity Sold (CALCULATE)",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    SUM(",
+              "        'Food Inventory'[quantity_sold]",
+              "    )",
+              ")"
+            ],
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "lineageTag": "9feac42c-16e1-4e65-9f12-a0884c8f085b",
+            "summarizeBy": "sum",
+            "type": "calculated"
           }
         ],
         "lineageTag": "adfff7d6-4a32-43e3-9d5e-1d75176ebab3",
@@ -1555,17 +1599,12 @@
           },
           {
             "name": "Profit",
-            "annotations": [
-              {
-                "name": "PBI_FormatHint",
-                "value": "{\"isGeneralNumber\":true}"
-              }
-            ],
             "displayFolder": "Tips & Best Practices",
             "expression": [
               "",
               "[Customer Sales] - [Cost]"
             ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
             "lineageTag": "b9811985-9e25-4c0b-86dd-8fd2ff322e7f"
           },
           {
@@ -1684,6 +1723,7 @@
           },
           {
             "name": "Cost (Currency)",
+            "displayFolder": "Scalar Measures",
             "expression": [
               "",
               "ROUND(",
@@ -1702,6 +1742,7 @@
                 "value": "{\"isGeneralNumber\":true}"
               }
             ],
+            "displayFolder": "Scalar Measures",
             "expression": [
               "",
               "VAR Customer_Sales_LY =",
@@ -1720,6 +1761,186 @@
               " )"
             ],
             "lineageTag": "97156cc1-9758-4fff-ab18-05af36aaf690"
+          },
+          {
+            "name": "SUM Quantity Sold",
+            "displayFolder": "Advanced CALCULATE",
+            "expression": [
+              "",
+              "SUM(",
+              "    'Food Inventory'[quantity_sold]",
+              ")"
+            ],
+            "formatString": "#,0",
+            "lineageTag": "79d056e8-6ab5-4d7a-b9ee-800ba900fa58"
+          },
+          {
+            "name": "Calculate SUM Quantity Sold",
+            "displayFolder": "Advanced CALCULATE",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    SUM(",
+              "        'Food Inventory'[quantity_sold]",
+              "    )",
+              ")"
+            ],
+            "formatString": "#,0",
+            "lineageTag": "d9583b4f-9790-4514-ada5-85ab24cbbcab"
+          },
+          {
+            "name": "Store 3 Sales of Whole Beans & Teas (CALCULATE)",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ],
+            "displayFolder": "Advanced CALCULATE",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    [Customer Sales],",
+              "    'Store Lookup'[store_id] = 3,",
+              "    'Product Lookup'[product_group] = \"Whole Bean/Teas\"",
+              ")"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "3844ece2-a264-4d11-b9b5-aeefac2fb32e"
+          },
+          {
+            "name": "Store 3 Sales of Whole Beans & Teas (ALL MODIFIER)",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ],
+            "displayFolder": "Advanced CALCULATE",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    [Customer Sales],",
+              "    'Store Lookup'[store_id] = 3,",
+              "    'Product Lookup'[product_group] = \"Whole Bean/Teas\",",
+              "    ALL(",
+              "        'Store Lookup'",
+              "    )",
+              ")"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "33495de6-1ecd-43e2-a66d-7d2bdf52b0ef"
+          },
+          {
+            "name": "Total Profit",
+            "displayFolder": "Advanced CALCULATE",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    [Profit],",
+              "    REMOVEFILTERS(",
+              "        'Sales by Store'",
+              "    )",
+              ")"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "d5d5e89e-c86a-49b6-852a-d96a673f459c"
+          },
+          {
+            "name": "Store 5 Profit (KEEPFILTERS)",
+            "displayFolder": "Advanced CALCULATE",
+            "expression": [
+              "",
+              " CALCULATE(",
+              "    [Profit],",
+              "    KEEPFILTERS(",
+              "        'Store Lookup'[store_id] = 5",
+              "    )",
+              " )"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "ac06baf9-4a3c-482f-8cb8-575c668387a8"
+          },
+          {
+            "name": "Store 5 Profit",
+            "displayFolder": "Advanced CALCULATE",
+            "expression": [
+              "",
+              " CALCULATE(",
+              "    [Profit],",
+              "    'Store Lookup'[store_id] = 5",
+              " )"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "c6fc0727-e36b-4d1e-a19d-14924b5c3833"
+          },
+          {
+            "name": "Store 3 Sales (KEEPFILTERS)",
+            "displayFolder": "Advanced CALCULATE",
+            "expression": [
+              "",
+              " CALCULATE(",
+              "    [Customer Sales],",
+              "    KEEPFILTERS(",
+              "        'Store Lookup'[store_id] = 3",
+              "    )",
+              " )"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "9512e3ae-c960-4705-a521-a63e6aa1127e"
+          },
+          {
+            "name": "Store 5 Sales (KEEPFILTERS)",
+            "displayFolder": "Advanced CALCULATE",
+            "expression": [
+              "",
+              " CALCULATE(",
+              "    [Customer Sales],",
+              "    KEEPFILTERS(",
+              "        'Store Lookup'[store_id] = 5",
+              "    )",
+              " )"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "9bdf3675-a2ec-4c80-b614-5fbf71c85ac8"
+          },
+          {
+            "name": "Store 8 Sales (KEEPFILTERS)",
+            "displayFolder": "Advanced CALCULATE",
+            "expression": [
+              "",
+              " CALCULATE(",
+              "    [Customer Sales],",
+              "    KEEPFILTERS(",
+              "        'Store Lookup'[store_id] = 8",
+              "    )",
+              " )"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "a7033cab-7e78-40f1-b6f2-2aaa0a6c53f9"
+          },
+          {
+            "name": "% of Store Sales (REMOVEFILTERS)",
+            "displayFolder": "Advanced CALCULATE",
+            "expression": [
+              "",
+              "VAR AllStoreSales = ",
+              "CALCULATE(",
+              "    [Customer Sales],",
+              "    REMOVEFILTERS(",
+              "        'Store Lookup'[store_id]",
+              "    )",
+              ")",
+              "VAR Ratio = ",
+              "DIVIDE(",
+              "    [Customer Sales],",
+              "    AllStoreSales",
+              ")",
+              "RETURN",
+              "Ratio"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "57cfcc88-9a57-4e37-9cad-3a162de129fa"
           }
         ],
         "partitions": [
