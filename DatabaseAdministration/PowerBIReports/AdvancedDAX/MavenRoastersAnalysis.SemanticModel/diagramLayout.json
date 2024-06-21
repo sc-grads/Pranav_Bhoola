@@ -4,7 +4,7 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 649.25373134328356,
+        "x": 1331.2835820895525,
         "y": 0
       },
       "nodes": [
@@ -214,6 +214,78 @@
             "y": 291.04477611940297
           },
           "nodeIndex": "Target Sales - April 2019 (DATATABLE)",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 4171.2835820895525,
+            "y": 291.04477611940297
+          },
+          "nodeIndex": "CROSSJOIN Demo",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 4455.2835820895525,
+            "y": 291.04477611940297
+          },
+          "nodeIndex": "UNION Demo",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 4739.2835820895525,
+            "y": 291.04477611940297
+          },
+          "nodeIndex": "Target Sales - March 2019 (DATATABLE)",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 5023.2835820895525,
+            "y": 291.04477611940297
+          },
+          "nodeIndex": "EXCEPT Demo",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 5307.2835820895525,
+            "y": 291.04477611940297
+          },
+          "nodeIndex": "New Employees (INTERSECT)",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 5591.2835820895525,
+            "y": 291.04477611940297
+          },
+          "nodeIndex": "Repeat Customer Sales (INTERSECT Assignment)",
           "size": {
             "height": 200,
             "width": 234

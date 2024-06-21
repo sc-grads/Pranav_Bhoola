@@ -2212,6 +2212,35 @@
             ],
             "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
             "lineageTag": "87ba89fb-a142-4fbd-94c7-ddabca59969a"
+          },
+          {
+            "name": "Revenue (INTERSECT Assignment)",
+            "displayFolder": "Calculated Table Joins",
+            "expression": [
+              "",
+              " SUM(",
+              "    'Repeat Customer Sales (INTERSECT Assignment)'[Revenue]",
+              " )"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "39c33afd-f05d-4606-89a8-2e4df27faa84"
+          },
+          {
+            "name": "Profit (INTERSECT Assignment)",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "Calculated Table Joins",
+            "expression": [
+              "",
+              " SUM(",
+              "    'Repeat Customer Sales (INTERSECT Assignment)'[Profit]",
+              " )"
+            ],
+            "lineageTag": "734f66c9-3b78-4a1d-9d6b-3e76b8d35319"
           }
         ],
         "partitions": [
@@ -3039,6 +3068,864 @@
                 "        {8,\"2019\",\"April\",377,15011,1973,34}",
                 "    }",
                 ")"
+              ],
+              "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "CROSSJOIN Demo",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "2cd47ef6656b480ea3bb172b7942b84d"
+          }
+        ],
+        "columns": [
+          {
+            "name": "product_group",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "fd7a3aed-c204-4809-8a36-29aabc41487c",
+            "sourceColumn": "Product Lookup[product_group]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "product_category",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "671c8ae6-f440-4b7a-9097-429747f3f27c",
+            "sourceColumn": "Product Lookup[product_category]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "store_id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "d490435b-471e-43e3-8045-8c360c62af84",
+            "sourceColumn": "Store Lookup[store_id]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          }
+        ],
+        "lineageTag": "aca5ae3d-9908-4ced-a666-f6d79c758512",
+        "partitions": [
+          {
+            "name": "CROSSJOIN Demo",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "",
+                "CROSSJOIN(",
+                "    VALUES(",
+                "        'Product Lookup'[product_category]",
+                "    ),",
+                "    VALUES(",
+                "        'Product Lookup'[product_group]",
+                "    ),",
+                "    FILTER(",
+                "        VALUES(",
+                "        'Store Lookup'[store_id]",
+                "        ),",
+                "        'Store Lookup'[store_id] = 3",
+                "    )",
+                ")"
+              ],
+              "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "UNION Demo",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "2bcf16e02fbc479c9f7b6a9b5f3ed02b"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Store ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "3748a20e-69bf-4e0c-a650-8cd8948e958c",
+            "sourceColumn": "Target Sales - March 2019 (DATATABLE)[Store ID]",
+            "summarizeBy": "count",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "98bba55c-c33c-4a47-b4cf-079664639883",
+            "sourceColumn": "Target Sales - March 2019 (DATATABLE)[Year]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Month",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "17313a15-47a7-4d1a-adb8-8dd65bb46d32",
+            "sourceColumn": "Target Sales - March 2019 (DATATABLE)[Month]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Bean/Teas Goal",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "19931563-b1af-475e-b740-bd2c155290cd",
+            "sourceColumn": "Target Sales - March 2019 (DATATABLE)[Bean/Teas Goal]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Beverage Goal",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "406e6d3f-84dc-4446-b71c-614ecb954358",
+            "sourceColumn": "Target Sales - March 2019 (DATATABLE)[Beverage Goal]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Food Goal",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "84230721-903b-4f34-8425-23da67029793",
+            "sourceColumn": "Target Sales - March 2019 (DATATABLE)[Food Goal]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Merchandise Goal",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "ca077b4b-817a-4e6d-b1a9-bd2a8f875e26",
+            "sourceColumn": "Target Sales - March 2019 (DATATABLE)[Merchandise Goal]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          }
+        ],
+        "lineageTag": "2cf7fb50-1718-4aff-becd-d31605d892cb",
+        "partitions": [
+          {
+            "name": "UNION Demo",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "",
+                " UNION(",
+                "    'Target Sales - March 2019 (DATATABLE)',",
+                "    'Target Sales - April 2019 (DATATABLE)'",
+                " )"
+              ],
+              "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Target Sales - March 2019 (DATATABLE)",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "b1ee6571799540bc8a9679e9ac165fa8"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Store ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "64404fa8-5afb-498a-8169-354290509c04",
+            "sourceColumn": "[Store ID]",
+            "summarizeBy": "count",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "c48f74dc-5533-44bc-907f-2883d4dc4e29",
+            "sourceColumn": "[Year]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Month",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "deef0b9b-1d2f-49bc-ba1b-2c2b2258c9a8",
+            "sourceColumn": "[Month]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Bean/Teas Goal",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "5bf05717-f8ab-495d-9021-17ebb93fa1c0",
+            "sourceColumn": "[Bean/Teas Goal]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Beverage Goal",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "e036dc3d-0656-4ac1-9c39-2e7fe6f6d47e",
+            "sourceColumn": "[Beverage Goal]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Food Goal",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "f7743af5-9908-4718-aa7f-6652122b8083",
+            "sourceColumn": "[Food Goal]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Merchandise Goal",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "441d7a69-dec8-4dd1-939b-4181b8b9067f",
+            "sourceColumn": "[Merchandise Goal]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          }
+        ],
+        "lineageTag": "8ff60295-756b-40fe-acde-ddfd1afb9f00",
+        "partitions": [
+          {
+            "name": "Target Sales - March 2019 (DATATABLE)",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "",
+                "DATATABLE(",
+                "    \"Store ID\",INTEGER,",
+                "    \"Year\",STRING,",
+                "    \"Month\",STRING,",
+                "    \"Bean/Teas Goal\", INTEGER,",
+                "    \"Beverage Goal\",INTEGER,",
+                "    \"Food Goal\",INTEGER,",
+                "    \"Merchandise Goal\",INTEGER,",
+                "    {",
+                "        {3,\"2019\",\"March\",211,12703,1595,53},",
+                "        {5,\"2019\",\"March\",254,12451,1696,81},",
+                "        {8,\"2019\",\"March\",306,12474,1633,17}",
+                "    }",
+                ")"
+              ],
+              "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "EXCEPT Demo",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "df11bcf88fd84c2bafa859d781ad8230"
+          }
+        ],
+        "columns": [
+          {
+            "name": "customer_id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "d23fdc1f-8834-4da2-a607-2d206c4ac7b3",
+            "sourceColumn": "Customer Lookup[customer_id]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "home_store",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "c1a871c9-93ff-4e47-8c81-18014033cac4",
+            "sourceColumn": "Customer Lookup[home_store]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "customer_first-name",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "ed52e2ae-3109-4a32-b69b-cec74504e8e4",
+            "sourceColumn": "Customer Lookup[customer_first-name]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "customer_email",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "c79c9973-403c-4146-ab3a-9e5676dbcc77",
+            "sourceColumn": "Customer Lookup[customer_email]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "customer_since",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "1b3ae9ff-c3af-474d-a4dd-279573b4d49a",
+            "sourceColumn": "Customer Lookup[customer_since]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "loyalty_card_number",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "f7876c1a-46c5-46f2-8220-55268fbc667b",
+            "sourceColumn": "Customer Lookup[loyalty_card_number]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "birthdate",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "a4638a71-18d9-4838-abbb-36ad9ca3e79a",
+            "sourceColumn": "Customer Lookup[birthdate]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "gender",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "36b5dbf4-fd5e-47dd-92ed-8c44a9258e73",
+            "sourceColumn": "Customer Lookup[gender]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "birth_year",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "0b8e993e-e336-4f03-80e2-04dfc443f86f",
+            "sourceColumn": "Customer Lookup[birth_year]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Current Age",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "41350c97-8888-411b-87e1-392cc3b66a45",
+            "sourceColumn": "Customer Lookup[Current Age]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          }
+        ],
+        "lineageTag": "e41035a4-bf8e-469f-beda-ed9357d6dc65",
+        "partitions": [
+          {
+            "name": "EXCEPT Demo",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "",
+                "EXCEPT(",
+                "    'Customer Lookup',",
+                "    FILTER(",
+                "        VALUES(",
+                "            'Customer Lookup'",
+                "        ),",
+                "        'Customer Lookup'[customer_since] > DATE(2017,02,01)",
+                "    )",
+                ")"
+              ],
+              "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "New Employees (INTERSECT)",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "ae115f9cb1a64bd985f01e285b19eb29"
+          }
+        ],
+        "columns": [
+          {
+            "name": "staff_id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "510c522e-519a-4b77-80ea-8eaa45c6688a",
+            "sourceColumn": "Employee Lookup[staff_id]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "first_name",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "53378fd9-9d09-4a83-9146-9f259560ec8c",
+            "sourceColumn": "Employee Lookup[first_name]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "last_name",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "813f4846-425a-4696-828c-e5df805b8f6d",
+            "sourceColumn": "Employee Lookup[last_name]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "position",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "7c008440-247c-46da-a417-0f4234e173af",
+            "sourceColumn": "Employee Lookup[position]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "start_date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "aba528bd-54de-4df7-994e-c00a618623a4",
+            "sourceColumn": "Employee Lookup[start_date]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "location",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "475d715c-571d-4784-8028-3df8d53ed266",
+            "sourceColumn": "Employee Lookup[location]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Revenue",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "4f662054-e36b-42db-b2bc-0fd61fdc7f6b",
+            "sourceColumn": "[Revenue]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          }
+        ],
+        "lineageTag": "bec0b3cd-4109-4087-8cea-599c22ad319d",
+        "partitions": [
+          {
+            "name": "New Employees (INTERSECT)",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "",
+                "INTERSECT(",
+                "    ADDCOLUMNS(",
+                "        'Employee Lookup',",
+                "        \"Revenue\",",
+                "        [Customer Sales]",
+                "    ),",
+                "    ADDCOLUMNS(",
+                "        FILTER(",
+                "        'Employee Lookup',",
+                "        'Employee Lookup'[start_date] > DATE(2016,12,31)",
+                "    ),",
+                "    \"Revenue\",",
+                "    [Customer Sales]",
+                ")",
+                ")"
+              ],
+              "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Repeat Customer Sales (INTERSECT Assignment)",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "eaf3b35613f04b88908ac2efb8b3feb1"
+          }
+        ],
+        "columns": [
+          {
+            "name": "customer_id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "552803c8-0d28-4432-ac23-9031601bca70",
+            "sourceColumn": "Sales by Store[customer_id]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Revenue",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "01c8c85e-3ee0-4589-89e1-5a25dbe0c0c0",
+            "sourceColumn": "[Revenue]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Profit",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "e7fc699f-114f-4c42-bd16-ebcd76c98f5f",
+            "sourceColumn": "[Profit]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          }
+        ],
+        "lineageTag": "ff6ba3f2-be29-4875-bba3-720ddb93a703",
+        "partitions": [
+          {
+            "name": "Repeat Customer Sales (INTERSECT Assignment)",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "",
+                " VAR PurchasedWeek45 = ",
+                " CALCULATETABLE(",
+                "    VALUES(",
+                "        'Sales by Store'[customer_id]",
+                "    ),",
+                "    'Calendar'[Week_ID] = 45,",
+                "    'Calendar'[Year_ID] = 2018",
+                " )",
+                "  VAR PurchasedWeek46 = ",
+                " CALCULATETABLE(",
+                "    VALUES(",
+                "        'Sales by Store'[customer_id]",
+                "    ),",
+                "    'Calendar'[Week_ID] = 46,",
+                "    'Calendar'[Year_ID] = 2018",
+                " )",
+                " VAR ReturningCustomers = ",
+                " INTERSECT(",
+                "    PurchasedWeek45,",
+                "    PurchasedWeek46",
+                " )",
+                "VAR Revenue_Profit = ",
+                "CALCULATETABLE(",
+                "    ADDCOLUMNS(",
+                "        ReturningCustomers,",
+                "        \"Revenue\",",
+                "        [Customer Sales],",
+                "        \"Profit\",",
+                "        [Profit]",
+                "    ),",
+                "    'Calendar'[Week_ID] = 46",
+                ")",
+                "RETURN",
+                "Revenue_Profit"
               ],
               "type": "calculated"
             }
