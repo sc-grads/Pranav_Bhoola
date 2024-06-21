@@ -93,6 +93,21 @@
         "fromTable": "Food Inventory",
         "toColumn": "store_id",
         "toTable": "Store Lookup"
+      },
+      {
+        "name": "c9eaba62-5ff1-e32c-4a7c-a97c302ed801",
+        "fromColumn": "baked_date",
+        "fromTable": "Food Inventory",
+        "isActive": false,
+        "toColumn": "Transaction_Date",
+        "toTable": "Calendar"
+      },
+      {
+        "name": "c6642e96-687f-012c-8ac7-a605e92e2e7c",
+        "fromColumn": "Store ID",
+        "fromTable": "UNION Demo",
+        "toColumn": "store_id",
+        "toTable": "Store Lookup"
       }
     ],
     "sourceQueryCulture": "en-US",
@@ -549,6 +564,48 @@
             "lineageTag": "82c46fe4-77c1-471e-8dc7-07fba8699da6",
             "summarizeBy": "none",
             "type": "calculated"
+          },
+          {
+            "name": "Customer Sales (High/Low)",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "expression": [
+              "",
+              " VAR TotalSales = ",
+              " SUMX(",
+              "    'Sales by Store',",
+              "    'Sales by Store'[quantity_sold] * 'Sales by Store'[unit_price]",
+              " )",
+              " VAR AllCustomers = ",
+              " COUNTROWS(",
+              "    'Customer Lookup')",
+              "    VAR AvgSales = ",
+              "    DIVIDE(TotalSales,AllCustomers)",
+              "    VAR CustomerSales = ",
+              "    SUMX(",
+              "        RELATEDTABLE(",
+              "            'Sales by Store'",
+              "        ),",
+              "        'Sales by Store'[quantity_sold] * 'Sales by Store'[unit_price]",
+              "    )",
+              "    VAR HighLow = ",
+              "    IF(",
+              "        CustomerSales > AvgSales,",
+              "        \"High\",",
+              "        \"Low\"",
+              "    )",
+              "    RETURN",
+              "    HighLow"
+            ],
+            "isDataTypeInferred": true,
+            "lineageTag": "8d6cb160-be73-4582-80ec-1ae15ccf2cca",
+            "summarizeBy": "none",
+            "type": "calculated"
           }
         ],
         "lineageTag": "8342908d-eaca-454a-94ef-fc72763293bc",
@@ -860,10 +917,6 @@
         "name": "Product Lookup",
         "annotations": [
           {
-            "name": "PBI_NavigationStepName",
-            "value": "Navigation"
-          },
-          {
             "name": "PBI_ResultType",
             "value": "Table"
           }
@@ -1052,7 +1105,7 @@
             "summarizeBy": "none"
           },
           {
-            "name": "Column1",
+            "name": "Number of Food Items Made",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
@@ -1060,10 +1113,20 @@
               }
             ],
             "dataType": "int64",
+            "expression": [
+              "",
+              " SUMX(",
+              "    RELATEDTABLE(",
+              "        'Food Inventory'",
+              "    ),",
+              "    'Food Inventory'[quantity_start_of_day]",
+              " )"
+            ],
             "formatString": "0",
-            "lineageTag": "d644a9ef-b987-4e5c-88ae-490ae6cc11b0",
-            "sourceColumn": "Column1",
-            "summarizeBy": "sum"
+            "isDataTypeInferred": true,
+            "lineageTag": "4e2022d8-d2b3-493c-ac53-7d55594c4c2f",
+            "summarizeBy": "sum",
+            "type": "calculated"
           }
         ],
         "lineageTag": "2e087087-5d16-44a1-a2ab-e98b69c56132",
@@ -1076,9 +1139,10 @@
                 "let",
                 "    Source = Csv.Document(File.Contents(\"C:\\Users\\Pranav Bhoola\\Desktop\\Pranav_Bhoola\\DatabaseAdministration\\PowerBIReports\\AdvancedDAX\\AdvancedDAXDataFiles\\Product Lookup (Updated).csv\"),[Delimiter=\",\", Columns=14, Encoding=1252, QuoteStyle=QuoteStyle.None]),",
                 "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
-                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"product_id\", Int64.Type}, {\"product_group\", type text}, {\"product_category\", type text}, {\"product_type\", type text}, {\"product\", type text}, {\"product_description\", type text}, {\"unit_of_measure\", type text}, {\"current_cost\", type number}, {\"current_wholesale_price\", type number}, {\"current_retail_price\", type number}, {\"tax_exempt_yn\", type text}, {\"promo_yn\", type text}, {\"new_product_yn\", type text}, {\"\", Int64.Type}})",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"product_id\", Int64.Type}, {\"product_group\", type text}, {\"product_category\", type text}, {\"product_type\", type text}, {\"product\", type text}, {\"product_description\", type text}, {\"unit_of_measure\", type text}, {\"current_cost\", type number}, {\"current_wholesale_price\", type number}, {\"current_retail_price\", type number}, {\"tax_exempt_yn\", type text}, {\"promo_yn\", type text}, {\"new_product_yn\", type text}, {\"\", Int64.Type}}),",
+                "    #\"Removed Columns\" = Table.RemoveColumns(#\"Changed Type\",{\"Column1\"})",
                 "in",
-                "    #\"Changed Type\""
+                "    #\"Removed Columns\""
               ],
               "type": "m"
             }
@@ -1342,6 +1406,26 @@
             "isDataTypeInferred": true,
             "lineageTag": "17225a84-2c57-4d64-97ad-1e588b5c85ab",
             "summarizeBy": "sum",
+            "type": "calculated"
+          },
+          {
+            "name": "Product Group",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "expression": [
+              "",
+              "RELATED(",
+              "    'Product Lookup'[product_group]",
+              ")"
+            ],
+            "isDataTypeInferred": true,
+            "lineageTag": "5d7ec6c4-abd0-4cf3-b6d0-c608427a953c",
+            "summarizeBy": "none",
             "type": "calculated"
           }
         ],
@@ -2241,6 +2325,254 @@
               " )"
             ],
             "lineageTag": "734f66c9-3b78-4a1d-9d6b-3e76b8d35319"
+          },
+          {
+            "name": "Wholesale Cost",
+            "displayFolder": "Relationship Functions",
+            "expression": [
+              "",
+              " SUMX(",
+              "    'Sales by Store',",
+              "    'Sales by Store'[quantity_sold] *",
+              "    RELATED(",
+              "        'Product Lookup'[current_wholesale_price]",
+              "    )",
+              " )"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "441afdb4-6763-4bd5-94e7-11eaa35bf719"
+          },
+          {
+            "name": "Quantity Sold (USERELATIONSHIP)",
+            "displayFolder": "Relationship Functions",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    [SUM Quantity Sold],",
+              "    USERELATIONSHIP(",
+              "        'Food Inventory'[baked_date],",
+              "        'Calendar'[Transaction_Date]",
+              "    )",
+              ")"
+            ],
+            "formatString": "#,0",
+            "lineageTag": "897cdd25-f2a4-4711-b762-248db7ab3244"
+          },
+          {
+            "name": "Number of Employess (CROSSFILTER)",
+            "displayFolder": "Relationship Functions",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    COUNTROWS(",
+              "        'Employee Lookup'",
+              "    ),",
+              "    CROSSFILTER(",
+              "        'Sales by Store'[staff_id],",
+              "        'Employee Lookup'[staff_id],",
+              "        Both",
+              "    )",
+              ")"
+            ],
+            "formatString": "0",
+            "lineageTag": "cd1bda94-4a05-405a-9444-e0ccafd8d998"
+          },
+          {
+            "name": "Customers Who Purchased",
+            "displayFolder": "Relationship Functions",
+            "expression": [
+              "",
+              " CALCULATE(",
+              "    COUNTROWS(",
+              "        'Customer Lookup'",
+              "    ),",
+              "    CROSSFILTER(",
+              "        'Sales by Store'[customer_id],",
+              "        'Customer Lookup'[customer_id],",
+              "        Both",
+              "    )",
+              " )"
+            ],
+            "formatString": "0",
+            "lineageTag": "03170b2a-0518-42af-9655-c270279dc791"
+          },
+          {
+            "name": "Average Order Value (CWP)",
+            "displayFolder": "Relationship Functions",
+            "expression": [
+              "",
+              "DIVIDE(",
+              "    [Customer Sales],",
+              "    [Customers Who Purchased],",
+              "    BLANK()",
+              ")"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "63b1fbdf-49e4-46ef-bbf9-41045ca3ee24"
+          },
+          {
+            "name": "Bean Goal (TREATAS)",
+            "displayFolder": "Relationship Functions",
+            "expression": [
+              "",
+              " CALCULATE(",
+              "    SUM(",
+              "        'UNION Demo'[Bean/Teas Goal]",
+              "    ),",
+              "    TREATAS(",
+              "        SUMMARIZE(",
+              "            'Calendar',",
+              "            'Calendar'[Year_ID],",
+              "            'Calendar'[Month_Name]",
+              "        ),",
+              "        'UNION Demo'[Year],",
+              "        'UNION Demo'[Month]",
+              "    )",
+              " )"
+            ],
+            "formatString": "0",
+            "lineageTag": "7bb82e2d-fafa-4acf-b6c8-7981061fe217"
+          },
+          {
+            "name": "Beaverage Goal (TREATAS)",
+            "displayFolder": "Relationship Functions",
+            "expression": [
+              "",
+              " CALCULATE(",
+              "    SUM(",
+              "        'UNION Demo'[Beverage Goal]",
+              "    ),",
+              "    TREATAS(",
+              "        SUMMARIZE(",
+              "            'Calendar',",
+              "            'Calendar'[Year_ID],",
+              "            'Calendar'[Month_Name]",
+              "        ),",
+              "        'UNION Demo'[Year],",
+              "        'UNION Demo'[Month]",
+              "    )",
+              " )"
+            ],
+            "formatString": "0",
+            "lineageTag": "1f8f4704-bd4a-4bfc-a54d-d1f956e52bf6"
+          },
+          {
+            "name": "Food Goal (TREATAS)",
+            "displayFolder": "Relationship Functions",
+            "expression": [
+              "",
+              " CALCULATE(",
+              "    SUM(",
+              "        'UNION Demo'[Food Goal]",
+              "    ),",
+              "    TREATAS(",
+              "        SUMMARIZE(",
+              "            'Calendar',",
+              "            'Calendar'[Year_ID],",
+              "            'Calendar'[Month_Name]",
+              "        ),",
+              "        'UNION Demo'[Year],",
+              "        'UNION Demo'[Month]",
+              "    )",
+              " )"
+            ],
+            "formatString": "0",
+            "lineageTag": "d4c10550-d20c-48b1-a7f0-90635dbae66e"
+          },
+          {
+            "name": "Merchandise Goal (TREATAS)",
+            "displayFolder": "Relationship Functions",
+            "expression": [
+              "",
+              " CALCULATE(",
+              "    SUM(",
+              "        'UNION Demo'[Merchandise Goal]",
+              "    ),",
+              "    TREATAS(",
+              "        SUMMARIZE(",
+              "            'Calendar',",
+              "            'Calendar'[Year_ID],",
+              "            'Calendar'[Month_Name]",
+              "        ),",
+              "        'UNION Demo'[Year],",
+              "        'UNION Demo'[Month]",
+              "    )",
+              " )"
+            ],
+            "formatString": "0",
+            "lineageTag": "d17695ba-1d4f-4f3b-9550-9fec25761e20"
+          },
+          {
+            "name": "Bean % to Goal",
+            "displayFolder": "Relationship Functions",
+            "expression": [
+              "",
+              "DIVIDE(",
+              "    CALCULATE(",
+              "        SUM(",
+              "            'Sales by Store'[quantity_sold]",
+              "        ),",
+              "        'Product Lookup'[product_group] = \"Whole Bean/Teas\"",
+              "    ),",
+              "    [Bean Goal (TREATAS)]",
+              ")"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "6678931d-758c-4870-9f8c-c03aae8d7f69"
+          },
+          {
+            "name": "Beaverage % to Goal",
+            "displayFolder": "Relationship Functions",
+            "expression": [
+              "",
+              "DIVIDE(",
+              "    CALCULATE(",
+              "        SUM(",
+              "            'Sales by Store'[quantity_sold]",
+              "        ),",
+              "        'Product Lookup'[product_group] = \"Beaverages\"",
+              "    ),",
+              "    [Beaverage Goal (TREATAS)]",
+              ")"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "b728b11b-ecd5-4bda-ae85-835e441c393e"
+          },
+          {
+            "name": "Food % to Goal",
+            "displayFolder": "Relationship Functions",
+            "expression": [
+              "",
+              "DIVIDE(",
+              "    CALCULATE(",
+              "        SUM(",
+              "            'Sales by Store'[quantity_sold]",
+              "        ),",
+              "        'Product Lookup'[product_group] = \"Food\"",
+              "    ),",
+              "    [Food Goal (TREATAS)]",
+              ")"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "8c380c78-d436-46e8-bc87-7adcac35dac0"
+          },
+          {
+            "name": "Merchandise % to Goal",
+            "displayFolder": "Relationship Functions",
+            "expression": [
+              "",
+              "DIVIDE(",
+              "    CALCULATE(",
+              "        SUM(",
+              "            'Sales by Store'[quantity_sold]",
+              "        ),",
+              "        'Product Lookup'[product_group] = \"Merchandise\"",
+              "    ),",
+              "    [Merchandise Goal (TREATAS)]",
+              ")"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "d32953c4-b56b-4b36-a41e-95a19b3bc20c"
           }
         ],
         "partitions": [
@@ -3184,7 +3516,7 @@
             "isNameInferred": true,
             "lineageTag": "3748a20e-69bf-4e0c-a650-8cd8948e958c",
             "sourceColumn": "Target Sales - March 2019 (DATATABLE)[Store ID]",
-            "summarizeBy": "count",
+            "summarizeBy": "none",
             "type": "calculatedTableColumn"
           },
           {
@@ -3635,6 +3967,22 @@
             "sourceColumn": "Customer Lookup[Current Age]",
             "summarizeBy": "sum",
             "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Customer Sales (High/Low)",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "6b6cde69-795e-4fe6-b13b-c531e8109b0d",
+            "sourceColumn": "Customer Lookup[Customer Sales (High/Low)]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
           }
         ],
         "lineageTag": "e41035a4-bf8e-469f-beda-ed9357d6dc65",
@@ -3926,6 +4274,61 @@
                 ")",
                 "RETURN",
                 "Revenue_Profit"
+              ],
+              "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "TREATAS Demo",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "9916da7a2dfb4cee8398ed4cf8863b23"
+          }
+        ],
+        "columns": [
+          {
+            "name": "store_id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "95397b34-837f-4749-af2b-9613acebfbf0",
+            "sourceColumn": "Store Lookup[store_id]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          }
+        ],
+        "lineageTag": "04de6abc-ac43-41d9-9089-358d5f467476",
+        "partitions": [
+          {
+            "name": "TREATAS Demo",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "",
+                " VAR StoreID =",
+                " {",
+                "    \"1\",",
+                "    \"2\",",
+                "    \"3\",",
+                "    \"4\",",
+                "    \"5\",",
+                "    \"6\"",
+                " }",
+                " RETURN",
+                " TREATAS(",
+                "    StoreID,",
+                "    'Store Lookup'[store_id]",
+                " )"
               ],
               "type": "calculated"
             }

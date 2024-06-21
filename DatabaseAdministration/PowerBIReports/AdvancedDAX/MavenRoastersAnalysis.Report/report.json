@@ -1,5 +1,5 @@
 {
-  "config": "{\"version\":\"5.55\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU06\",\"version\":\"5.55\",\"type\":2}},\"activeSectionIndex\":3,\"defaultDrillFilterOtherVisuals\":true,\"slowDataSourceSettings\":{\"isCrossHighlightingDisabled\":false,\"isSlicerSelectionsButtonEnabled\":false,\"isFilterSelectionsButtonEnabled\":false,\"isFieldWellButtonEnabled\":false,\"isApplyAllButtonEnabled\":false},\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"useEnhancedTooltips\":true,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}",
+  "config": "{\"version\":\"5.55\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU06\",\"version\":\"5.55\",\"type\":2}},\"activeSectionIndex\":4,\"defaultDrillFilterOtherVisuals\":true,\"slowDataSourceSettings\":{\"isCrossHighlightingDisabled\":false,\"isSlicerSelectionsButtonEnabled\":false,\"isFilterSelectionsButtonEnabled\":false,\"isFieldWellButtonEnabled\":false,\"isApplyAllButtonEnabled\":false},\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"useEnhancedTooltips\":true,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}",
   "layoutOptimization": 0,
   "resourcePackages": [
     {
@@ -64,6 +64,63 @@
           "x": 1029.60,
           "y": 57.60,
           "z": 1000.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "Relationship Functions",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "413cab9d5b25d0e65e2e",
+      "ordinal": 4,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"97fd978e0b6b1809defd\",\"layouts\":[{\"id\":0,\"position\":{\"x\":620.64,\"y\":210.24,\"z\":3,\"width\":449.28000000000003,\"height\":72}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Store Lookup.store_id\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Store Lookup\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"store_id\"},\"Name\":\"Store Lookup.store_id\",\"NativeReferenceName\":\"store_id\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 72.00,
+          "width": 449.28,
+          "x": 620.64,
+          "y": 210.24,
+          "z": 3.00
+        },
+        {
+          "config": "{\"name\":\"bf24730d730fecac72cf\",\"layouts\":[{\"id\":0,\"position\":{\"x\":620.64,\"y\":17.28,\"z\":2,\"width\":545.76,\"height\":169.92000000000002,\"tabOrder\":1}}],\"singleVisual\":{\"visualType\":\"pivotTable\",\"projections\":{\"Rows\":[{\"queryRef\":\"Calendar.Transaction_Date\",\"active\":true}],\"Values\":[{\"queryRef\":\"Measure Table.Customer Sales\"},{\"queryRef\":\"Measure Table.Number of Employess (CROSSFILTER)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"c\",\"Entity\":\"Calendar\",\"Type\":0},{\"Name\":\"m\",\"Entity\":\"Measure Table\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Transaction_Date\"},\"Name\":\"Calendar.Transaction_Date\",\"NativeReferenceName\":\"Transaction_Date\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Customer Sales\"},\"Name\":\"Measure Table.Customer Sales\",\"NativeReferenceName\":\"Customer Sales\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Number of Employess (CROSSFILTER)\"},\"Name\":\"Measure Table.Number of Employess (CROSSFILTER)\",\"NativeReferenceName\":\"Number of Employess (CROSSFILTER)\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{}}}",
+          "filters": "[]",
+          "height": 169.92,
+          "width": 545.76,
+          "x": 620.64,
+          "y": 17.28,
+          "z": 2.00
+        },
+        {
+          "config": "{\"name\":\"dc6b5d028d8614a0ca8f\",\"layouts\":[{\"id\":0,\"position\":{\"x\":17.28,\"y\":210.24,\"z\":4,\"width\":541.44,\"height\":407.52000000000004,\"tabOrder\":2}}],\"singleVisual\":{\"visualType\":\"pivotTable\",\"projections\":{\"Rows\":[{\"queryRef\":\"Calendar.Year_ID\",\"active\":true},{\"queryRef\":\"Calendar.Month_Name\",\"active\":true},{\"queryRef\":\"Product Lookup.product_group\",\"active\":true}],\"Values\":[{\"queryRef\":\"Measure Table.Customers Who Purchased\"},{\"queryRef\":\"Measure Table.Average Order Value (CWP)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"c\",\"Entity\":\"Calendar\",\"Type\":0},{\"Name\":\"p\",\"Entity\":\"Product Lookup\",\"Type\":0},{\"Name\":\"m\",\"Entity\":\"Measure Table\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Year_ID\"},\"Name\":\"Calendar.Year_ID\",\"NativeReferenceName\":\"Year_ID\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Month_Name\"},\"Name\":\"Calendar.Month_Name\",\"NativeReferenceName\":\"Month_Name\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"product_group\"},\"Name\":\"Product Lookup.product_group\",\"NativeReferenceName\":\"product_group\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Customers Who Purchased\"},\"Name\":\"Measure Table.Customers Who Purchased\",\"NativeReferenceName\":\"Customers Who Purchased\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Average Order Value (CWP)\"},\"Name\":\"Measure Table.Average Order Value (CWP)\",\"NativeReferenceName\":\"Average Order Value (CWP)\"}]},\"expansionStates\":[{\"roles\":[\"Rows\"],\"levels\":[{\"queryRefs\":[\"Calendar.Year_ID\"],\"isPinned\":true},{\"queryRefs\":[\"Calendar.Month_Name\"],\"isPinned\":true},{\"queryRefs\":[\"Product Lookup.product_group\"],\"isCollapsed\":true,\"isPinned\":true}],\"root\":{\"identityValues\":null}}],\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 407.52,
+          "width": 541.44,
+          "x": 17.28,
+          "y": 210.24,
+          "z": 4.00
+        },
+        {
+          "config": "{\"name\":\"f525fdad1b87a5b38253\",\"layouts\":[{\"id\":0,\"position\":{\"x\":33.120000000000005,\"y\":1.44,\"z\":1,\"width\":460.8,\"height\":172.8}}],\"singleVisual\":{\"visualType\":\"pivotTable\",\"projections\":{\"Values\":[{\"queryRef\":\"Measure Table.Quantity Sold (USERELATIONSHIP)\"},{\"queryRef\":\"Measure Table.SUM Quantity Sold\"}],\"Rows\":[{\"queryRef\":\"Calendar.Year_ID\",\"active\":true},{\"queryRef\":\"Calendar.Month_Name\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"m\",\"Entity\":\"Measure Table\",\"Type\":0},{\"Name\":\"c\",\"Entity\":\"Calendar\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Quantity Sold (USERELATIONSHIP)\"},\"Name\":\"Measure Table.Quantity Sold (USERELATIONSHIP)\",\"NativeReferenceName\":\"Quantity Sold (USERELATIONSHIP)\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"SUM Quantity Sold\"},\"Name\":\"Measure Table.SUM Quantity Sold\",\"NativeReferenceName\":\"SUM Quantity Sold\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Year_ID\"},\"Name\":\"Calendar.Year_ID\",\"NativeReferenceName\":\"Year_ID\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Month_Name\"},\"Name\":\"Calendar.Month_Name\",\"NativeReferenceName\":\"Month_Name\"}]},\"expansionStates\":[{\"roles\":[\"Rows\"],\"levels\":[{\"queryRefs\":[\"Calendar.Year_ID\"],\"isCollapsed\":true,\"identityKeys\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Calendar\"}},\"Property\":\"Year_ID\"}}],\"isPinned\":true},{\"queryRefs\":[\"Calendar.Month_Name\"],\"isCollapsed\":true,\"isPinned\":true}],\"root\":{\"identityValues\":null,\"children\":[{\"identityValues\":[{\"Literal\":{\"Value\":\"2017L\"}}],\"isToggled\":true}]}}],\"drillFilterOtherVisuals\":true,\"objects\":{\"columnWidth\":[{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"138.12001029929434D\"}}}},\"selector\":{\"metadata\":\"Measure Table.Quantity Sold (USERELATIONSHIP)\"}}]}}}",
+          "filters": "[]",
+          "height": 172.80,
+          "width": 460.80,
+          "x": 33.12,
+          "y": 1.44,
+          "z": 1.00
+        },
+        {
+          "config": "{\"name\":\"ffe4a711aa38cba2a7ce\",\"layouts\":[{\"id\":0,\"position\":{\"x\":570.24,\"y\":315.36,\"z\":5,\"width\":567.36,\"height\":335.52000000000004,\"tabOrder\":3}}],\"singleVisual\":{\"visualType\":\"pivotTable\",\"projections\":{\"Rows\":[{\"queryRef\":\"Store Lookup.store_id\",\"active\":true},{\"queryRef\":\"Calendar.Month_Name\"}],\"Values\":[{\"queryRef\":\"Measure Table.Bean Goal (TREATAS)\"},{\"queryRef\":\"Measure Table.Bean % to Goal\"},{\"queryRef\":\"Measure Table.Beaverage Goal (TREATAS)\"},{\"queryRef\":\"Measure Table.Beaverage % to Goal\"},{\"queryRef\":\"Measure Table.Food Goal (TREATAS)\"},{\"queryRef\":\"Measure Table.Food % to Goal\"},{\"queryRef\":\"Measure Table.Merchandise Goal (TREATAS)\"},{\"queryRef\":\"Measure Table.Merchandise % to Goal\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"Store Lookup\",\"Type\":0},{\"Name\":\"c\",\"Entity\":\"Calendar\",\"Type\":0},{\"Name\":\"m\",\"Entity\":\"Measure Table\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"store_id\"},\"Name\":\"Store Lookup.store_id\",\"NativeReferenceName\":\"store_id\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Month_Name\"},\"Name\":\"Calendar.Month_Name\",\"NativeReferenceName\":\"Month_Name\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Bean Goal (TREATAS)\"},\"Name\":\"Measure Table.Bean Goal (TREATAS)\",\"NativeReferenceName\":\"Bean Goal (TREATAS)\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Bean % to Goal\"},\"Name\":\"Measure Table.Bean % to Goal\",\"NativeReferenceName\":\"Bean % to Goal\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Beaverage Goal (TREATAS)\"},\"Name\":\"Measure Table.Beaverage Goal (TREATAS)\",\"NativeReferenceName\":\"Beaverage Goal (TREATAS)\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Beaverage % to Goal\"},\"Name\":\"Measure Table.Beaverage % to Goal\",\"NativeReferenceName\":\"Beaverage % to Goal\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Food Goal (TREATAS)\"},\"Name\":\"Measure Table.Food Goal (TREATAS)\",\"NativeReferenceName\":\"Food Goal (TREATAS)\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Food % to Goal\"},\"Name\":\"Measure Table.Food % to Goal\",\"NativeReferenceName\":\"Food % to Goal\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Merchandise Goal (TREATAS)\"},\"Name\":\"Measure Table.Merchandise Goal (TREATAS)\",\"NativeReferenceName\":\"Merchandise Goal (TREATAS)\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Merchandise % to Goal\"},\"Name\":\"Measure Table.Merchandise % to Goal\",\"NativeReferenceName\":\"Merchandise % to Goal\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 335.52,
+          "width": 567.36,
+          "x": 570.24,
+          "y": 315.36,
+          "z": 5.00
         }
       ],
       "width": 1280.00
