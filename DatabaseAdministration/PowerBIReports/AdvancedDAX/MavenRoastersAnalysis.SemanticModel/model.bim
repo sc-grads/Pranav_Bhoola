@@ -1074,7 +1074,7 @@
             "source": {
               "expression": [
                 "let",
-                "    Source = Csv.Document(File.Contents(\"C:\\Users\\Pranav Bhoola\\Desktop\\Pranav_Bhoola\\DatabaseAdministration\\PowerBIReports\\AdvancedDAX\\AdvancedDAXDataFiles\\Product Lookup.csv\"),[Delimiter=\",\", Columns=14, Encoding=1252, QuoteStyle=QuoteStyle.None]),",
+                "    Source = Csv.Document(File.Contents(\"C:\\Users\\Pranav Bhoola\\Desktop\\Pranav_Bhoola\\DatabaseAdministration\\PowerBIReports\\AdvancedDAX\\AdvancedDAXDataFiles\\Product Lookup (Updated).csv\"),[Delimiter=\",\", Columns=14, Encoding=1252, QuoteStyle=QuoteStyle.None]),",
                 "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
                 "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"product_id\", Int64.Type}, {\"product_group\", type text}, {\"product_category\", type text}, {\"product_type\", type text}, {\"product\", type text}, {\"product_description\", type text}, {\"unit_of_measure\", type text}, {\"current_cost\", type number}, {\"current_wholesale_price\", type number}, {\"current_retail_price\", type number}, {\"tax_exempt_yn\", type text}, {\"promo_yn\", type text}, {\"new_product_yn\", type text}, {\"\", Int64.Type}})",
                 "in",
@@ -1581,12 +1581,6 @@
           },
           {
             "name": "Customer Sales",
-            "annotations": [
-              {
-                "name": "PBI_FormatHint",
-                "value": "{\"isGeneralNumber\":true}"
-              }
-            ],
             "displayFolder": "Tips & Best Practices",
             "expression": [
               "",
@@ -1595,6 +1589,7 @@
               "    'Sales by Store'[quantity_sold] * 'Sales by Store'[unit_price]",
               ")"
             ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
             "lineageTag": "1e775394-3774-47e5-8d4f-5a79dcf489fa"
           },
           {
@@ -1941,6 +1936,282 @@
             ],
             "formatString": "0.00%;-0.00%;0.00%",
             "lineageTag": "57cfcc88-9a57-4e37-9cad-3a162de129fa"
+          },
+          {
+            "name": "Count of Product ID (DISTINCT)",
+            "displayFolder": "Table & Filter Functions",
+            "expression": [
+              "",
+              " COUNTROWS(",
+              "    DISTINCT(",
+              "        'Product Lookup'[product_id]",
+              "    )",
+              " )"
+            ],
+            "formatString": "0",
+            "lineageTag": "4b39e695-f714-43bf-bae0-f72c2f1b6bfa"
+          },
+          {
+            "name": "Count of Product ID (VALUES)",
+            "displayFolder": "Table & Filter Functions",
+            "expression": [
+              "",
+              " COUNTROWS(",
+              "    VALUES(",
+              "        'Product Lookup'[product_id]",
+              "    )",
+              " )"
+            ],
+            "formatString": "0",
+            "lineageTag": "5b835c7c-1101-4060-8cb0-f93b0ee4e46f"
+          },
+          {
+            "name": "Retail Price (SELECTEDVALUE)",
+            "displayFolder": "Table & Filter Functions",
+            "expression": [
+              "",
+              "SELECTEDVALUE(",
+              "    'Product Lookup'[current_retail_price]",
+              ")"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "0002a1ab-9d4a-47d7-9b23-0e0a44897744"
+          },
+          {
+            "name": "Quantity Sold (SELECTEDVALUE)",
+            "displayFolder": "Table & Filter Functions",
+            "expression": [
+              "",
+              "DIVIDE(",
+              "    [Customer Sales],",
+              "    SELECTEDVALUE(",
+              "        'Product Lookup'[current_retail_price]",
+              "    )",
+              ")"
+            ],
+            "formatString": "#,0.00",
+            "lineageTag": "54f50373-ab6d-4dbd-8cf4-2d420d1d21b3"
+          },
+          {
+            "name": "Customer Sales (ALLEXCEPT)",
+            "displayFolder": "Table & Filter Functions",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    [Customer Sales],",
+              "    ALLEXCEPT(",
+              "        'Sales by Store',",
+              "        'Product Lookup'[product_group],",
+              "        'Calendar'[Transaction_Date]",
+              "    )",
+              ")"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "c8e73d65-8f1c-4984-b5c1-7c17a45c7847"
+          },
+          {
+            "name": "Customer Sales (ALLEXCEPT Assignment)",
+            "displayFolder": "Table & Filter Functions",
+            "expression": [
+              "",
+              " CALCULATE(",
+              "    [Customer Sales],",
+              "    ALLEXCEPT(",
+              "        'Sales by Store',",
+              "        'Calendar'[Transaction_Date],",
+              "        'Store Lookup'[store_id],",
+              "        'Customer Lookup'[customer_first-name],",
+              "        'Product Lookup'[product_group]",
+              "    )",
+              " )"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "4341b098-1764-4c5f-a280-ed617afb3fe8"
+          },
+          {
+            "name": "% of Store-Level Sales",
+            "changedProperties": [
+              {
+                "property": "IsHidden"
+              }
+            ],
+            "displayFolder": "Table & Filter Functions",
+            "expression": [
+              "",
+              "VAR StoreLevelSales = ",
+              "CALCULATE(",
+              "    [Customer Sales],",
+              "    REMOVEFILTERS(",
+              "        'Customer Lookup'",
+              "    ),",
+              "    KEEPFILTERS(",
+              "        'Calendar'",
+              "    )",
+              ")",
+              "VAR Ratio = ",
+              "DIVIDE(",
+              "    [Customer Sales (ALLEXCEPT Assignment)],",
+              "    StoreLevelSales",
+              ")",
+              "RETURN",
+              "Ratio"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "b1c7b801-e473-4960-94a8-be57365d1670"
+          },
+          {
+            "name": "Customer Sales (ALLSELECTED)",
+            "displayFolder": "Table & Filter Functions",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    [Customer Sales],",
+              "    ALLSELECTED(",
+              "    )",
+              ")"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "7864ee4a-2633-461b-8813-7442f3276a20"
+          },
+          {
+            "name": "Total Baked",
+            "displayFolder": "Table & Filter Functions",
+            "expression": [
+              "",
+              "SUMX(",
+              "    'Food Inventory',",
+              "    'Food Inventory'[quantity_start_of_day]",
+              ")"
+            ],
+            "formatString": "#,0",
+            "lineageTag": "2a5ad8be-37f0-495d-b723-c1df45006795"
+          },
+          {
+            "name": "Total Sold",
+            "displayFolder": "Table & Filter Functions",
+            "expression": [
+              "",
+              " SUMX(",
+              "    'Food Inventory',",
+              "    'Food Inventory'[quantity_sold]",
+              " )"
+            ],
+            "formatString": "#,0",
+            "lineageTag": "a608519d-cac9-462f-bf50-e4355b47e9bc"
+          },
+          {
+            "name": "% of Total Baked (ALLSELECTED)",
+            "displayFolder": "Table & Filter Functions",
+            "expression": [
+              "",
+              "VAR SelectedQuantityBaked = ",
+              "CALCULATE(",
+              "    [Total Baked],",
+              "    ALLSELECTED(",
+              "    )",
+              ")",
+              "VAR Ratio = ",
+              "DIVIDE(",
+              "    [Total Baked],",
+              "    SelectedQuantityBaked,",
+              "    \"0\"",
+              ")",
+              "RETURN",
+              "Ratio"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "cced01bf-6862-4adf-8335-f2118dba1aef"
+          },
+          {
+            "name": "% of Total Sold (ALLSELECTED)",
+            "displayFolder": "Table & Filter Functions",
+            "expression": [
+              "",
+              "VAR SelectedQuantitySold = ",
+              "CALCULATE(",
+              "    [Total Sold],",
+              "    ALLSELECTED(",
+              "    )",
+              ")",
+              "VAR Ratio = ",
+              "DIVIDE(",
+              "    [Total Sold],",
+              "    SelectedQuantitySold,",
+              "    \"0\"",
+              ")",
+              "RETURN",
+              "Ratio"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "54550a32-571c-43d5-8e5c-47301e061826"
+          },
+          {
+            "name": "% of All Baked",
+            "displayFolder": "Table & Filter Functions",
+            "expression": [
+              "",
+              " VAR AllBaked = ",
+              " CALCULATE(",
+              "    [Total Baked],",
+              "    REMOVEFILTERS(",
+              "        'Food Inventory'",
+              "    )",
+              " )",
+              " VAR Ratio = ",
+              " DIVIDE(",
+              "    [Total Baked],",
+              "    AllBaked,",
+              "    \"0\"",
+              " )",
+              " RETURN",
+              " Ratio"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "e3f9bdad-aba7-44b2-9c26-f8f0b0572e93"
+          },
+          {
+            "name": "Food Sold (SUMMARIZE Table)",
+            "displayFolder": "Table & Filter Functions",
+            "expression": [
+              "",
+              " SUM(",
+              "    'Unsold Pastries'[quantity_sold]",
+              " )"
+            ],
+            "formatString": "#,0",
+            "lineageTag": "9a0c5b73-8a8c-493b-b24e-cf94ee8b3c27"
+          },
+          {
+            "name": "Food Unsold (SUMMARIZE Table)",
+            "displayFolder": "Table & Filter Functions",
+            "expression": [
+              "",
+              " SUMX(",
+              "    'Unsold Pastries',",
+              "    'Unsold Pastries'[quantity_start_of_day] - 'Unsold Pastries'[quantity_sold]",
+              " )"
+            ],
+            "formatString": "#,0",
+            "lineageTag": "09d7c2a0-c185-4083-9a78-c15bb3787a54"
+          },
+          {
+            "name": "Lost Revenue (SUMMARIZE Table)",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"currencyCulture\":\"en-US\"}"
+              }
+            ],
+            "displayFolder": "Table & Filter Functions",
+            "expression": [
+              "",
+              " SUMX(",
+              "    'Unsold Pastries',",
+              "    [Food Sold (SUMMARIZE Table)] * 'Unsold Pastries'[current_retail_price]",
+              " )"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "87ba89fb-a142-4fbd-94c7-ddabca59969a"
           }
         ],
         "partitions": [
@@ -1957,6 +2228,819 @@
                 "    #\"Removed Columns\""
               ],
               "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Values Example",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "42a8589346cb4882812d720f4369ad93"
+          }
+        ],
+        "columns": [
+          {
+            "name": "product_group",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "e827581a-68d6-4efa-8d0d-fc714b73539f",
+            "sourceColumn": "Product Lookup[product_group]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          }
+        ],
+        "lineageTag": "b576d973-2656-4d94-a1de-261830ba69d3",
+        "partitions": [
+          {
+            "name": "Values Example",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "",
+                "VALUES(",
+                "    'Product Lookup'[product_group]",
+                ")"
+              ],
+              "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "ADDCOLUMNS Demo",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "c444fbdad062475c89f2ad2adad1783a"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Manager Name & Store",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "d708c25e-8533-4b40-a9ad-56caab81d14a",
+            "sourceColumn": "[Manager Name & Store]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "staff_id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "f8a353e0-8b80-4793-8849-b910863122e7",
+            "sourceColumn": "Employee Lookup[staff_id]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "first_name",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "2b25cb02-c56c-4675-beff-39208fec9b11",
+            "sourceColumn": "Employee Lookup[first_name]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "last_name",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "e650a8a8-b582-48ae-b847-dc164851c8a8",
+            "sourceColumn": "Employee Lookup[last_name]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "position",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "dfceab9d-79d3-495b-9f89-758cdad9405b",
+            "sourceColumn": "Employee Lookup[position]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "start_date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "39ae54cf-1cf0-4562-bb8d-61cdbfa59572",
+            "sourceColumn": "Employee Lookup[start_date]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "location",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "3289c083-16e1-4829-a05a-d37fb36404ae",
+            "sourceColumn": "Employee Lookup[location]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          }
+        ],
+        "lineageTag": "038da0cf-d6b6-45f2-b533-00e46e432983",
+        "partitions": [
+          {
+            "name": "ADDCOLUMNS Demo",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "",
+                " ADDCOLUMNS(",
+                "    FILTER(",
+                "        'Employee Lookup',",
+                "        'Employee Lookup'[staff_id] IN {6,16,31}",
+                "    ),",
+                "    \"Manager Name & Store\",",
+                "    'Employee Lookup'[first_name] & \" \" & 'Employee Lookup'[last_name] & \"-\" & 'Employee Lookup'[location]",
+                " )",
+                " "
+              ],
+              "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "SUMMARIZED Demo",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "f0668a28948f4ac2abb14b2c09f7dafd"
+          }
+        ],
+        "columns": [
+          {
+            "name": "customer_id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "11ddc647-f1c8-4565-9a56-785d7bdcaf5d",
+            "sourceColumn": "Sales by Store[customer_id]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "quantity_sold",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "25ca4eb7-9efb-4309-bab4-79452cafe9c1",
+            "sourceColumn": "Sales by Store[quantity_sold]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          }
+        ],
+        "lineageTag": "70d2e114-5fc9-4b1b-bd3f-973988076498",
+        "partitions": [
+          {
+            "name": "SUMMARIZED Demo",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "",
+                "SUMMARIZE(",
+                "    FILTER(",
+                "        'Sales by Store',",
+                "        'Sales by Store'[quantity_sold] >=3",
+                "    ),",
+                "    'Sales by Store'[customer_id],",
+                "    'Sales by Store'[quantity_sold]",
+                ")"
+              ],
+              "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Unsold Pastries",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "56f53c96b697464e93a1734014ac1fd1"
+          }
+        ],
+        "columns": [
+          {
+            "name": "transaction_date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "a570400f-4b4c-4b89-b660-b63d01bea361",
+            "sourceColumn": "Food Inventory[transaction_date]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "store_id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "4e2bd86a-a6b4-4a13-a0fd-8eef86829570",
+            "sourceColumn": "Food Inventory[store_id]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "quantity_sold",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "4eb868e9-a310-4b79-ad77-0a4964f19395",
+            "sourceColumn": "Food Inventory[quantity_sold]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "quantity_start_of_day",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "4c4044c2-0759-4273-a58a-d7adef7d39b9",
+            "sourceColumn": "Food Inventory[quantity_start_of_day]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "current_retail_price",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "a2d64b8f-ab5d-4762-9427-13f12096b166",
+            "sourceColumn": "Product Lookup[current_retail_price]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "product",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "1928c83c-92b9-49ba-8765-886c0670a5a6",
+            "sourceColumn": "Product Lookup[product]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          }
+        ],
+        "lineageTag": "7377491a-09a6-4d4a-9514-f7f436b3fb96",
+        "partitions": [
+          {
+            "name": "Unsold Pastries",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "",
+                "SUMMARIZE(",
+                "    FILTER(",
+                "        'Food Inventory',",
+                "        'Food Inventory'[quantity_sold] <> 'Food Inventory'[quantity_start_of_day]",
+                "    ),",
+                "    'Food Inventory'[transaction_date],",
+                "    'Food Inventory'[store_id],",
+                "    'Food Inventory'[quantity_sold],",
+                "    'Food Inventory'[quantity_start_of_day],",
+                "    'Product Lookup'[current_retail_price],",
+                "    'Product Lookup'[product]",
+                ")"
+              ],
+              "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Row Demo",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "8b75c5dfaf90424ea137f7cb02daf5f9"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Customer Sales",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "66804f8a-4762-4072-96e2-078f84763f3b",
+            "sourceColumn": "[Customer Sales]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Items Ordered",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "9912de21-5a26-4f26-aa13-052b4607df9d",
+            "sourceColumn": "[Items Ordered]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          }
+        ],
+        "lineageTag": "6b759231-8d63-47bf-bd3a-f59aefe65dbe",
+        "partitions": [
+          {
+            "name": "Row Demo",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "",
+                "ROW(",
+                "    \"Customer Sales\", [Customer Sales],",
+                "    \"Items Ordered\", ",
+                "    SUMX(",
+                "        'Sales by Store',",
+                "        'Sales by Store'[quantity_sold]",
+                "    )",
+                ")"
+              ],
+              "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "DATATABLE Demo",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "53353c947b914578abdde67fad6a3721"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Test Number",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "c5d8de37-f205-4aaf-8907-75ecd7855a2c",
+            "sourceColumn": "[Test Number]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Heads | Tails",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "99aad039-9678-46c6-9ab8-39b45ce7cbd3",
+            "sourceColumn": "[Heads | Tails]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Trial",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "21b5fc77-eba7-49d5-a0c4-124aeb78e62a",
+            "sourceColumn": "[Trial]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          }
+        ],
+        "lineageTag": "151665b6-0030-4b39-a95d-e6b6bf1ce320",
+        "partitions": [
+          {
+            "name": "DATATABLE Demo",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "",
+                " DATATABLE(",
+                "    \"Test Number\",INTEGER,",
+                "    \"Heads | Tails\",STRING,",
+                "    \"Trial\",INTEGER,",
+                "    {",
+                "        {1,\"Heads\",1},",
+                "        {2,\"Tails\",1},",
+                "        {3,\"Tails\",1}",
+                "",
+                "    }",
+                " )"
+              ],
+              "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "GENERATESERIES Demo",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "bd63cdc49833454385e47f3ef67984f9"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Value",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "b5f5791b-cfc9-45d1-8621-c183dadb0dfe",
+            "sourceColumn": "[Value]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          }
+        ],
+        "lineageTag": "6200c658-e7cf-4a2a-b94c-976f7ca17c09",
+        "partitions": [
+          {
+            "name": "GENERATESERIES Demo",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "",
+                " GENERATESERIES(",
+                "    -50.5,",
+                "    50.5",
+                " )"
+              ],
+              "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Table Constructor Demo",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "62904e90a9344285a023bad6e9866c8e"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Value1",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "432e4daf-f3f1-419c-982b-4af51c75e0cb",
+            "sourceColumn": "[Value1]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Value2",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "e0c5d565-e3f3-48db-9a6c-5b9d632f2735",
+            "sourceColumn": "[Value2]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          }
+        ],
+        "lineageTag": "f80be031-571f-4231-9fd9-dda90abe7a9e",
+        "partitions": [
+          {
+            "name": "Table Constructor Demo",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "",
+                " {",
+                "    (\"Customer 1\",FORMAT(CALCULATE([Customer Sales],'Customer Lookup'[customer_id] = 1),\"CURRENCY\")),",
+                "    (\"Customer 79\",FORMAT(CALCULATE([Customer Sales],'Customer Lookup'[customer_id] = 79),\"CURRENCY\"))",
+                " }"
+              ],
+              "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Target Sales - April 2019 (DATATABLE)",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "c393879c64894a36b013f6b1e4875798"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Store ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "cbbca931-1e46-426f-bf94-0d65add2c695",
+            "sourceColumn": "[Store ID]",
+            "summarizeBy": "count",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "0a03a147-4497-4ebd-bc44-ebcf9108e94d",
+            "sourceColumn": "[Year]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Month",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "4ba7a391-03e0-48b7-919c-d99eaa211ccd",
+            "sourceColumn": "[Month]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Bean/Teas Goal",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "0bc0942d-85ec-434b-84ed-8984a87a1dad",
+            "sourceColumn": "[Bean/Teas Goal]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Beverage Goal",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "9e722a9c-ce60-4a8f-915b-bd8a5a5107bb",
+            "sourceColumn": "[Beverage Goal]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Food Goal",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "15481575-c404-4587-ab7c-4a93eadcc90b",
+            "sourceColumn": "[Food Goal]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Merchandise Goal",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "b17f27e2-49cc-4bf8-a549-6a2132dfa418",
+            "sourceColumn": "[Merchandise Goal]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          }
+        ],
+        "lineageTag": "68b3b5e9-bcb6-481e-839e-d380a299dc12",
+        "partitions": [
+          {
+            "name": "Target Sales - April 2019 (DATATABLE)",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "",
+                "DATATABLE(",
+                "    \"Store ID\",INTEGER,",
+                "    \"Year\",STRING,",
+                "    \"Month\",STRING,",
+                "    \"Bean/Teas Goal\", INTEGER,",
+                "    \"Beverage Goal\",INTEGER,",
+                "    \"Food Goal\",INTEGER,",
+                "    \"Merchandise Goal\",INTEGER,",
+                "    {",
+                "        {3,\"2019\",\"April\",268,15608,1964,80},",
+                "        {5,\"2019\",\"April\",277,14687,2020,91},",
+                "        {8,\"2019\",\"April\",377,15011,1973,34}",
+                "    }",
+                ")"
+              ],
+              "type": "calculated"
             }
           }
         ]

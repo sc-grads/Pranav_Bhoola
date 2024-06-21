@@ -4,8 +4,8 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 305.97014925373134,
-        "y": 46.268656716417908
+        "x": 649.25373134328356,
+        "y": 0
       },
       "nodes": [
         {
@@ -108,6 +108,114 @@
           "nodeLineageTag": "1fbbe49d-603a-41d9-98bc-61faabeb9c3e",
           "size": {
             "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1615.2835820895525,
+            "y": 291.04477611940297
+          },
+          "nodeIndex": "Values Example",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1899.2835820895525,
+            "y": 291.04477611940297
+          },
+          "nodeIndex": "ADDCOLUMNS Demo",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2183.2835820895525,
+            "y": 291.04477611940297
+          },
+          "nodeIndex": "SUMMARIZED Demo",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2467.2835820895525,
+            "y": 291.04477611940297
+          },
+          "nodeIndex": "Unsold Pastries",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2751.2835820895525,
+            "y": 291.04477611940297
+          },
+          "nodeIndex": "Row Demo",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3035.2835820895525,
+            "y": 291.04477611940297
+          },
+          "nodeIndex": "DATATABLE Demo",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3319.2835820895525,
+            "y": 291.04477611940297
+          },
+          "nodeIndex": "GENERATESERIES Demo",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3603.2835820895525,
+            "y": 291.04477611940297
+          },
+          "nodeIndex": "Table Constructor Demo",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3887.2835820895525,
+            "y": 291.04477611940297
+          },
+          "nodeIndex": "Target Sales - April 2019 (DATATABLE)",
+          "size": {
+            "height": 200,
             "width": 234
           },
           "zIndex": 0
