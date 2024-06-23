@@ -2573,6 +2573,260 @@
             ],
             "formatString": "0.00%;-0.00%;0.00%",
             "lineageTag": "d32953c4-b56b-4b36-a41e-95a19b3bc20c"
+          },
+          {
+            "name": "Employee Full Name (CONCATENATEX)",
+            "expression": [
+              "",
+              "IF(",
+              "    HASONEVALUE(",
+              "        'Employee Lookup'[first_name]",
+              "    ),",
+              "    CONCATENATEX(",
+              "        'Employee Lookup',",
+              "        'Employee Lookup'[first_name] & \" \" & 'Employee Lookup'[last_name],",
+              "        \",\",",
+              "        'Employee Lookup'[first_name],",
+              "        ASC",
+              "    ),",
+              "    BLANK()",
+              ")"
+            ],
+            "lineageTag": "6005e6c6-fe1d-40a3-b9b1-8f2e48eaa19e"
+          },
+          {
+            "name": "Selected Product Category (CONCATENATEX)",
+            "expression": [
+              "",
+              " \"Showing Sales For: \" & ",
+              " CONCATENATEX(",
+              "    VALUES(",
+              "        'Product Lookup'[product_category]",
+              "    ),",
+              "    'Product Lookup'[product_category],",
+              "    \", \", ",
+              "    'Product Lookup'[product_category],",
+              "    ASC",
+              " )"
+            ],
+            "lineageTag": "4ea9b4bf-aaa3-4bd0-aea5-aa8af4dbf10c"
+          },
+          {
+            "name": "% of Customer Sales (CONCATENATEX Assignment)",
+            "expression": [
+              "",
+              " VAR AllExceptSales =",
+              " CALCULATE(",
+              "    [Customer Sales],",
+              "    ALLEXCEPT(",
+              "        'Sales by Store',",
+              "        'Store Lookup'[store_id]",
+              "    )",
+              " )",
+              " VAR Ratio =",
+              " DIVIDE(",
+              "    [Customer Sales],",
+              "    AllExceptSales,",
+              "    BLANK()",
+              " )",
+              " RETURN",
+              " Ratio"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "c330f1ec-2808-421c-b7f8-71125474ac64"
+          },
+          {
+            "name": "Sales by Employee Name (CONCATENATEX)",
+            "expression": [
+              "",
+              "IF(",
+              "    HASONEVALUE(",
+              "        'Employee Lookup'[first_name]",
+              "    ),",
+              "    \"Employee: \" &",
+              "    CONCATENATEX(",
+              "        VALUES(",
+              "            'Employee Lookup'[first_name]",
+              "        ),",
+              "        'Employee Lookup'[first_name] & ",
+              "        \"-\" &",
+              "        FORMAT([% of Customer Sales (CONCATENATEX Assignment)], \"Percent\"),",
+              "        \", \",",
+              "        'Employee Lookup'[first_name],",
+              "        ASC",
+              "    ),",
+              "    \"Select a Single Employee\"",
+              ")"
+            ],
+            "lineageTag": "99a8f415-070b-4abe-906e-eb47ebb1191a"
+          },
+          {
+            "name": "Average Daily Sales (AVERAGEX)",
+            "expression": [
+              "",
+              " AVERAGEX(",
+              "    'Calendar',",
+              "    [Customer Sales]",
+              " )"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "6bc2aa85-fb13-44d3-8d33-5e56e747d45b"
+          },
+          {
+            "name": "Moving Average (AVERAGEX)",
+            "expression": [
+              "",
+              " VAR LastTransactionDate = MAX('Calendar'[Transaction_Date])",
+              " VAR AverageDay = 30",
+              " VAR PeriodInVisual = ",
+              " FILTER(",
+              "    ALL(",
+              "        'Calendar'[Transaction_Date]",
+              "    ),",
+              "    AND(",
+              "        'Calendar'[Transaction_Date] > LastTransactionDate - AverageDay,",
+              "        'Calendar'[Transaction_Date] <= LastTransactionDate",
+              "    )",
+              " )",
+              " VAR OutPut = ",
+              " CALCULATE(",
+              "    AVERAGEX(",
+              "        'Calendar',",
+              "        [Customer Sales]",
+              "    ),",
+              "    PeriodInVisual",
+              " )",
+              " RETURN",
+              " OutPut"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "9414acb1-94fc-45df-a9e3-37e5902a8392"
+          },
+          {
+            "name": "Average Profit (AVERAGEX)",
+            "expression": [
+              "",
+              "AVERAGEX(",
+              "    'Calendar',",
+              "    [Profit]",
+              ")"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "b3c6bffd-2436-4957-ab2d-6eb7b800bf1a"
+          },
+          {
+            "name": "Moving Average  Profit (AVERAGEX)",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": [
+              "",
+              " VAR LastTransactionDate = MAX('Calendar'[Transaction_Date])",
+              " VAR AverageDay = [Average Day Value]",
+              " VAR PeriodInVisual = ",
+              " FILTER(",
+              "    ALL(",
+              "        'Calendar'[Transaction_Date]",
+              "    ),",
+              "    AND(",
+              "        'Calendar'[Transaction_Date] > LastTransactionDate - AverageDay,",
+              "        'Calendar'[Transaction_Date] <= LastTransactionDate",
+              "    )",
+              " )",
+              " VAR OutPut = ",
+              " CALCULATE(",
+              "    AVERAGEX(",
+              "        'Calendar',",
+              "        [Profit]",
+              "    ),",
+              "    PeriodInVisual",
+              " )",
+              " RETURN",
+              " OutPut"
+            ],
+            "lineageTag": "8d647bbe-4d7c-4457-8edf-61b3d24d4a07"
+          },
+          {
+            "name": "Rank of Customer Sales (RANKX)",
+            "expression": [
+              "",
+              "IF(",
+              "    HASONEVALUE(",
+              "        'Product Lookup'[product_category]",
+              "    ),",
+              "    RANKX(",
+              "        ALL(",
+              "            'Product Lookup'[product_category]",
+              "        ),",
+              "        [Customer Sales]",
+              "    )",
+              ")"
+            ],
+            "formatString": "0",
+            "lineageTag": "c47ace0f-2d62-4330-9395-06e11de570df"
+          },
+          {
+            "name": "Rounded Customer Sales",
+            "expression": [
+              "",
+              " MROUND(",
+              "    [Customer Sales],",
+              "    100000",
+              " )"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "342c5ffe-713c-4603-8cf8-848c69cf771f"
+          },
+          {
+            "name": "Rank of Rounded Customer Sales (RANKX)",
+            "expression": [
+              "",
+              "IF(",
+              "    HASONEVALUE(",
+              "        'Product Lookup'[product_category]",
+              "    ),",
+              "    RANKX(",
+              "        ALL(",
+              "            'Product Lookup'[product_category]",
+              "        ),",
+              "        [Rounded Customer Sales],",
+              "        ,DESC",
+              "        ,Skip",
+              "    )",
+              ")"
+            ],
+            "formatString": "0",
+            "lineageTag": "e8de29f9-ab18-44f3-a4fb-dc9460183238"
+          },
+          {
+            "name": "Top 5 Products by Profit (RANKX)",
+            "expression": [
+              "",
+              "VAR ProfitRank = ",
+              "IF(",
+              "    HASONEVALUE(",
+              "        'Product Lookup'[product_category]",
+              "    ),",
+              "    RANKX(",
+              "        ALL(",
+              "            'Product Lookup'[product]",
+              "        ),",
+              "        [Customer Sales] - [Cost]",
+              "    )",
+              ")",
+              "VAR Top5Products = ",
+              "IF(",
+              "    ProfitRank <= 5,",
+              "    [Profit]",
+              ")",
+              "RETURN",
+              "Top5Products"
+            ],
+            "formatString": "0",
+            "lineageTag": "4a9cada7-0fb3-4fec-a7d6-0c5c958fb915"
           }
         ],
         "partitions": [
@@ -4328,6 +4582,66 @@
                 " TREATAS(",
                 "    StoreID,",
                 "    'Store Lookup'[store_id]",
+                " )"
+              ],
+              "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Average Days",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "e86f8996109d4c7185a93fa9c8baa258"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Value",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "efc95bf2-4637-49c6-a8c1-5f9e85db17d7",
+            "sourceColumn": "[Value]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          }
+        ],
+        "lineageTag": "79a150f7-3600-4513-8b9f-dff87dc5e107",
+        "measures": [
+          {
+            "name": "Average Day Value",
+            "expression": [
+              "",
+              "SELECTEDVALUE(",
+              "    'Average Days'[Value],",
+              "    28",
+              ")"
+            ],
+            "formatString": "0",
+            "lineageTag": "adbce031-c0f8-49d1-ac1e-5a5e50ab9ffe"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Average Days",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "",
+                " GENERATESERIES(",
+                "    7,",
+                "    63,",
+                "    7",
                 " )"
               ],
               "type": "calculated"
