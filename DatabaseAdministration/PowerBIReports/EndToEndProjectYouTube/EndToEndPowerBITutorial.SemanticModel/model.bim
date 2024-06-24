@@ -1,0 +1,682 @@
+{
+  "compatibilityLevel": 1550,
+  "model": {
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      },
+      {
+        "name": "PBIDesktopVersion",
+        "value": "2.130.930.0 (24.06)"
+      },
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"Categories\",\"Geography\",\"Sales rep\",\"Product\",\"SubCategory\",\"Sales\",\"Sample File\",\"Parameter1\",\"Transform Sample File\",\"Transform File\"]"
+      },
+      {
+        "name": "PBI_ProTooling",
+        "value": "[\"DevMode\"]"
+      }
+    ],
+    "culture": "en-US",
+    "cultures": [
+      {
+        "name": "en-US",
+        "linguisticMetadata": {
+          "content": {
+            "Language": "en-US",
+            "Version": "1.0.0"
+          },
+          "contentType": "json"
+        }
+      }
+    ],
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "expressions": [
+      {
+        "name": "Transform Sample File",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "expression": [
+          "let",
+          "    Source = Csv.Document(Parameter1,[Delimiter=\",\", Columns=8, Encoding=1252, QuoteStyle=QuoteStyle.None]),",
+          "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true])",
+          "in",
+          "    #\"Promoted Headers\""
+        ],
+        "kind": "m",
+        "lineageTag": "f75ff208-f351-4d99-8f67-780c574dae95",
+        "queryGroup": "Transform File from Sales"
+      },
+      {
+        "name": "Parameter1",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Binary"
+          }
+        ],
+        "expression": "#\"Sample File\" meta [IsParameterQuery=true, BinaryIdentifier=#\"Sample File\", Type=\"Binary\", IsParameterQueryRequired=true]",
+        "kind": "m",
+        "lineageTag": "e59fd9ef-65f6-4075-802e-b1764e728cab",
+        "queryGroup": "Transform File from Sales\\Helper Queries"
+      },
+      {
+        "name": "Sample File",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Binary"
+          }
+        ],
+        "expression": [
+          "let",
+          "    Source = Folder.Files(\"C:\\Users\\Pranav Bhoola\\Desktop\\Pranav_Bhoola\\DatabaseAdministration\\PowerBIReports\\EndToEndProjectYouTube\\Data\\Sales\"),",
+          "    Navigation1 = Source{0}[Content]",
+          "in",
+          "    Navigation1"
+        ],
+        "kind": "m",
+        "lineageTag": "2e252d19-145a-4241-b5b6-9f2b2c1eb234",
+        "queryGroup": "Transform File from Sales\\Helper Queries"
+      },
+      {
+        "name": "Transform File",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Function"
+          }
+        ],
+        "expression": [
+          "let",
+          "    Source = (Parameter1) => let",
+          "        Source = Csv.Document(Parameter1,[Delimiter=\",\", Columns=8, Encoding=1252, QuoteStyle=QuoteStyle.None]),",
+          "        #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true])",
+          "    in",
+          "        #\"Promoted Headers\"",
+          "in",
+          "    Source"
+        ],
+        "kind": "m",
+        "lineageTag": "ee6d8340-77a8-41bf-8f83-dc4166566d82",
+        "mAttributes": "[ FunctionQueryBinding = \"{\"\"exemplarFormulaName\"\":\"\"Transform Sample File\"\"}\" ]",
+        "queryGroup": "Transform File from Sales\\Helper Queries"
+      }
+    ],
+    "queryGroups": [
+      {
+        "annotations": [
+          {
+            "name": "PBI_QueryGroupOrder",
+            "value": "0"
+          }
+        ],
+        "folder": "Transform File from Sales"
+      },
+      {
+        "annotations": [
+          {
+            "name": "PBI_QueryGroupOrder",
+            "value": "0"
+          }
+        ],
+        "folder": "Transform File from Sales\\Helper Queries"
+      }
+    ],
+    "relationships": [
+      {
+        "name": "AutoDetected_83af90b7-2c29-4620-9db9-25f0a551c722",
+        "fromColumn": "Sub Category Key",
+        "fromTable": "Product",
+        "toColumn": "SubCategoryKey",
+        "toTable": "SubCategory"
+      }
+    ],
+    "sourceQueryCulture": "en-GB",
+    "tables": [
+      {
+        "name": "Categories",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "CategoryKey",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "7a27b82b-5dc4-4cdb-856f-1976528a3e95",
+            "sourceColumn": "CategoryKey",
+            "summarizeBy": "count"
+          },
+          {
+            "name": "Category",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "d615fefd-a632-461e-a482-0691c8339ba1",
+            "sourceColumn": "Category",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "abc93aaa-899c-44c7-98aa-28af0fe4171a",
+        "partitions": [
+          {
+            "name": "Categories",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Excel.Workbook(File.Contents(\"C:\\Users\\Pranav Bhoola\\Desktop\\Pranav_Bhoola\\DatabaseAdministration\\PowerBIReports\\EndToEndProjectYouTube\\Data\\Dimensions\\Categories.xlsx\"), null, true),",
+                "    Categories_Sheet = Source{[Item=\"Categories\",Kind=\"Sheet\"]}[Data],",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Categories_Sheet, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"CategoryKey\", Int64.Type}, {\"Category\", type text}})",
+                "in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Geography",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Column1",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "c5b4f96f-6ba5-48d9-adb2-35c52de55cdc",
+            "sourceColumn": "Column1",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Column2",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "7ad09d13-8c6e-4ed6-92fc-db9f4bacc202",
+            "sourceColumn": "Column2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Column3",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "f315ba26-c38f-45c9-9ef7-7841ce31baab",
+            "sourceColumn": "Column3",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "0ee53438-3a4e-4bc8-9fd0-b74c875cb7f1",
+        "partitions": [
+          {
+            "name": "Geography",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Excel.Workbook(File.Contents(\"C:\\Users\\Pranav Bhoola\\Desktop\\Pranav_Bhoola\\DatabaseAdministration\\PowerBIReports\\EndToEndProjectYouTube\\Data\\Dimensions\\Geography.xlsx\"), null, true),",
+                "    Geography_Sheet = Source{[Item=\"Geography\",Kind=\"Sheet\"]}[Data],",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(Geography_Sheet,{{\"Column1\", type text}, {\"Column2\", type text}, {\"Column3\", type text}})",
+                "in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Sales rep",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Column1",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "af97e0c0-1c15-408f-916b-ab5be8f5f254",
+            "sourceColumn": "Column1",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Column2",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "f5c18b4d-6001-4374-8f04-96d3d8af98b4",
+            "sourceColumn": "Column2",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "fa72c9eb-0bea-4a22-914d-9574cf0f7127",
+        "partitions": [
+          {
+            "name": "Sales rep",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Excel.Workbook(File.Contents(\"C:\\Users\\Pranav Bhoola\\Desktop\\Pranav_Bhoola\\DatabaseAdministration\\PowerBIReports\\EndToEndProjectYouTube\\Data\\Dimensions\\SalesRep.xlsx\"), null, true),",
+                "    #\"Sales rep_Sheet\" = Source{[Item=\"Sales rep\",Kind=\"Sheet\"]}[Data],",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Sales rep_Sheet\",{{\"Column1\", type text}, {\"Column2\", type text}})",
+                "in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Product",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "ProductID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "d9253037-7b00-49ae-b94b-b75473b9c267",
+            "sourceColumn": "ProductID",
+            "summarizeBy": "count"
+          },
+          {
+            "name": "Sub Category Key",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "17857926-6893-4f8d-9c3d-bf01c9c24502",
+            "sourceColumn": "Sub Category Key",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Color",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "9bf0a00c-40e4-4d62-846f-d0441a59fa9a",
+            "sourceColumn": "Color",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ProductName",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "792a2477-8427-4b69-bf7d-ae01a84f0696",
+            "sourceColumn": "ProductName",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RetailPrice",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "02b9e5cd-24ef-4c1e-922b-9d7c51cfaaa1",
+            "sourceColumn": "RetailPrice",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "StandardCost",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "1af31df1-825f-4542-9ba9-9185a0e0a1f3",
+            "sourceColumn": "StandardCost",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "3feb773e-98cb-442a-8f6f-ad6e1acbb709",
+        "partitions": [
+          {
+            "name": "Product",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\Users\\Pranav Bhoola\\Desktop\\Pranav_Bhoola\\DatabaseAdministration\\PowerBIReports\\EndToEndProjectYouTube\\Data\\Dimensions\\Product.csv\"),[Delimiter=\",\", Columns=6, Encoding=1252, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"ProductID\", Int64.Type}, {\"Sub Category Key\", Int64.Type}, {\"Color\", type text}, {\"ProductName\", type text}, {\"RetailPrice\", type number}, {\"StandardCost\", type number}})",
+                "in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "SubCategory",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "SubCategoryKey",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "81ed8480-7051-468b-8802-234050d66260",
+            "sourceColumn": "SubCategoryKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CategoryKey",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "6e241901-bc0c-4689-a1f4-44b604459b11",
+            "sourceColumn": "CategoryKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "SubCategory Name",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "ddb3e288-dc7f-44cf-8e54-885331afe416",
+            "sourceColumn": "SubCategory Name",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "86f3be43-4ae8-47db-b8f1-0ec304e6e7ae",
+        "partitions": [
+          {
+            "name": "SubCategory",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Excel.Workbook(File.Contents(\"C:\\Users\\Pranav Bhoola\\Desktop\\Pranav_Bhoola\\DatabaseAdministration\\PowerBIReports\\EndToEndProjectYouTube\\Data\\Dimensions\\SubCategories.xlsx\"), null, true),",
+                "    SubCategory_Table = Source{[Item=\"SubCategory\",Kind=\"Table\"]}[Data],",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(SubCategory_Table,{{\"SubCategoryKey\", Int64.Type}, {\"CategoryKey\", type text}, {\"SubCategory Name\", type text}})",
+                "in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Sales",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Source.Name",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "dfb70810-ba7c-4014-88ae-6e1963d39d07",
+            "sourceColumn": "Source.Name",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "fSalesPrimaryKey",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "68113285-190c-4077-a647-f0cde6f94a3b",
+            "sourceColumn": "fSalesPrimaryKey",
+            "summarizeBy": "count"
+          },
+          {
+            "name": "ProductID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "4b0ef402-62a0-4f0d-9362-c55cc0e7a02c",
+            "sourceColumn": "ProductID",
+            "summarizeBy": "count"
+          },
+          {
+            "name": "SalesRepID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "93712c5b-9db6-4d4d-a14f-cb778b6d3622",
+            "sourceColumn": "SalesRepID",
+            "summarizeBy": "count"
+          },
+          {
+            "name": "Location",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "43f9c784-7515-418e-9864-3af2e6594578",
+            "sourceColumn": "Location",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Long Date",
+            "lineageTag": "4abf4cc1-419b-4e3b-bb46-e2b40bf7a6c3",
+            "sourceColumn": "Date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Units",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "af5131c1-cde4-4f5a-be60-fec38cd44b8b",
+            "sourceColumn": "Units",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "PercentOfStandardCost",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "43c838a5-440a-489c-9748-1b29f4c3b8e8",
+            "sourceColumn": "PercentOfStandardCost",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "RevenueDiscount",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "89774960-264e-4daa-bf13-bb34137c5cb8",
+            "sourceColumn": "RevenueDiscount",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "c616ba3a-c257-491b-9c21-fca14ecef4e3",
+        "partitions": [
+          {
+            "name": "Sales",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Folder.Files(\"C:\\Users\\Pranav Bhoola\\Desktop\\Pranav_Bhoola\\DatabaseAdministration\\PowerBIReports\\EndToEndProjectYouTube\\Data\\Sales\"),",
+                "    #\"Filtered Hidden Files1\" = Table.SelectRows(Source, each [Attributes]?[Hidden]? <> true),",
+                "    #\"Invoke Custom Function1\" = Table.AddColumn(#\"Filtered Hidden Files1\", \"Transform File\", each #\"Transform File\"([Content])),",
+                "    #\"Renamed Columns1\" = Table.RenameColumns(#\"Invoke Custom Function1\", {\"Name\", \"Source.Name\"}),",
+                "    #\"Removed Other Columns1\" = Table.SelectColumns(#\"Renamed Columns1\", {\"Source.Name\", \"Transform File\"}),",
+                "    #\"Expanded Table Column1\" = Table.ExpandTableColumn(#\"Removed Other Columns1\", \"Transform File\", Table.ColumnNames(#\"Transform File\"(#\"Sample File\"))),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Expanded Table Column1\",{{\"Source.Name\", type text}, {\"fSalesPrimaryKey\", Int64.Type}, {\"ProductID\", Int64.Type}, {\"SalesRepID\", Int64.Type}, {\"Location\", type text}, {\"Date\", type date}, {\"Units\", Int64.Type}, {\"PercentOfStandardCost\", type number}, {\"RevenueDiscount\", type number}})",
+                "in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

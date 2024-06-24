@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "EndToEndPowerBITutorial"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "6c7c46cf-c7d0-40a6-a20a-76ff3ab74935"
+  }
+}
