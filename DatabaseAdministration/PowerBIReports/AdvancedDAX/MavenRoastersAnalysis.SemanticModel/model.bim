@@ -12,7 +12,7 @@
       },
       {
         "name": "PBI_QueryOrder",
-        "value": "[\"Calendar\",\"Customer Lookup\",\"Employee Lookup\",\"Food Inventory\",\"Product Lookup\",\"Sales by Store\",\"Store Lookup\",\"Measure Table\"]"
+        "value": "[\"Calendar\",\"Customer Lookup\",\"Employee Lookup\",\"Food Inventory\",\"Product Lookup\",\"Sales by Store\",\"Store Lookup\",\"Measure Table\",\"4-5-4 Calendar\"]"
       },
       {
         "name": "PBI_ProTooling",
@@ -108,6 +108,20 @@
         "fromTable": "UNION Demo",
         "toColumn": "store_id",
         "toTable": "Store Lookup"
+      },
+      {
+        "name": "6a4fda01-db5b-fdff-469a-8a0e64441429",
+        "fromColumn": "transaction_date",
+        "fromTable": "Sales by Store",
+        "toColumn": "Date",
+        "toTable": "4-5-4 Calendar"
+      },
+      {
+        "name": "12338926-e7da-494b-b959-66725c0f544b",
+        "fromColumn": "transaction_date",
+        "fromTable": "Food Inventory",
+        "toColumn": "Date",
+        "toTable": "4-5-4 Calendar"
       }
     ],
     "sourceQueryCulture": "en-US",
@@ -143,6 +157,7 @@
             ],
             "dataType": "dateTime",
             "formatString": "dd/mm/yyyy",
+            "isKey": true,
             "lineageTag": "d8f53849-0bff-4903-9934-68e72903f74b",
             "sourceColumn": "Transaction_Date",
             "summarizeBy": "none"
@@ -372,8 +387,77 @@
             "lineageTag": "59146ef2-9255-43a7-9c6c-2bfdd9704da8",
             "summarizeBy": "none",
             "type": "calculated"
+          },
+          {
+            "name": "Weekday Number",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "expression": [
+              "",
+              " WEEKDAY(",
+              "    'Calendar'[Transaction_Date],",
+              "    2",
+              " )"
+            ],
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "lineageTag": "e77b46d6-5e69-4285-83e2-7f8ed1b8d7ed",
+            "summarizeBy": "sum",
+            "type": "calculated"
+          },
+          {
+            "name": "Weekday Name",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "expression": [
+              "",
+              "FORMAT(",
+              "    'Calendar'[Transaction_Date],",
+              "    \"dddd\"",
+              ")"
+            ],
+            "isDataTypeInferred": true,
+            "lineageTag": "0f3cc7ee-f5c7-4ec1-ad25-32e7799c158f",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Weekends",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "expression": [
+              "",
+              " IF(",
+              "    WEEKDAY(",
+              "        'Calendar'[Transaction_Date],",
+              "        2",
+              "    ) IN {6,7},",
+              "    \"Y\",",
+              "    \"N\"",
+              " )"
+            ],
+            "isDataTypeInferred": true,
+            "lineageTag": "ba409102-9d52-4a4c-a461-d2c49a859740",
+            "summarizeBy": "none",
+            "type": "calculated"
           }
         ],
+        "dataCategory": "Time",
         "lineageTag": "135c37ae-a73a-4a30-95ca-041868cdd453",
         "partitions": [
           {
@@ -2576,6 +2660,7 @@
           },
           {
             "name": "Employee Full Name (CONCATENATEX)",
+            "displayFolder": "Iterator Functions",
             "expression": [
               "",
               "IF(",
@@ -2596,6 +2681,7 @@
           },
           {
             "name": "Selected Product Category (CONCATENATEX)",
+            "displayFolder": "Iterator Functions",
             "expression": [
               "",
               " \"Showing Sales For: \" & ",
@@ -2613,6 +2699,7 @@
           },
           {
             "name": "% of Customer Sales (CONCATENATEX Assignment)",
+            "displayFolder": "Iterator Functions",
             "expression": [
               "",
               " VAR AllExceptSales =",
@@ -2637,6 +2724,7 @@
           },
           {
             "name": "Sales by Employee Name (CONCATENATEX)",
+            "displayFolder": "Iterator Functions",
             "expression": [
               "",
               "IF(",
@@ -2662,6 +2750,7 @@
           },
           {
             "name": "Average Daily Sales (AVERAGEX)",
+            "displayFolder": "Iterator Functions",
             "expression": [
               "",
               " AVERAGEX(",
@@ -2674,6 +2763,7 @@
           },
           {
             "name": "Moving Average (AVERAGEX)",
+            "displayFolder": "Iterator Functions",
             "expression": [
               "",
               " VAR LastTransactionDate = MAX('Calendar'[Transaction_Date])",
@@ -2704,6 +2794,7 @@
           },
           {
             "name": "Average Profit (AVERAGEX)",
+            "displayFolder": "Iterator Functions",
             "expression": [
               "",
               "AVERAGEX(",
@@ -2722,6 +2813,7 @@
                 "value": "{\"isGeneralNumber\":true}"
               }
             ],
+            "displayFolder": "Iterator Functions",
             "expression": [
               "",
               " VAR LastTransactionDate = MAX('Calendar'[Transaction_Date])",
@@ -2751,6 +2843,7 @@
           },
           {
             "name": "Rank of Customer Sales (RANKX)",
+            "displayFolder": "Iterator Functions",
             "expression": [
               "",
               "IF(",
@@ -2770,6 +2863,7 @@
           },
           {
             "name": "Rounded Customer Sales",
+            "displayFolder": "Iterator Functions",
             "expression": [
               "",
               " MROUND(",
@@ -2782,6 +2876,7 @@
           },
           {
             "name": "Rank of Rounded Customer Sales (RANKX)",
+            "displayFolder": "Iterator Functions",
             "expression": [
               "",
               "IF(",
@@ -2803,6 +2898,7 @@
           },
           {
             "name": "Top 5 Products by Profit (RANKX)",
+            "displayFolder": "Iterator Functions",
             "expression": [
               "",
               "VAR ProfitRank = ",
@@ -2827,6 +2923,268 @@
             ],
             "formatString": "0",
             "lineageTag": "4a9cada7-0fb3-4fec-a7d6-0c5c958fb915"
+          },
+          {
+            "name": "% of Total Sales",
+            "displayFolder": "Advanced Time Intelligence",
+            "expression": [
+              "",
+              " VAR AllSales = ",
+              " CALCULATE(",
+              "    [Customer Sales],",
+              "    ALL(",
+              "        'Sales by Store'",
+              "    )",
+              " )",
+              " VAR Ratio = ",
+              " DIVIDE(",
+              "    [Customer Sales],",
+              "    AllSales",
+              " )",
+              " RETURN",
+              " Ratio"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "7983644c-473f-49c4-8d4f-f6591f03a5fe"
+          },
+          {
+            "name": "Last Quarter's Sales (PARALLELPERIOD)",
+            "displayFolder": "Advanced Time Intelligence",
+            "expression": [
+              "",
+              " CALCULATE(",
+              "    [Customer Sales],",
+              "    PARALLELPERIOD(",
+              "        'Calendar'[Transaction_Date],",
+              "        -1,",
+              "        QUARTER",
+              "    )",
+              " )"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "5021289b-c5cc-432e-b693-16edee83d629"
+          },
+          {
+            "name": "Last Quarter's Sales (PREVIOUSQUARTER)",
+            "displayFolder": "Advanced Time Intelligence",
+            "expression": [
+              "",
+              " CALCULATE(",
+              "    [Customer Sales],",
+              "    PREVIOUSQUARTER(",
+              "        'Calendar'[Transaction_Date]",
+              "    )",
+              " )"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "f623bcb2-e34c-466f-b1f2-1916acf959f0"
+          },
+          {
+            "name": "Last Years Sales (SAMEPERIODLASTYEAR)",
+            "displayFolder": "Advanced Time Intelligence",
+            "expression": [
+              "",
+              " CALCULATE(",
+              "    [Customer Sales],",
+              "    SAMEPERIODLASTYEAR(",
+              "        'Calendar'[Transaction_Date]",
+              "    )",
+              " )"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "2fcfe5b4-454c-4d6f-bee7-a3400bb75c30"
+          },
+          {
+            "name": "Customer Sales Last Month (PARALLELPERIOD)",
+            "displayFolder": "Advanced Time Intelligence",
+            "expression": [
+              "",
+              " CALCULATE(",
+              "    [Customer Sales],",
+              "    PARALLELPERIOD(",
+              "        'Calendar'[Transaction_Date],",
+              "        -1,",
+              "        MONTH",
+              "    )",
+              " )"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "687f0c46-8234-417b-8c71-8200a38bb7c2"
+          },
+          {
+            "name": "Customer Sales MoM % Change",
+            "displayFolder": "Advanced Time Intelligence",
+            "expression": [
+              "",
+              " DIVIDE(",
+              "    ([Customer Sales] - [Customer Sales Last Month (PARALLELPERIOD)]),",
+              "    [Customer Sales Last Month (PARALLELPERIOD)],",
+              "    BLANK()",
+              " )"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "91847db6-6162-4898-a72c-7e42de605dee"
+          },
+          {
+            "name": "Customer Sales YoY % Change",
+            "displayFolder": "Advanced Time Intelligence",
+            "expression": [
+              "",
+              "VAR LastYearsSales = ",
+              "CALCULATE(",
+              "    [Customer Sales],",
+              "    SAMEPERIODLASTYEAR(",
+              "        'Calendar'[Transaction_Date]",
+              "    )",
+              ")",
+              "VAR Ratio = ",
+              "DIVIDE(",
+              "    ([Customer Sales] - LastYearsSales),",
+              "    LastYearsSales,",
+              "    \"-\"",
+              ")",
+              "RETURN",
+              "Ratio"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "669d41b5-130b-4979-83a7-5fe187f7454c"
+          },
+          {
+            "name": "Last Weeks Sales 4-5-4 (DATEADD)",
+            "displayFolder": "Advanced Time Intelligence",
+            "expression": [
+              "",
+              "CALCULATE(",
+              "    [Customer Sales],",
+              "    DATEADD(",
+              "        '4-5-4 Calendar'[Date],",
+              "        -7,",
+              "        DAY",
+              "    )",
+              ")"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "230561d6-13ce-4048-aa6f-b36b71666457"
+          },
+          {
+            "name": "QTD Sales (4-5-4)",
+            "displayFolder": "Advanced Time Intelligence",
+            "expression": [
+              "",
+              " VAR MaxDate = MAX('4-5-4 Calendar'[Date])",
+              " VAR MaxPeriod = MAX('4-5-4 Calendar'[FiscalQuarterYear])",
+              " VAR OutPut = ",
+              " IF(",
+              "    HASONEVALUE(",
+              "        '4-5-4 Calendar'[FiscalQuarterYear]",
+              "    ),",
+              "    CALCULATE(",
+              "        [Customer Sales],",
+              "        '4-5-4 Calendar'[Date] <= MaxDate,",
+              "        '4-5-4 Calendar'[FiscalQuarterYear] = MaxPeriod",
+              "    ),",
+              "    \"-\"",
+              " )RETURN",
+              " OutPut"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "88fa2e3a-22c2-4f79-9bb7-c63bd6056459"
+          },
+          {
+            "name": "Last QTD Sales (4-5-4)",
+            "displayFolder": "Advanced Time Intelligence",
+            "expression": [
+              "",
+              " VAR LastPeriod = ",
+              " CALCULATE(",
+              "    [Customer Sales],",
+              "    FILTER(",
+              "        ALL(",
+              "            '4-5-4 Calendar'",
+              "        ),",
+              "        IF(",
+              "            SELECTEDVALUE('4-5-4 Calendar'[FiscalQuarterYear]) = 1,",
+              "            '4-5-4 Calendar'[FiscalQuarter] = 4 && '4-5-4 Calendar'[FiscalYear] = SELECTEDVALUE('4-5-4 Calendar'[FiscalYear]) -1, ",
+              "            '4-5-4 Calendar'[FiscalYear] = SELECTEDVALUE('4-5-4 Calendar'[FiscalYear]) && ",
+              "            '4-5-4 Calendar'[FiscalQuarter] = SELECTEDVALUE('4-5-4 Calendar'[FiscalQuarter]) -1",
+              "        )",
+              "    )",
+              " )",
+              " RETURN",
+              " LastPeriod"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "b2dbf135-2257-434f-8f84-fd84c07716f8"
+          },
+          {
+            "name": "MTD Sales (4-5-4)",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "Advanced Time Intelligence",
+            "expression": [
+              "",
+              " VAR MaxDate = MAX('4-5-4 Calendar'[Date])",
+              " VAR MaxPeriod = MAX('4-5-4 Calendar'[FiscalMonthYear])",
+              " VAR OutPut = ",
+              " IF(",
+              "    HASONEVALUE(",
+              "        '4-5-4 Calendar'[FiscalMonthYear]",
+              "    ),",
+              "    CALCULATE(",
+              "        [Customer Sales],",
+              "        '4-5-4 Calendar'[Date] <= MaxDate,",
+              "        '4-5-4 Calendar'[FiscalMonthYear] = MaxPeriod",
+              "    ),",
+              "    \"-\"",
+              " )RETURN",
+              " OutPut"
+            ],
+            "lineageTag": "d85418d6-515e-462a-93e3-338c55f8683c"
+          },
+          {
+            "name": "YTD Sales (4-5-4)",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "displayFolder": "Advanced Time Intelligence",
+            "expression": [
+              "",
+              " VAR MaxDate = MAX('4-5-4 Calendar'[Date])",
+              " VAR MaxPeriod = MAX('4-5-4 Calendar'[FiscalYear])",
+              " VAR MaxSellDate = MAX('Sales by Store'[transaction_date])",
+              " VAR OutPut = ",
+              "",
+              " CALCULATE(",
+              "     [Customer Sales],",
+              "        '4-5-4 Calendar'[Date] <= MaxDate,",
+              "        '4-5-4 Calendar'[FiscalYear] = MaxPeriod,",
+              "        'Calendar'[Transaction_Date] <= MaxSellDate",
+              " )",
+              " RETURN",
+              " OutPut"
+            ],
+            "lineageTag": "ff14fb68-2b02-48b3-a4ee-4d652647fd34"
+          },
+          {
+            "name": "Wow % Change (4-5-4)",
+            "displayFolder": "Advanced Time Intelligence",
+            "expression": [
+              "",
+              " DIVIDE(",
+              "    ([Customer Sales] - [Last Weeks Sales 4-5-4 (DATEADD)]),",
+              "    [Last Weeks Sales 4-5-4 (DATEADD)],",
+              "    BLANK()",
+              " )"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "ab75b715-9f85-4219-b8c1-8d19f267b87a"
           }
         ],
         "partitions": [
@@ -4645,6 +5003,490 @@
                 " )"
               ],
               "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "CALENDAR Demo",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "6da3403ee36b453ebc63af535b137e43"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "be27af2a-e352-4e90-9a16-b0de37174b08",
+            "sourceColumn": "[Date]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          }
+        ],
+        "lineageTag": "5058a75b-46fd-49de-84c9-4bc95c76c34c",
+        "partitions": [
+          {
+            "name": "CALENDAR Demo",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "",
+                "CALENDAR(",
+                "    DATE(YEAR(MIN('Calendar'[Transaction_Date])),1,1),",
+                "    DATE(YEAR(MAX('Calendar'[Transaction_Date])),12,31)",
+                ")"
+              ],
+              "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "CALENDARAUTO Demo",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "5bb0770102d7457fab7be1db7c934e7d"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "dff4ceb3-dd28-46ff-b61f-d51f2a98a6b9",
+            "sourceColumn": "[Date]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          }
+        ],
+        "lineageTag": "dfed011c-9bcf-43b2-96ad-4a7eaa4f4345",
+        "partitions": [
+          {
+            "name": "CALENDARAUTO Demo",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "",
+                " CALENDARAUTO(6)"
+              ],
+              "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Date Table (CALENDARAUTO)",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "78e27367f1224f9ea39c7ee68e5078e6"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "3e3f6db5-88ab-4e6d-b32a-e57180f0dbcf",
+            "sourceColumn": "[Date]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "c1d28819-495a-4ecf-9189-4dd6496a4c68",
+            "sourceColumn": "[Year]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Quarter Number",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "f59bdcab-926b-45c5-b6c7-838bd15bcb1d",
+            "sourceColumn": "[Quarter Number]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Quarter",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "8b2ee66a-6279-4bb4-9e39-7c203bba8d74",
+            "sourceColumn": "[Quarter]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Month Number",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "8cea88ec-0c69-410c-bf2c-df5b9636aabb",
+            "sourceColumn": "[Month Number]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Month Short",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "1d9b0755-e416-4a4c-842b-bee07a2e6162",
+            "sourceColumn": "[Month Short]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Week Number",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "deccaeee-93e7-4bd7-8796-23a778ff3b98",
+            "sourceColumn": "[Week Number]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          }
+        ],
+        "lineageTag": "658247b0-f49e-4889-8037-c0575858abcb",
+        "partitions": [
+          {
+            "name": "Date Table (CALENDARAUTO)",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "",
+                " VAR MinYear = YEAR(MIN('Calendar'[Transaction_Date]))",
+                " VAR MaxYear = YEAR(MAX('Calendar'[Transaction_Date]))",
+                "",
+                " RETURN",
+                " ADDCOLUMNS(",
+                "    FILTER(",
+                "        CALENDARAUTO(),",
+                "        YEAR([Date]) >= MinYear &&",
+                "        YEAR([Date]) <= MaxYear",
+                "    ),",
+                "    \"Year\", YEAR([Date]),",
+                "    \"Quarter Number\", INT(FORMAT([Date], \"q\")),",
+                "    \"Quarter\" , \"Q\" & INT(FORMAT([Date],\"q\")),",
+                "    \"Month Number\", MONTH([Date]),",
+                "    \"Month Short\", FORMAT([Date],\"mmmm\"),",
+                "    \"Week Number\", WEEKNUM([Date])",
+                " )"
+              ],
+              "type": "calculated"
+            }
+          }
+        ]
+      },
+      {
+        "name": "4-5-4 Calendar",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Long Date",
+            "lineageTag": "23a8a6be-39f7-4419-aa8f-13b985a62a29",
+            "sourceColumn": "Date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "FiscalYear",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "61be9e39-fa1c-47c9-9933-7df6bcaf2af2",
+            "sourceColumn": "FiscalYear",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "FiscalQuarter",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "3e2d4dc1-3e49-46fa-88fd-b93aa2c9a350",
+            "sourceColumn": "FiscalQuarter",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "FiscalMonthNumber",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "55799844-92aa-4443-b5c1-4a7d8c3732b8",
+            "sourceColumn": "FiscalMonthNumber",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "FiscalMonthOfQuarter",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "bed75070-96ee-4a30-9a3a-f2eee752c616",
+            "sourceColumn": "FiscalMonthOfQuarter",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "FiscalWeekOfYear",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "2533c5fe-c94c-416f-82f2-dedaca34056c",
+            "sourceColumn": "FiscalWeekOfYear",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "DayOfWeek",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "7e8de679-8c00-44cf-98ad-e568b11c313e",
+            "sourceColumn": "DayOfWeek",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "FiscalMonthName",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "changedProperties": [
+              {
+                "property": "SortByColumn"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "a0b73664-2ef2-49a5-b5b6-c962785bfa7c",
+            "sortByColumn": "FiscalMonthNumber",
+            "sourceColumn": "FiscalMonthName",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "FiscalMonthYear",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Long Date",
+            "lineageTag": "db05db77-e162-4010-96d5-6cf09a5be150",
+            "sourceColumn": "FiscalMonthYear",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "FiscalQuarterYear",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "bfa11e11-6250-4449-b952-fe29f22f3ec8",
+            "sourceColumn": "FiscalQuarterYear",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "DayOfMonthNumber",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "0e6f29cd-778b-451b-82ed-97f913e0409c",
+            "sourceColumn": "DayOfMonthNumber",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "DayName",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "f53c2b7b-0412-45e0-8805-93209b6bfa04",
+            "sourceColumn": "DayName",
+            "summarizeBy": "none"
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "FiscalYear Hierarchy",
+            "levels": [
+              {
+                "name": "FiscalYear",
+                "column": "FiscalYear",
+                "lineageTag": "6824a11e-e165-4391-98c9-c57310b48697",
+                "ordinal": 0
+              },
+              {
+                "name": "FiscalMonthName",
+                "column": "FiscalMonthName",
+                "lineageTag": "790e990c-4858-4041-9ef9-121cf28326f2",
+                "ordinal": 1
+              },
+              {
+                "name": "Date",
+                "column": "Date",
+                "lineageTag": "871963df-42fc-42ba-9160-2f2e367d9fab",
+                "ordinal": 2
+              }
+            ],
+            "lineageTag": "e479150e-b5dc-4bc7-a0d5-98e9d772ae3d"
+          }
+        ],
+        "lineageTag": "545200e0-b124-4541-8571-a0e00589d7ce",
+        "partitions": [
+          {
+            "name": "4-5-4 Calendar",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\Users\\Pranav Bhoola\\Desktop\\Pranav_Bhoola\\DatabaseAdministration\\PowerBIReports\\AdvancedDAX\\AdvancedDAXDataFiles\\4-5-4 Calendar.csv\"),[Delimiter=\",\", Columns=12, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"Date\", type date}, {\"FiscalYear\", Int64.Type}, {\"FiscalQuarter\", Int64.Type}, {\"FiscalMonthNumber\", Int64.Type}, {\"FiscalMonthOfQuarter\", Int64.Type}, {\"FiscalWeekOfYear\", Int64.Type}, {\"DayOfWeek\", Int64.Type}, {\"FiscalMonthName\", type text}, {\"FiscalMonthYear\", type date}, {\"FiscalQuarterYear\", Int64.Type}, {\"DayOfMonthNumber\", Int64.Type}, {\"DayName\", type text}})",
+                "in",
+                "    #\"Changed Type\""
+              ],
+              "type": "m"
             }
           }
         ]
