@@ -217,6 +217,87 @@
           }
         ],
         "lineageTag": "abc93aaa-899c-44c7-98aa-28af0fe4171a",
+        "measures": [
+          {
+            "name": "Total Rev",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": [
+              "",
+              " SUM(Sales[Total Revenue]",
+              " )"
+            ],
+            "lineageTag": "e917aa90-bcd6-41c8-81f5-b8808ef15a1c"
+          },
+          {
+            "name": "Prev Qtr",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": [
+              "",
+              " CALCULATE(",
+              "    [Total Rev],",
+              "    PREVIOUSQUARTER(DateMaster[Date]",
+              "    ))"
+            ],
+            "lineageTag": "0b65a90c-4042-4f73-ac06-2557bdcc447a"
+          },
+          {
+            "name": "QoQ Growth",
+            "expression": [
+              "",
+              "  ([Total Rev] - [Prev Qtr]) / [Prev Qtr]",
+              ""
+            ],
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "08a72dde-eeb2-419c-afd9-38851c1fe828"
+          },
+          {
+            "name": "Tot Profit",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": [
+              "",
+              "SUM(Sales[Gross Profit]",
+              ")"
+            ],
+            "lineageTag": "c82276eb-888b-462f-bbdd-e53b225275a3"
+          },
+          {
+            "name": "Prev Month Profit",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": [
+              "",
+              "CALCULATE([Tot Profit],",
+              "PREVIOUSMONTH(DateMaster[Date]",
+              "))"
+            ],
+            "lineageTag": "8ad5daef-1369-4d43-97d4-c8a9d1a6b590"
+          },
+          {
+            "name": "MoM Growth",
+            "expression": "([Tot Profit] - [Prev Month Profit]) / [Prev Month Profit]",
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "973e5a48-02ec-4db2-a479-2263a39695f0"
+          }
+        ],
         "partitions": [
           {
             "name": "Categories",
@@ -726,10 +807,6 @@
               {
                 "name": "SummarizationSetBy",
                 "value": "Automatic"
-              },
-              {
-                "name": "PBI_FormatHint",
-                "value": "{\"isGeneralNumber\":true}"
               }
             ],
             "dataType": "double",
@@ -739,6 +816,7 @@
               "    ProductDetails[RetailPrice]",
               " )"
             ],
+            "formatString": "0.00",
             "isDataTypeInferred": true,
             "lineageTag": "f2788078-325b-4e12-8449-202f0fb73957",
             "summarizeBy": "sum",
@@ -902,6 +980,7 @@
             ],
             "isDataTypeInferred": true,
             "lineageTag": "e4b649e1-8472-46f4-93f7-2a3e82c26c0a",
+            "sortByColumn": "Month",
             "summarizeBy": "none",
             "type": "calculated"
           },
