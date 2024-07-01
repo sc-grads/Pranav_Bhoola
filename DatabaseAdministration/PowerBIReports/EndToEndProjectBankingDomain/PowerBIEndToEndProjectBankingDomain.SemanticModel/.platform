@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "PowerBIEndToEndProjectBankingDomain"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "0e9b0403-3a6c-4e16-93ac-c0ade9b3d96f"
+  }
+}
