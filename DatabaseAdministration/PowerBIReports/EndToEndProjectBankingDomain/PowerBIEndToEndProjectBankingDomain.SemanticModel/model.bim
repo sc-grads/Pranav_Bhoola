@@ -413,6 +413,27 @@
             "lineageTag": "a23b0e7c-0f76-46ee-b84a-05f3b00e44c8",
             "sourceColumn": "Bank DOJ",
             "summarizeBy": "none"
+          },
+          {
+            "name": "Credit Type",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "expression": [
+              "SWITCH(TRUE(), Bank_Churn[CreditScore] >= 800 && Bank_Churn[CreditScore] <= 850, \"Excellent\",",
+              "Bank_Churn[CreditScore] >= 740 && Bank_Churn[CreditScore] <= 799, \"Very Good\",",
+              "Bank_Churn[CreditScore] >= 670 && Bank_Churn[CreditScore] <= 739, \"Good\",",
+              "Bank_Churn[CreditScore] >= 580 && Bank_Churn[CreditScore] <= 669, \"Fair\",",
+              "Bank_Churn[CreditScore] >= 300 && Bank_Churn[CreditScore] <= 579, \"Poor\")"
+            ],
+            "isDataTypeInferred": true,
+            "lineageTag": "358bbfa0-972d-47bb-9f34-0faf44e29d03",
+            "summarizeBy": "none",
+            "type": "calculated"
           }
         ],
         "lineageTag": "b40c04ea-9afe-4562-ba8a-1c2abece2533",
@@ -750,6 +771,7 @@
             "expression": "FORMAT(DateMaster[Date], \"MMM\")",
             "isDataTypeInferred": true,
             "lineageTag": "2de36bb9-6cdb-434b-86c8-2b7a697c6858",
+            "sortByColumn": "Month",
             "summarizeBy": "none",
             "type": "calculated"
           }
@@ -808,13 +830,13 @@
               " ActiveCustomers[ActiveCategory] = \"Active Member\"",
               " )"
             ],
-            "formatString": "0",
+            "formatString": "#,0",
             "lineageTag": "7593f229-276b-4225-b3dc-5b9cdae87343"
           },
           {
             "name": "Total Customers",
             "expression": "COUNT(Bank_Churn[CustomerId])",
-            "formatString": "0",
+            "formatString": "#,0",
             "lineageTag": "2a4b0d6a-1add-4489-883e-74fa5a4bb513"
           },
           {
@@ -823,7 +845,7 @@
               "",
               "[Total Customers] - [Active Customers]"
             ],
-            "formatString": "0",
+            "formatString": "#,0",
             "lineageTag": "6d0d6407-087d-463c-a9a0-9a098886614d"
           },
           {
@@ -833,7 +855,7 @@
               "    COUNT(Bank_Churn[CustomerId]),",
               "    CreditCard[Category] = \"Credit Card Holder\")"
             ],
-            "formatString": "0",
+            "formatString": "#,0",
             "lineageTag": "8ace684c-7a72-431f-95e3-c4e3c5e22ace"
           },
           {
@@ -842,7 +864,7 @@
               "CALCULATE(COUNT(Bank_Churn[CustomerId]),",
               "CreditCard[Category] = \"Non Credit Card Holder\")"
             ],
-            "formatString": "0",
+            "formatString": "#,0",
             "lineageTag": "8ba6ae27-41e9-4b66-a083-513c7887dbcc"
           },
           {
@@ -851,7 +873,7 @@
               "CALCULATE(",
               "     [Total Customers], ExitCustomer[ExitCategory] = \"Exit\")"
             ],
-            "formatString": "0",
+            "formatString": "#,0",
             "lineageTag": "0a39184e-0e90-413f-83aa-e0a99ec1999b"
           },
           {
@@ -860,8 +882,27 @@
               "CALCULATE(",
               "    [Total Customers], ExitCustomer[ExitCategory] = \"Retain\")"
             ],
-            "formatString": "0",
+            "formatString": "#,0",
             "lineageTag": "25b3a3ac-3968-421f-8453-e38bf58c61a8"
+          },
+          {
+            "name": "Previous Month Exit Customers",
+            "expression": "CALCULATE([Exit Customers], PREVIOUSMONTH(DateMaster[Date]))",
+            "formatString": "0",
+            "lineageTag": "c128c4fd-91c7-4226-bdc2-f8880ea83d85"
+          },
+          {
+            "name": "Churn %",
+            "expression": [
+              "",
+              "VAR EC = [Exit Customers]",
+              "VAR TC = [Total Customers]",
+              "VAR Churnper = DIVIDE(EC, TC)",
+              "",
+              "RETURN Churnper"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "54174dab-b65b-49be-8b37-96d164be2eb3"
           }
         ],
         "partitions": [
