@@ -90,6 +90,56 @@
         "toTable": "DateMaster"
       }
     ],
+    "roles": [
+      {
+        "name": "FranceRegion",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "dde5e8811b384edb9d791c76fb4fe580"
+          }
+        ],
+        "modelPermission": "read",
+        "tablePermissions": [
+          {
+            "name": "Geography",
+            "filterExpression": "[GeographyLocation] == \"France\""
+          }
+        ]
+      },
+      {
+        "name": "GermanyRegion",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "fadd208765c743b7b1086b42112a67d4"
+          }
+        ],
+        "modelPermission": "read",
+        "tablePermissions": [
+          {
+            "name": "Geography",
+            "filterExpression": "[GeographyLocation] == \"Germany\""
+          }
+        ]
+      },
+      {
+        "name": "SpainRegion",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "2c4f2b38dc984e3aaed66a639ff7cd71"
+          }
+        ],
+        "modelPermission": "read",
+        "tablePermissions": [
+          {
+            "name": "Geography",
+            "filterExpression": "[GeographyLocation] == \"Spain\""
+          }
+        ]
+      }
+    ],
     "sourceQueryCulture": "en-GB",
     "tables": [
       {
