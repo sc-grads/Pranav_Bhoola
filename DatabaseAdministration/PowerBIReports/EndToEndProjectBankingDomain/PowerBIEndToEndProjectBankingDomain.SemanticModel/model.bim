@@ -8,7 +8,7 @@
       },
       {
         "name": "PBIDesktopVersion",
-        "value": "2.130.930.0 (24.06)"
+        "value": "2.131.901.0 (24.07)"
       },
       {
         "name": "PBI_QueryOrder",
@@ -953,6 +953,12 @@
             ],
             "formatString": "0.00%;-0.00%;0.00%",
             "lineageTag": "54174dab-b65b-49be-8b37-96d164be2eb3"
+          },
+          {
+            "name": "Previous Year Exit Customers",
+            "expression": "CALCULATE([Exit Customers], SAMEPERIODLASTYEAR(DateMaster[Date]))",
+            "formatString": "0",
+            "lineageTag": "f4453289-818c-4658-8069-4bc4fdecc3c9"
           }
         ],
         "partitions": [
