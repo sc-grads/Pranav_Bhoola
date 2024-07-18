@@ -12,7 +12,7 @@
           "type": "ServicePrincipal",
           "tenantId": "174c7352-9c5c-4558-b848-be140b444e7d",
           "clientId": "8e9c981c-e7c2-4100-a84d-fbee5d17bb70",
-          "clientSecret": "mb48Q~DdtfrEndqtqV_nj8H2hD6BqNBpfcLYvaq4"
+          "clientSecret": "%PBI_CLIENT_SECRET%"
         },
         "options": {
           "import": {
