@@ -1,6 +1,5 @@
 name: Deployment
 
-# Controls when the workflow will run
 on:
   push:
     branches: [ main ]
@@ -17,12 +16,17 @@ jobs:
       image: ghcr.io/pbi-tools/pbi-tools-core:latest
 
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
         with:
           lfs: 'true'
 
+      - name: Display environment variables
+        run: echo "Profile: $PROFILE, Environment: $ENVIRONMENT"
+
+      - name: Print deployment configuration
+        run: cat DatabaseAdministration/PowerBIReports/EndToEndProjectYouTube/pbi-tools.json
+
       - name: pbi-tools deploy
-        run: /app/pbi-tools/pbi-tools.core deploy . "$PROFILE" "$ENVIRONMENT"
+        run: /app/pbi-tools/pbi-tools.core deploy DatabaseAdministration/PowerBIReports/EndToEndProjectYouTube "$PROFILE" "$ENVIRONMENT"
         env:
           PBI_CLIENT_SECRET: ${{ secrets.PBI_CLIENT_SECRET }}
