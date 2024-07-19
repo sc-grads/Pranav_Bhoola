@@ -6,7 +6,7 @@
         "mode": "Report",
         "source": {
           "type": "File",
-          "path": "./*.pbix"
+          "path": "./Test/*.pbix$"
         },
         "authentication": {
           "type": "ServicePrincipal",
@@ -27,3 +27,4 @@
       }
     }
   }
+  
