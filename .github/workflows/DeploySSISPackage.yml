@@ -4,11 +4,6 @@ on:
   push:
     branches:
       - main
-# The workflow is triggered when changes are made to the specified file
-on:
-  push:
-    branches:
-      - main
     paths:
       - DatabaseAdministration/SQLStatements/UpdateScript.sql
 
