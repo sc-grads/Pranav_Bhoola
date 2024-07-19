@@ -23,6 +23,6 @@ jobs:
           lfs: 'true'
 
       - name: pbi-tools deploy
-        run: /app/pbi-tools/pbi-tools.core deploy . "$PROFILE" "$ENVIRONMENT"
+        run: /DatabaseAdministration/PowerBIReports/PowerBIDevOps/pbi-tools deploy . files PROD
         env:
           PBI_CLIENT_SECRET: ${{ secrets.PBI_CLIENT_SECRET }}
