@@ -1,0 +1,622 @@
+{
+  "config": "{\"version\":\"5.55\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU06\",\"version\":\"5.56\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"useEnhancedTooltips\":true,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "Baller_Bowling26413394512451926.png",
+            "path": "Baller_Bowling26413394512451926.png",
+            "type": 100
+          },
+          {
+            "name": "Batter796881740253004.png",
+            "path": "Batter796881740253004.png",
+            "type": 100
+          },
+          {
+            "name": "CSK7068956136451054.png",
+            "path": "CSK7068956136451054.png",
+            "type": 100
+          },
+          {
+            "name": "DC9211451603158503.png",
+            "path": "DC9211451603158503.png",
+            "type": 100
+          },
+          {
+            "name": "Four_Image2604752044121794.png",
+            "path": "Four_Image2604752044121794.png",
+            "type": 100
+          },
+          {
+            "name": "Gujarat_Titans_Logo.svg9775428536455613.png",
+            "path": "Gujarat_Titans_Logo.svg9775428536455613.png",
+            "type": 100
+          },
+          {
+            "name": "IPL_Background_image4707793414187411.jpg",
+            "path": "IPL_Background_image4707793414187411.jpg",
+            "type": 100
+          },
+          {
+            "name": "KKR5869339761720211.png",
+            "path": "KKR5869339761720211.png",
+            "type": 100
+          },
+          {
+            "name": "Lucknow_Super_Giants_logo7641081929740248.png",
+            "path": "Lucknow_Super_Giants_logo7641081929740248.png",
+            "type": 100
+          },
+          {
+            "name": "Mumbai-Indians-Logo-PNG5656815957004269.png",
+            "path": "Mumbai-Indians-Logo-PNG5656815957004269.png",
+            "type": 100
+          },
+          {
+            "name": "Orange_Cap1859794463355362.png",
+            "path": "Orange_Cap1859794463355362.png",
+            "type": 100
+          },
+          {
+            "name": "Purple_Cap10410524134805854.png",
+            "path": "Purple_Cap10410524134805854.png",
+            "type": 100
+          },
+          {
+            "name": "RCB3413085457383582.png",
+            "path": "RCB3413085457383582.png",
+            "type": 100
+          },
+          {
+            "name": "RR6546076367253801.png",
+            "path": "RR6546076367253801.png",
+            "type": 100
+          },
+          {
+            "name": "Sixes_image3290725552923397.png",
+            "path": "Sixes_image3290725552923397.png",
+            "type": 100
+          },
+          {
+            "name": "Trophy6157858291115472.png",
+            "path": "Trophy6157858291115472.png",
+            "type": 100
+          },
+          {
+            "name": "sunrisers-hyderabad-logo5821370908368604.png",
+            "path": "sunrisers-hyderabad-logo5821370908368604.png",
+            "type": 100
+          }
+        ],
+        "name": "RegisteredResources",
+        "type": 1
+      }
+    },
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY24SU06",
+            "path": "BaseThemes/CY24SU06.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{\"relationships\":[{\"source\":\"0fd32fa207684ee08262\",\"target\":\"f30f7d30c607bc7473e5\",\"type\":3},{\"source\":\"0fd32fa207684ee08262\",\"target\":\"374bddc19ba01083ead4\",\"type\":3},{\"source\":\"0fd32fa207684ee08262\",\"target\":\"559cdeb10492a2c62170\",\"type\":3},{\"source\":\"0fd32fa207684ee08262\",\"target\":\"a5c67057ea4b55847b20\",\"type\":3},{\"source\":\"0fd32fa207684ee08262\",\"target\":\"53a3a7f138b4cd8cdde7\",\"type\":3},{\"source\":\"0fd32fa207684ee08262\",\"target\":\"02e56864093e1c8ea77d\",\"type\":3},{\"source\":\"0fd32fa207684ee08262\",\"target\":\"5abd4dd00e82079a55d2\",\"type\":3},{\"source\":\"23cfc6a97cc990aae51b\",\"target\":\"f30f7d30c607bc7473e5\",\"type\":3},{\"source\":\"23cfc6a97cc990aae51b\",\"target\":\"559cdeb10492a2c62170\",\"type\":3},{\"source\":\"23cfc6a97cc990aae51b\",\"target\":\"374bddc19ba01083ead4\",\"type\":3},{\"source\":\"23cfc6a97cc990aae51b\",\"target\":\"a5c67057ea4b55847b20\",\"type\":3},{\"source\":\"23cfc6a97cc990aae51b\",\"target\":\"53a3a7f138b4cd8cdde7\",\"type\":3},{\"source\":\"23cfc6a97cc990aae51b\",\"target\":\"02e56864093e1c8ea77d\",\"type\":3},{\"source\":\"23cfc6a97cc990aae51b\",\"target\":\"5abd4dd00e82079a55d2\",\"type\":3},{\"source\":\"23cfc6a97cc990aae51b\",\"target\":\"67cbde2d7a9c4d9e7148\",\"type\":3},{\"source\":\"23cfc6a97cc990aae51b\",\"target\":\"0fd32fa207684ee08262\",\"type\":3},{\"source\":\"23cfc6a97cc990aae51b\",\"target\":\"767666239a8b14a5b24d\",\"type\":3},{\"source\":\"23cfc6a97cc990aae51b\",\"target\":\"7f724b605c813906badc\",\"type\":3},{\"source\":\"23cfc6a97cc990aae51b\",\"target\":\"096adf1cd62770b74841\",\"type\":3},{\"source\":\"0fd32fa207684ee08262\",\"target\":\"23cfc6a97cc990aae51b\",\"type\":3},{\"source\":\"0fd32fa207684ee08262\",\"target\":\"199604bf7282e2a91020\",\"type\":3},{\"source\":\"0fd32fa207684ee08262\",\"target\":\"a4170b50392a80405252\",\"type\":3},{\"source\":\"0fd32fa207684ee08262\",\"target\":\"37703cf814deacdba41b\",\"type\":3},{\"source\":\"0fd32fa207684ee08262\",\"target\":\"ece9e026218078288213\",\"type\":3},{\"source\":\"0fd32fa207684ee08262\",\"target\":\"e567e5804a200d849825\",\"type\":3},{\"source\":\"23cfc6a97cc990aae51b\",\"target\":\"e567e5804a200d849825\",\"type\":3}],\"objects\":{\"background\":[{\"properties\":{\"image\":{\"image\":{\"name\":{\"expr\":{\"Literal\":{\"Value\":\"'IPL Background image.jpg'\"}}},\"url\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"IPL_Background_image4707793414187411.jpg\"}}},\"scaling\":{\"expr\":{\"Literal\":{\"Value\":\"'Normal'\"}}}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"0D\"}}}}}],\"displayArea\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Middle'\"}}}}}]}}",
+      "displayName": "Page 1",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "f4137a4c76a06245717c",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"02e56864093e1c8ea77d\",\"layouts\":[{\"id\":0,\"position\":{\"x\":847.808764940239,\"y\":94.34262948207171,\"z\":14000,\"width\":154.26294820717132,\"height\":95.61752988047809,\"tabOrder\":13000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Sum(ipl_ball_by_ball_2008_2022.batsman_run)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"ipl_ball_by_ball_2008_2022\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"batsman_run\"}},\"Function\":5},\"Name\":\"Sum(ipl_ball_by_ball_2008_2022.batsman_run)\",\"NativeReferenceName\":\"Count of batsman_run\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"batsman_run\"}},\"Function\":5}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'Arial'\"}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"28D\"}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#F0E199'\"}}}}}}}],\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Tournament 6''s'\"}}},\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'''Segoe UI Semibold'', wf_segoe-ui_semibold, helvetica, arial, sans-serif'\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"12D\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":2,\"Percent\":0.6}}}}}}}],\"background\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[{\"name\":\"Filter2be0493c3116bc9b0a09\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"ipl_ball_by_ball_2008_2022\"}},\"Property\":\"batsman_run\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"ipl_ball_by_ball_2008_2022\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"batsman_run\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"6L\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{}},{\"name\":\"Filterb03102e144819ba51b7c\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"ipl_ball_by_ball_2008_2022\"}},\"Property\":\"non_boundary\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"ipl_ball_by_ball_2008_2022\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"non_boundary\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"0L\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{}}]",
+          "height": 95.62,
+          "width": 154.26,
+          "x": 847.81,
+          "y": 94.34,
+          "z": 14000.00
+        },
+        {
+          "config": "{\"name\":\"04a8230230064c070131\",\"layouts\":[{\"id\":0,\"position\":{\"x\":446.2151394422311,\"y\":396.49402390438246,\"z\":37000,\"width\":416.89243027888443,\"height\":290.67729083665336,\"tabOrder\":37000}}],\"singleVisual\":{\"visualType\":\"shape\",\"drillFilterOtherVisuals\":true,\"objects\":{\"shape\":[{\"properties\":{\"tileShape\":{\"expr\":{\"Literal\":{\"Value\":\"'rectangleRounded'\"}}},\"rectangleRoundedCurve\":{\"expr\":{\"Literal\":{\"Value\":\"5L\"}}}}}],\"rotation\":[{\"properties\":{\"shapeAngle\":{\"expr\":{\"Literal\":{\"Value\":\"0L\"}}}}}],\"fill\":[{\"properties\":{\"fillColor\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#414FB1'\"}}}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"70D\"}}}},\"selector\":{\"id\":\"default\"}}],\"outline\":[{\"properties\":{\"lineColor\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#41A4FF'\"}}}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"50D\"}}}},\"selector\":{\"id\":\"default\"}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 290.68,
+          "width": 416.89,
+          "x": 446.22,
+          "y": 396.49,
+          "z": 37000.00
+        },
+        {
+          "config": "{\"name\":\"05053233b7252ec4c01c\",\"layouts\":[{\"id\":0,\"position\":{\"x\":750.9163346613545,\"y\":0,\"z\":51000,\"width\":80.3187250996016,\"height\":90.51792828685258,\"tabOrder\":51000}}],\"singleVisual\":{\"visualType\":\"image\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"imageUrl\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"KKR5869339761720211.png\"}}}}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 90.52,
+          "width": 80.32,
+          "x": 750.92,
+          "y": 0.00,
+          "z": 51000.00
+        },
+        {
+          "config": "{\"name\":\"096adf1cd62770b74841\",\"layouts\":[{\"id\":0,\"position\":{\"x\":26.772908366533862,\"y\":308.52589641434264,\"z\":18000,\"width\":80.3187250996016,\"height\":59.9203187250996,\"tabOrder\":18000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Sum(ipl_ball_by_ball_2008_2022.batsman_run)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"ipl_ball_by_ball_2008_2022\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"batsman_run\"}},\"Function\":0},\"Name\":\"Sum(ipl_ball_by_ball_2008_2022.batsman_run)\",\"NativeReferenceName\":\"Sum of batsman_run\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"batsman_run\"}},\"Function\":0}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"16D\"}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}],\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Total Runs'\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"12D\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}],\"background\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#41A4FF'\"}}}}}}}]}}}",
+          "filters": "[]",
+          "height": 59.92,
+          "width": 80.32,
+          "x": 26.77,
+          "y": 308.53,
+          "z": 18000.00
+        },
+        {
+          "config": "{\"name\":\"0fd32fa207684ee08262\",\"layouts\":[{\"id\":0,\"position\":{\"x\":228.13397129186603,\"y\":251.10047846889955,\"z\":17000,\"width\":194.44976076555025,\"height\":47,\"tabOrder\":17000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"ipl_ball_by_ball_2008_2022.batter\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"ipl_ball_by_ball_2008_2022\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"batter\"},\"Name\":\"ipl_ball_by_ball_2008_2022.batter\",\"NativeReferenceName\":\"batter\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"selection\":[{\"properties\":{\"singleSelect\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"strictSingleSelect\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"general\":[{\"properties\":{\"filter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"ipl_ball_by_ball_2008_2022\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"batter\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'V Kohli'\"}}]]}}}]}},\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"header\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"items\":[{\"properties\":{\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"background\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#41A4FF'\"}}}}}}}]},\"vcObjects\":{\"background\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#41A4FF'\"}}}}}}}],\"visualHeader\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 47.00,
+          "width": 194.45,
+          "x": 228.13,
+          "y": 251.10,
+          "z": 17000.00
+        },
+        {
+          "config": "{\"name\":\"17790714a37800ee4cc4\",\"layouts\":[{\"id\":0,\"position\":{\"x\":322.445219123506,\"y\":0,\"z\":49000,\"width\":80.3187250996016,\"height\":90.51792828685258,\"tabOrder\":49000}}],\"singleVisual\":{\"visualType\":\"image\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"imageUrl\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"Gujarat_Titans_Logo.svg9775428536455613.png\"}}}}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 90.52,
+          "width": 80.32,
+          "x": 322.45,
+          "y": 0.00,
+          "z": 49000.00
+        },
+        {
+          "config": "{\"name\":\"199604bf7282e2a91020\",\"layouts\":[{\"id\":0,\"position\":{\"x\":457.799043062201,\"y\":309.28229665071774,\"z\":25000,\"width\":79.61722488038278,\"height\":59.71291866028709,\"tabOrder\":25000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Sum(ipl_ball_by_ball_2008_2022.iswicket_delivery)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"ipl_ball_by_ball_2008_2022\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"iswicket_delivery\"}},\"Function\":0},\"Name\":\"Sum(ipl_ball_by_ball_2008_2022.iswicket_delivery)\",\"NativeReferenceName\":\"Sum of iswicket_delivery\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"iswicket_delivery\"}},\"Function\":0}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"16D\"}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}],\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Wickets'\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"12D\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}],\"background\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":7,\"Percent\":0.2}}}}}}}]}}}",
+          "filters": "[{\"name\":\"Filter5a2a1183127768209ca5\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"ipl_ball_by_ball_2008_2022\"}},\"Property\":\"dismisal_kind\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"ipl_ball_by_ball_2008_2022\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"dismisal_kind\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'bowled'\"}}],[{\"Literal\":{\"Value\":\"'caught'\"}}],[{\"Literal\":{\"Value\":\"'caught and bowled'\"}}],[{\"Literal\":{\"Value\":\"'lbw'\"}}],[{\"Literal\":{\"Value\":\"'stumped'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{}}]",
+          "height": 59.71,
+          "width": 79.62,
+          "x": 457.80,
+          "y": 309.28,
+          "z": 25000.00
+        },
+        {
+          "config": "{\"name\":\"1c3c882177225e6d2859\",\"layouts\":[{\"id\":0,\"position\":{\"x\":828.6852589641434,\"y\":5.099601593625498,\"z\":54000,\"width\":90.51792828685258,\"height\":80.3187250996016,\"tabOrder\":54000}}],\"singleVisual\":{\"visualType\":\"image\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"imageUrl\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"sunrisers-hyderabad-logo5821370908368604.png\"}}}}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 80.32,
+          "width": 90.52,
+          "x": 828.69,
+          "y": 5.10,
+          "z": 54000.00
+        },
+        {
+          "config": "{\"name\":\"1e7675f59cb3dadce470\",\"layouts\":[{\"id\":0,\"position\":{\"x\":16.842105263157897,\"y\":212.82296650717706,\"z\":12000,\"width\":415,\"height\":165,\"tabOrder\":15000}}],\"singleVisual\":{\"visualType\":\"shape\",\"drillFilterOtherVisuals\":true,\"objects\":{\"shape\":[{\"properties\":{\"tileShape\":{\"expr\":{\"Literal\":{\"Value\":\"'rectangleRounded'\"}}},\"rectangleRoundedCurve\":{\"expr\":{\"Literal\":{\"Value\":\"5L\"}}}}}],\"rotation\":[{\"properties\":{\"shapeAngle\":{\"expr\":{\"Literal\":{\"Value\":\"0L\"}}}}}],\"fill\":[{\"properties\":{\"fillColor\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#414FB1'\"}}}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"70D\"}}}},\"selector\":{\"id\":\"default\"}}],\"outline\":[{\"properties\":{\"lineColor\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#41A4FF'\"}}}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"50D\"}}}},\"selector\":{\"id\":\"default\"}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 165.00,
+          "width": 415.00,
+          "x": 16.84,
+          "y": 212.82,
+          "z": 12000.00
+        },
+        {
+          "config": "{\"name\":\"23cfc6a97cc990aae51b\",\"layouts\":[{\"id\":0,\"position\":{\"x\":653.7799043062201,\"y\":249.56937799043064,\"z\":24000,\"width\":194.44976076555025,\"height\":45.93301435406699,\"tabOrder\":24000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"ipl_ball_by_ball_2008_2022.bowler\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"ipl_ball_by_ball_2008_2022\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"bowler\"},\"Name\":\"ipl_ball_by_ball_2008_2022.bowler\",\"NativeReferenceName\":\"bowler\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"selection\":[{\"properties\":{\"singleSelect\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"strictSingleSelect\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"general\":[{\"properties\":{\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"filter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"ipl_ball_by_ball_2008_2022\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"bowler\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'RD Chahar'\"}}]]}}}]}},\"selfFilter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"ipl_ball_by_ball_2008_2022\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Contains\":{\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"bowler\"}},\"Right\":{\"Literal\":{\"Value\":\"'rd c'\"}}}},\"Annotations\":{\"PowerBI.MParameterBehavior\":1}}]}},\"outlineColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":7,\"Percent\":0.2}}}}}}}],\"header\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"items\":[{\"properties\":{\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"background\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":7,\"Percent\":0.2}}}}}}}]},\"vcObjects\":{\"background\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":7,\"Percent\":0.2}}}}}}}],\"visualHeader\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 45.93,
+          "width": 194.45,
+          "x": 653.78,
+          "y": 249.57,
+          "z": 24000.00
+        },
+        {
+          "config": "{\"name\":\"274845b881206816e155\",\"layouts\":[{\"id\":0,\"position\":{\"x\":777.6892430278884,\"y\":94.34262948207171,\"z\":43000,\"width\":85.41832669322709,\"height\":95.61752988047809,\"tabOrder\":43000}}],\"singleVisual\":{\"visualType\":\"image\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"imageUrl\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"Sixes_image3290725552923397.png\"}}}}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 95.62,
+          "width": 85.42,
+          "x": 777.69,
+          "y": 94.34,
+          "z": 43000.00
+        },
+        {
+          "config": "{\"name\":\"2892c925c987b1600c43\",\"layouts\":[{\"id\":0,\"position\":{\"x\":15.298804780876493,\"y\":396.49402390438246,\"z\":35000,\"width\":416.89243027888443,\"height\":290.67729083665336,\"tabOrder\":35000}}],\"singleVisual\":{\"visualType\":\"shape\",\"drillFilterOtherVisuals\":true,\"objects\":{\"shape\":[{\"properties\":{\"tileShape\":{\"expr\":{\"Literal\":{\"Value\":\"'rectangleRounded'\"}}},\"rectangleRoundedCurve\":{\"expr\":{\"Literal\":{\"Value\":\"5L\"}}}}}],\"rotation\":[{\"properties\":{\"shapeAngle\":{\"expr\":{\"Literal\":{\"Value\":\"0L\"}}}}}],\"fill\":[{\"properties\":{\"fillColor\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#414FB1'\"}}}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"70D\"}}}},\"selector\":{\"id\":\"default\"}}],\"outline\":[{\"properties\":{\"lineColor\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#41A4FF'\"}}}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"50D\"}}}},\"selector\":{\"id\":\"default\"}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 290.68,
+          "width": 416.89,
+          "x": 15.30,
+          "y": 396.49,
+          "z": 35000.00
+        },
+        {
+          "config": "{\"name\":\"28a2727f1d3ca0581c46\",\"layouts\":[{\"id\":0,\"position\":{\"x\":130.0398406374502,\"y\":219.2828685258964,\"z\":30000,\"width\":161.91235059760956,\"height\":38.24701195219123,\"tabOrder\":30000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"IPL Batting Stats\",\"textStyle\":{\"fontWeight\":\"bold\",\"fontFamily\":\"Segoe (Bold)\",\"fontSize\":\"12pt\",\"color\":\"#f5c4af\"}}],\"horizontalTextAlignment\":\"center\"}]}}]},\"vcObjects\":{\"background\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 38.25,
+          "width": 161.91,
+          "x": 130.04,
+          "y": 219.28,
+          "z": 30000.00
+        },
+        {
+          "config": "{\"name\":\"2c3c0982ab7443a04aa5\",\"layouts\":[{\"id\":0,\"position\":{\"x\":432.1912350597609,\"y\":212.90836653386452,\"z\":45000,\"width\":110.91633466135457,\"height\":90.51792828685258,\"tabOrder\":45000}}],\"singleVisual\":{\"visualType\":\"image\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"imageUrl\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"Baller_Bowling26413394512451926.png\"}}}}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 90.52,
+          "width": 110.92,
+          "x": 432.19,
+          "y": 212.91,
+          "z": 45000.00
+        },
+        {
+          "config": "{\"name\":\"3672e643ad4e055d6751\",\"layouts\":[{\"id\":0,\"position\":{\"x\":572.6315789473684,\"y\":218.94736842105266,\"z\":23000,\"width\":162.29665071770336,\"height\":38.27751196172249,\"tabOrder\":23000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"IPL Bowler Stats\",\"textStyle\":{\"fontWeight\":\"bold\",\"fontFamily\":\"Segoe (Bold)\",\"fontSize\":\"12pt\",\"color\":\"#f5c4af\"}}],\"horizontalTextAlignment\":\"center\"}]}}]},\"vcObjects\":{\"background\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 38.28,
+          "width": 162.30,
+          "x": 572.63,
+          "y": 218.95,
+          "z": 23000.00
+        },
+        {
+          "config": "{\"name\":\"374bddc19ba01083ead4\",\"layouts\":[{\"id\":0,\"position\":{\"x\":344.4976076555024,\"y\":94.92822966507178,\"z\":9000,\"width\":154.64114832535887,\"height\":65.83732057416269,\"tabOrder\":9000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Min(ipl_ball_by_ball_2008_2022.batter)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"ipl_ball_by_ball_2008_2022\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"batter\"}},\"Function\":3},\"Name\":\"Min(ipl_ball_by_ball_2008_2022.batter)\",\"NativeReferenceName\":\"First batter\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"labels\":[{\"properties\":{\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'Arial'\"}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"18D\"}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#F0E199'\"}}}}}}}],\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Orange Cap'\"}}},\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'''Segoe UI Semibold'', wf_segoe-ui_semibold, helvetica, arial, sans-serif'\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"12D\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":2,\"Percent\":0.6}}}}}}}],\"background\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[{\"name\":\"Filterad570f9f4a1159b17ac5\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"ipl_ball_by_ball_2008_2022\"}},\"Property\":\"batter\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"subquery\",\"Expression\":{\"Subquery\":{\"Query\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"ipl_ball_by_ball_2008_2022\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"batter\"},\"Name\":\"field\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"batsman_run\"}},\"Function\":0}}}],\"Top\":1}}},\"Type\":2},{\"Name\":\"i\",\"Entity\":\"ipl_ball_by_ball_2008_2022\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"batter\"}}],\"Table\":{\"SourceRef\":{\"Source\":\"subquery\"}}}}}]},\"type\":\"TopN\",\"howCreated\":1}]",
+          "height": 65.84,
+          "width": 154.64,
+          "x": 344.50,
+          "y": 94.93,
+          "z": 9000.00
+        },
+        {
+          "config": "{\"name\":\"37703cf814deacdba41b\",\"layouts\":[{\"id\":0,\"position\":{\"x\":665.0079744816587,\"y\":309.28229665071774,\"z\":27000,\"width\":79.61722488038278,\"height\":59.71291866028709,\"tabOrder\":27000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"ipl_ball_by_ball_2008_2022.Average by Bowler\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"ipl_ball_by_ball_2008_2022\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"Average by Bowler\"},\"Name\":\"ipl_ball_by_ball_2008_2022.Average by Bowler\",\"NativeReferenceName\":\"Average by Bowler\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"Average by Bowler\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"16D\"}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}],\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Average'\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"12D\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}],\"background\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":7,\"Percent\":0.2}}}}}}}]}}}",
+          "filters": "[]",
+          "height": 59.71,
+          "width": 79.62,
+          "x": 665.01,
+          "y": 309.28,
+          "z": 27000.00
+        },
+        {
+          "config": "{\"name\":\"433f5d5424d9d6655200\",\"layouts\":[{\"id\":0,\"position\":{\"x\":880.9561752988047,\"y\":212.90836653386452,\"z\":31000,\"width\":383.7450199203187,\"height\":228.20717131474103,\"tabOrder\":31000}}],\"singleVisual\":{\"visualType\":\"shape\",\"drillFilterOtherVisuals\":true,\"objects\":{\"shape\":[{\"properties\":{\"tileShape\":{\"expr\":{\"Literal\":{\"Value\":\"'rectangleRounded'\"}}},\"rectangleRoundedCurve\":{\"expr\":{\"Literal\":{\"Value\":\"5L\"}}}}}],\"rotation\":[{\"properties\":{\"shapeAngle\":{\"expr\":{\"Literal\":{\"Value\":\"0L\"}}}}}],\"fill\":[{\"properties\":{\"fillColor\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#414FB1'\"}}}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"70D\"}}}},\"selector\":{\"id\":\"default\"}}],\"outline\":[{\"properties\":{\"lineColor\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#41A4FF'\"}}}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"50D\"}}}},\"selector\":{\"id\":\"default\"}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 228.21,
+          "width": 383.75,
+          "x": 880.96,
+          "y": 212.91,
+          "z": 31000.00
+        },
+        {
+          "config": "{\"name\":\"44135d68e6857898c2a8\",\"layouts\":[{\"id\":0,\"position\":{\"x\":267.72908366533864,\"y\":87.96812749003983,\"z\":5000,\"width\":239.6812749003984,\"height\":108.36653386454182,\"tabOrder\":5000}}],\"singleVisual\":{\"visualType\":\"shape\",\"drillFilterOtherVisuals\":true,\"objects\":{\"shape\":[{\"properties\":{\"tileShape\":{\"expr\":{\"Literal\":{\"Value\":\"'rectangleRounded'\"}}},\"rectangleRoundedCurve\":{\"expr\":{\"Literal\":{\"Value\":\"5L\"}}}}}],\"rotation\":[{\"properties\":{\"shapeAngle\":{\"expr\":{\"Literal\":{\"Value\":\"0L\"}}}}}],\"fill\":[{\"properties\":{\"fillColor\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#414FB1'\"}}}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"70D\"}}}},\"selector\":{\"id\":\"default\"}}],\"outline\":[{\"properties\":{\"lineColor\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#41A4FF'\"}}}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"50D\"}}}},\"selector\":{\"id\":\"default\"}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 108.37,
+          "width": 239.68,
+          "x": 267.73,
+          "y": 87.97,
+          "z": 5000.00
+        },
+        {
+          "config": "{\"name\":\"45be18d28be0609e574c\",\"layouts\":[{\"id\":0,\"position\":{\"x\":772.589641434263,\"y\":87.96812749003983,\"z\":7000,\"width\":239.6812749003984,\"height\":108.36653386454182,\"tabOrder\":7000}}],\"singleVisual\":{\"visualType\":\"shape\",\"drillFilterOtherVisuals\":true,\"objects\":{\"shape\":[{\"properties\":{\"tileShape\":{\"expr\":{\"Literal\":{\"Value\":\"'rectangleRounded'\"}}},\"rectangleRoundedCurve\":{\"expr\":{\"Literal\":{\"Value\":\"5L\"}}}}}],\"rotation\":[{\"properties\":{\"shapeAngle\":{\"expr\":{\"Literal\":{\"Value\":\"0L\"}}}}}],\"fill\":[{\"properties\":{\"fillColor\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#414FB1'\"}}}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"70D\"}}}},\"selector\":{\"id\":\"default\"}}],\"outline\":[{\"properties\":{\"lineColor\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#41A4FF'\"}}}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"50D\"}}}},\"selector\":{\"id\":\"default\"}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 108.37,
+          "width": 239.68,
+          "x": 772.59,
+          "y": 87.97,
+          "z": 7000.00
+        },
+        {
+          "config": "{\"name\":\"45e375e0bd1ea7c6882c\",\"layouts\":[{\"id\":0,\"position\":{\"x\":531.6334661354581,\"y\":96.89243027888446,\"z\":40000,\"width\":80.3187250996016,\"height\":90.51792828685258,\"tabOrder\":40000}}],\"singleVisual\":{\"visualType\":\"image\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"imageUrl\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"Purple_Cap10410524134805854.png\"}}}}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 90.52,
+          "width": 80.32,
+          "x": 531.63,
+          "y": 96.89,
+          "z": 40000.00
+        },
+        {
+          "config": "{\"name\":\"53a3a7f138b4cd8cdde7\",\"layouts\":[{\"id\":0,\"position\":{\"x\":595.5980861244019,\"y\":94.92822966507178,\"z\":11000,\"width\":154.64114832535887,\"height\":65.83732057416269,\"tabOrder\":11000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Min(ipl_ball_by_ball_2008_2022.bowler)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"ipl_ball_by_ball_2008_2022\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"bowler\"}},\"Function\":3},\"Name\":\"Min(ipl_ball_by_ball_2008_2022.bowler)\",\"NativeReferenceName\":\"First bowler\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"labels\":[{\"properties\":{\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'Arial'\"}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"18D\"}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#F0E199'\"}}}}}}}],\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Purple Cap'\"}}},\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'''Segoe UI Semibold'', wf_segoe-ui_semibold, helvetica, arial, sans-serif'\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"12D\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":2,\"Percent\":0.6}}}}}}}],\"background\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[{\"name\":\"Filter7c6aa183de8ae05e504d\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"ipl_ball_by_ball_2008_2022\"}},\"Property\":\"bowler\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"subquery\",\"Expression\":{\"Subquery\":{\"Query\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"ipl_ball_by_ball_2008_2022\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"bowler\"},\"Name\":\"field\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"iswicket_delivery\"}},\"Function\":0}}}],\"Top\":1}}},\"Type\":2},{\"Name\":\"i\",\"Entity\":\"ipl_ball_by_ball_2008_2022\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"bowler\"}}],\"Table\":{\"SourceRef\":{\"Source\":\"subquery\"}}}}}]},\"type\":\"TopN\",\"howCreated\":1},{\"name\":\"Filter35b90bff0b5acddc722d\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"ipl_ball_by_ball_2008_2022\"}},\"Property\":\"dismisal_kind\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"ipl_ball_by_ball_2008_2022\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"dismisal_kind\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'bowled'\"}}],[{\"Literal\":{\"Value\":\"'caught'\"}}],[{\"Literal\":{\"Value\":\"'caught and bowled'\"}}],[{\"Literal\":{\"Value\":\"'hit wicket'\"}}],[{\"Literal\":{\"Value\":\"'lbw'\"}}],[{\"Literal\":{\"Value\":\"'stumped'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{}}]",
+          "height": 65.84,
+          "width": 154.64,
+          "x": 595.60,
+          "y": 94.93,
+          "z": 11000.00
+        },
+        {
+          "config": "{\"name\":\"54b544c13e172593d720\",\"layouts\":[{\"id\":0,\"position\":{\"x\":275.3784860557769,\"y\":96.89243027888446,\"z\":41000,\"width\":80.3187250996016,\"height\":90.51792828685258,\"tabOrder\":41000}}],\"singleVisual\":{\"visualType\":\"image\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"imageUrl\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"Orange_Cap1859794463355362.png\"}}}}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 90.52,
+          "width": 80.32,
+          "x": 275.38,
+          "y": 96.89,
+          "z": 41000.00
+        },
+        {
+          "config": "{\"name\":\"559cdeb10492a2c62170\",\"layouts\":[{\"id\":0,\"position\":{\"x\":333.77990430622015,\"y\":150.04784688995215,\"z\":10000,\"width\":165.35885167464116,\"height\":41.33971291866029,\"tabOrder\":10000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"ipl_ball_by_ball_2008_2022.Batter Runs\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"ipl_ball_by_ball_2008_2022\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"Batter Runs\"},\"Name\":\"ipl_ball_by_ball_2008_2022.Batter Runs\",\"NativeReferenceName\":\"Batter Runs\"}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'wf_standard-font, helvetica, arial, sans-serif'\"}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"17D\"}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}],\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Orange Cap'\"}}},\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'''Segoe UI Semibold'', wf_segoe-ui_semibold, helvetica, arial, sans-serif'\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"12D\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":2,\"Percent\":0.6}}}}}}}],\"background\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[{\"name\":\"Filterad570f9f4a1159b17ac5\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"ipl_ball_by_ball_2008_2022\"}},\"Property\":\"batter\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"subquery\",\"Expression\":{\"Subquery\":{\"Query\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"ipl_ball_by_ball_2008_2022\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"batter\"},\"Name\":\"field\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"batsman_run\"}},\"Function\":0}}}],\"Top\":1}}},\"Type\":2},{\"Name\":\"i\",\"Entity\":\"ipl_ball_by_ball_2008_2022\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"batter\"}}],\"Table\":{\"SourceRef\":{\"Source\":\"subquery\"}}}}}]},\"type\":\"TopN\",\"howCreated\":1}]",
+          "height": 41.34,
+          "width": 165.36,
+          "x": 333.78,
+          "y": 150.05,
+          "z": 10000.00
+        },
+        {
+          "config": "{\"name\":\"5abd4dd00e82079a55d2\",\"layouts\":[{\"id\":0,\"position\":{\"x\":1102.7888446215138,\"y\":94.34262948207171,\"z\":15000,\"width\":154.26294820717132,\"height\":95.61752988047809,\"tabOrder\":14000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Sum(ipl_ball_by_ball_2008_2022.batsman_run)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"ipl_ball_by_ball_2008_2022\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"batsman_run\"}},\"Function\":5},\"Name\":\"Sum(ipl_ball_by_ball_2008_2022.batsman_run)\",\"NativeReferenceName\":\"Count of batsman_run\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"batsman_run\"}},\"Function\":5}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'Arial'\"}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"28D\"}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#F0E199'\"}}}}}}}],\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Tournament 4''s'\"}}},\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'''Segoe UI Semibold'', wf_segoe-ui_semibold, helvetica, arial, sans-serif'\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"12D\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":2,\"Percent\":0.6}}}}}}}],\"background\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[{\"name\":\"Filterc59536e8d2137c184323\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"ipl_ball_by_ball_2008_2022\"}},\"Property\":\"batsman_run\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"ipl_ball_by_ball_2008_2022\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"batsman_run\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"4L\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{}},{\"name\":\"Filterc57f95268d2a2978764b\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"ipl_ball_by_ball_2008_2022\"}},\"Property\":\"non_boundary\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"ipl_ball_by_ball_2008_2022\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"non_boundary\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"0L\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{}}]",
+          "height": 95.62,
+          "width": 154.26,
+          "x": 1102.79,
+          "y": 94.34,
+          "z": 15000.00
+        },
+        {
+          "config": "{\"name\":\"5e68a73c239170152e83\",\"layouts\":[{\"id\":0,\"position\":{\"x\":506.1354581673306,\"y\":14.02390438247012,\"z\":1000,\"width\":266.45418326693226,\"height\":63.74501992031872,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"IPL ANALYSIS\",\"textStyle\":{\"fontFamily\":\"Segoe (Bold)\",\"fontSize\":\"28pt\",\"color\":\"#ffffff\"}}]}]}}]},\"vcObjects\":{\"background\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 63.75,
+          "width": 266.45,
+          "x": 506.14,
+          "y": 14.02,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"61ef819bc07530d30453\",\"layouts\":[{\"id\":0,\"position\":{\"x\":225.44820717131475,\"y\":5.099601593625498,\"z\":48000,\"width\":80.3187250996016,\"height\":90.51792828685258,\"tabOrder\":48000}}],\"singleVisual\":{\"visualType\":\"image\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"imageUrl\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"Lucknow_Super_Giants_logo7641081929740248.png\"}}}}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 90.52,
+          "width": 80.32,
+          "x": 225.45,
+          "y": 5.10,
+          "z": 48000.00
+        },
+        {
+          "config": "{\"name\":\"67cbde2d7a9c4d9e7148\",\"layouts\":[{\"id\":0,\"position\":{\"x\":339.90430622009575,\"y\":309.28229665071774,\"z\":21000,\"width\":82.67942583732058,\"height\":59.71291866028709,\"tabOrder\":21000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"ipl_ball_by_ball_2008_2022.Strike Rate for Batsman\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"ipl_ball_by_ball_2008_2022\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"Strike Rate for Batsman\"},\"Name\":\"ipl_ball_by_ball_2008_2022.Strike Rate for Batsman\",\"NativeReferenceName\":\"Strike Rate for Batsman\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"Strike Rate for Batsman\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"16D\"}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}],\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Strike Rate'\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"12D\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}],\"background\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#41A4FF'\"}}}}}}}]}}}",
+          "filters": "[]",
+          "height": 59.71,
+          "width": 82.68,
+          "x": 339.90,
+          "y": 309.28,
+          "z": 21000.00
+        },
+        {
+          "config": "{\"name\":\"6c059d08483b48d94b55\",\"layouts\":[{\"id\":0,\"position\":{\"x\":921.7529880478087,\"y\":0,\"z\":52000,\"width\":80.3187250996016,\"height\":90.51792828685258,\"tabOrder\":52000}}],\"singleVisual\":{\"visualType\":\"image\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"imageUrl\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"Mumbai-Indians-Logo-PNG5656815957004269.png\"}}}}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 90.52,
+          "width": 80.32,
+          "x": 921.75,
+          "y": 0.00,
+          "z": 52000.00
+        },
+        {
+          "config": "{\"name\":\"7608ef41c04200c9063e\",\"layouts\":[{\"id\":0,\"position\":{\"x\":90.33492822966508,\"y\":257.22488038277515,\"z\":22000,\"width\":134.73684210526318,\"height\":38.27751196172249,\"tabOrder\":22000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"Select Batsman\",\"textStyle\":{\"fontWeight\":\"bold\",\"fontFamily\":\"Segoe (Bold)\",\"fontSize\":\"12pt\",\"color\":\"#41a4ff\"}}],\"horizontalTextAlignment\":\"center\"}]}}]},\"vcObjects\":{\"background\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 38.28,
+          "width": 134.74,
+          "x": 90.33,
+          "y": 257.22,
+          "z": 22000.00
+        },
+        {
+          "config": "{\"name\":\"767666239a8b14a5b24d\",\"layouts\":[{\"id\":0,\"position\":{\"x\":235.63341530210897,\"y\":309.28229665071774,\"z\":20000,\"width\":80,\"height\":59.71291866028709,\"tabOrder\":20000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Sum(ipl_ball_by_ball_2008_2022.batsman_run)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"ipl_ball_by_ball_2008_2022\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"batsman_run\"}},\"Function\":5},\"Name\":\"Sum(ipl_ball_by_ball_2008_2022.batsman_run)\",\"NativeReferenceName\":\"Count of batsman_run\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"batsman_run\"}},\"Function\":5}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"16D\"}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}],\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'4''s'\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"12D\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}],\"background\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#41A4FF'\"}}}}}}}]}}}",
+          "filters": "[{\"name\":\"Filtere5fe754ca745eae1ccb7\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"ipl_ball_by_ball_2008_2022\"}},\"Property\":\"batsman_run\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"ipl_ball_by_ball_2008_2022\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"batsman_run\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"4L\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{}},{\"name\":\"Filter3970f34d001aca285c30\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"ipl_ball_by_ball_2008_2022\"}},\"Property\":\"non_boundary\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"ipl_ball_by_ball_2008_2022\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"non_boundary\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"0L\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{}}]",
+          "height": 59.71,
+          "width": 80.00,
+          "x": 235.63,
+          "y": 309.28,
+          "z": 20000.00
+        },
+        {
+          "config": "{\"name\":\"7b2588a46180941e082a\",\"layouts\":[{\"id\":0,\"position\":{\"x\":886.0557768924302,\"y\":467.8884462151394,\"z\":34000,\"width\":374.82071713147405,\"height\":211.63346613545815,\"tabOrder\":34000}}],\"singleVisual\":{\"visualType\":\"donutChart\",\"projections\":{\"Y\":[{\"queryRef\":\"CountNonNull(ipl_matches_2008_2022.id)\"}],\"Category\":[{\"queryRef\":\"ipl_matches_2008_2022.won_by\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"ipl_matches_2008_2022\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"id\"}},\"Function\":5},\"Name\":\"CountNonNull(ipl_matches_2008_2022.id)\",\"NativeReferenceName\":\"Count of id\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"won_by\"},\"Name\":\"ipl_matches_2008_2022.won_by\",\"NativeReferenceName\":\"Won by\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"id\"}},\"Function\":5}}}]},\"columnProperties\":{\"ipl_matches_2008_2022.won_by\":{\"displayName\":\"Won by\"}},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#FFFFFF'\"}}}}}},\"selector\":{\"data\":[{\"dataViewWildcard\":{\"matchingOption\":1}}]}},{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"10D\"}}}}}],\"legend\":[{\"properties\":{\"position\":{\"expr\":{\"Literal\":{\"Value\":\"'TopCenter'\"}}},\"labelColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":-0.1}}}}}}}],\"dataPoint\":[{\"properties\":{\"fill\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":8,\"Percent\":0.4}}}}}},\"selector\":{\"data\":[{\"scopeId\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"ipl_matches_2008_2022\"}},\"Property\":\"toss_decision\"}},\"Right\":{\"Literal\":{\"Value\":\"'field'\"}}}}}]}},{\"properties\":{\"fill\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":4,\"Percent\":0.4}}}}}},\"selector\":{\"data\":[{\"scopeId\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"ipl_matches_2008_2022\"}},\"Property\":\"toss_decision\"}},\"Right\":{\"Literal\":{\"Value\":\"'bat'\"}}}}}]}}]},\"vcObjects\":{\"background\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Matches Won by Result Type'\"}}},\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'''Segoe UI Semibold'', wf_segoe-ui_semibold, helvetica, arial, sans-serif'\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"12D\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":4,\"Percent\":0.6}}}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 211.63,
+          "width": 374.82,
+          "x": 886.06,
+          "y": 467.89,
+          "z": 34000.00
+        },
+        {
+          "config": "{\"name\":\"7f724b605c813906badc\",\"layouts\":[{\"id\":0,\"position\":{\"x\":131.36252438412222,\"y\":307.7511961722488,\"z\":19000,\"width\":80,\"height\":59.71291866028709,\"tabOrder\":19000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Sum(ipl_ball_by_ball_2008_2022.batsman_run)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"ipl_ball_by_ball_2008_2022\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"batsman_run\"}},\"Function\":5},\"Name\":\"Sum(ipl_ball_by_ball_2008_2022.batsman_run)\",\"NativeReferenceName\":\"Count of batsman_run\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"batsman_run\"}},\"Function\":5}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"16D\"}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}],\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'6''s'\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"12D\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}],\"background\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#41A4FF'\"}}}}}}}]}}}",
+          "filters": "[{\"name\":\"Filtere5fe754ca745eae1ccb7\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"ipl_ball_by_ball_2008_2022\"}},\"Property\":\"batsman_run\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"ipl_ball_by_ball_2008_2022\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"batsman_run\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"6L\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{}},{\"name\":\"Filter3970f34d001aca285c30\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"ipl_ball_by_ball_2008_2022\"}},\"Property\":\"non_boundary\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"ipl_ball_by_ball_2008_2022\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"non_boundary\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"0L\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{}}]",
+          "height": 59.71,
+          "width": 80.00,
+          "x": 131.36,
+          "y": 307.75,
+          "z": 19000.00
+        },
+        {
+          "config": "{\"name\":\"83d728bf4b08e348a723\",\"layouts\":[{\"id\":0,\"position\":{\"x\":10.199203187250996,\"y\":212.90836653386452,\"z\":44000,\"width\":109.6414342629482,\"height\":90.51792828685258,\"tabOrder\":44000}}],\"singleVisual\":{\"visualType\":\"image\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"imageUrl\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"Batter796881740253004.png\"}}}}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 90.52,
+          "width": 109.64,
+          "x": 10.20,
+          "y": 212.91,
+          "z": 44000.00
+        },
+        {
+          "config": "{\"name\":\"87e564037e9003e936a0\",\"layouts\":[{\"id\":0,\"position\":{\"x\":123.7699203187251,\"y\":14.02390438247012,\"z\":47000,\"width\":85,\"height\":60,\"tabOrder\":47000}}],\"singleVisual\":{\"visualType\":\"image\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"imageUrl\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"DC9211451603158503.png\"}}}}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 60.00,
+          "width": 85.00,
+          "x": 123.77,
+          "y": 14.02,
+          "z": 47000.00
+        },
+        {
+          "config": "{\"name\":\"89da1a801ca76210c48b\",\"layouts\":[{\"id\":0,\"position\":{\"x\":453.8645418326693,\"y\":402.8685258964143,\"z\":38000,\"width\":401.59362549800795,\"height\":276.65338645418325,\"tabOrder\":38000}}],\"singleVisual\":{\"visualType\":\"barChart\",\"projections\":{\"Category\":[{\"queryRef\":\"ipl_matches_2008_2022.winning_team\",\"active\":true}],\"Y\":[{\"queryRef\":\"CountNonNull(ipl_matches_2008_2022.winning_team)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"ipl_matches_2008_2022\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"winning_team\"},\"Name\":\"ipl_matches_2008_2022.winning_team\",\"NativeReferenceName\":\"winning_team\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"winning_team\"}},\"Function\":5},\"Name\":\"CountNonNull(ipl_matches_2008_2022.winning_team)\",\"NativeReferenceName\":\"Count of winning_team\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"winning_team\"}},\"Function\":5}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"valueAxis\":[{\"properties\":{\"showAxisTitle\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"legend\":[{\"properties\":{\"labelColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}],\"labels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}],\"categoryAxis\":[{\"properties\":{\"labelColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}},\"showAxisTitle\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"dataPoint\":[{\"properties\":{\"fill\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":6,\"Percent\":-0.25}}}}}},\"selector\":{\"data\":[{\"scopeId\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"ipl_matches_2008_2022\"}},\"Property\":\"won_by\"}},\"Right\":{\"Literal\":{\"Value\":\"'Runs'\"}}}}}]}},{\"properties\":{\"fill\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":8,\"Percent\":0}}}}}},\"selector\":{\"data\":[{\"scopeId\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"ipl_matches_2008_2022\"}},\"Property\":\"won_by\"}},\"Right\":{\"Literal\":{\"Value\":\"'Wickets'\"}}}}}]}}]},\"vcObjects\":{\"background\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Total Wins by Team for a Season'\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"12D\"}}},\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'''Segoe UI Semibold'', wf_segoe-ui_semibold, helvetica, arial, sans-serif'\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":4,\"Percent\":0.6}}}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 276.65,
+          "width": 401.59,
+          "x": 453.86,
+          "y": 402.87,
+          "z": 38000.00
+        },
+        {
+          "config": "{\"name\":\"94e00e9560b0c8ac44e0\",\"layouts\":[{\"id\":0,\"position\":{\"x\":24.223107569721115,\"y\":402.8685258964143,\"z\":36000,\"width\":401.59362549800795,\"height\":276.65338645418325,\"tabOrder\":36000}}],\"singleVisual\":{\"visualType\":\"barChart\",\"projections\":{\"Category\":[{\"queryRef\":\"ipl_matches_2008_2022.venue\",\"active\":true}],\"Y\":[{\"queryRef\":\"CountNonNull(ipl_matches_2008_2022.id)\"}],\"Series\":[{\"queryRef\":\"ipl_matches_2008_2022.won_by\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"ipl_matches_2008_2022\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"venue\"},\"Name\":\"ipl_matches_2008_2022.venue\",\"NativeReferenceName\":\"venue\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"id\"}},\"Function\":5},\"Name\":\"CountNonNull(ipl_matches_2008_2022.id)\",\"NativeReferenceName\":\"Count of id\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"won_by\"},\"Name\":\"ipl_matches_2008_2022.won_by\",\"NativeReferenceName\":\"Won by\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"id\"}},\"Function\":5}}}]},\"columnProperties\":{\"ipl_matches_2008_2022.won_by\":{\"displayName\":\"Won by\"}},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"valueAxis\":[{\"properties\":{\"showAxisTitle\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"legend\":[{\"properties\":{\"labelColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}],\"labels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"categoryAxis\":[{\"properties\":{\"labelColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}},\"showAxisTitle\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"dataPoint\":[{\"properties\":{\"fill\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":6,\"Percent\":0.2}}}}}},\"selector\":{\"data\":[{\"scopeId\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"ipl_matches_2008_2022\"}},\"Property\":\"won_by\"}},\"Right\":{\"Literal\":{\"Value\":\"'Runs'\"}}}}}]}},{\"properties\":{\"fill\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":8,\"Percent\":0}}}}}},\"selector\":{\"data\":[{\"scopeId\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"ipl_matches_2008_2022\"}},\"Property\":\"won_by\"}},\"Right\":{\"Literal\":{\"Value\":\"'Wickets'\"}}}}}]}}]},\"vcObjects\":{\"background\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Matches Won by Venue'\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"12D\"}}},\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'''Segoe UI Semibold'', wf_segoe-ui_semibold, helvetica, arial, sans-serif'\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":4,\"Percent\":0.6}}}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 276.65,
+          "width": 401.59,
+          "x": 24.22,
+          "y": 402.87,
+          "z": 36000.00
+        },
+        {
+          "config": "{\"name\":\"a4170b50392a80405252\",\"layouts\":[{\"id\":0,\"position\":{\"x\":561.4035087719299,\"y\":309.28229665071774,\"z\":26000,\"width\":79.61722488038278,\"height\":59.71291866028709,\"tabOrder\":26000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"ipl_ball_by_ball_2008_2022.Economy\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"ipl_ball_by_ball_2008_2022\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"Economy\"},\"Name\":\"ipl_ball_by_ball_2008_2022.Economy\",\"NativeReferenceName\":\"Economy\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"Economy\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"16D\"}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}],\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Economy'\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"12D\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}],\"background\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":7,\"Percent\":0.2}}}}}}}]}}}",
+          "filters": "[]",
+          "height": 59.71,
+          "width": 79.62,
+          "x": 561.40,
+          "y": 309.28,
+          "z": 26000.00
+        },
+        {
+          "config": "{\"name\":\"a5c67057ea4b55847b20\",\"layouts\":[{\"id\":0,\"position\":{\"x\":585.1792828685259,\"y\":150.43824701195217,\"z\":13000,\"width\":164.4621513944223,\"height\":40.79681274900398,\"tabOrder\":12000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"ipl_ball_by_ball_2008_2022.Baller Wickets\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"ipl_ball_by_ball_2008_2022\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"Baller Wickets\"},\"Name\":\"ipl_ball_by_ball_2008_2022.Baller Wickets\",\"NativeReferenceName\":\"Baller Wickets\"}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'wf_standard-font, helvetica, arial, sans-serif'\"}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"17D\"}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}],\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Purple Cap'\"}}},\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'''Segoe UI Semibold'', wf_segoe-ui_semibold, helvetica, arial, sans-serif'\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"12D\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":2,\"Percent\":0.6}}}}}}}],\"background\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[{\"name\":\"Filter7c6aa183de8ae05e504d\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"ipl_ball_by_ball_2008_2022\"}},\"Property\":\"bowler\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"subquery\",\"Expression\":{\"Subquery\":{\"Query\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"ipl_ball_by_ball_2008_2022\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"bowler\"},\"Name\":\"field\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"iswicket_delivery\"}},\"Function\":0}}}],\"Top\":1}}},\"Type\":2},{\"Name\":\"i\",\"Entity\":\"ipl_ball_by_ball_2008_2022\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"bowler\"}}],\"Table\":{\"SourceRef\":{\"Source\":\"subquery\"}}}}}]},\"type\":\"TopN\",\"howCreated\":1},{\"name\":\"Filter35b90bff0b5acddc722d\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"ipl_ball_by_ball_2008_2022\"}},\"Property\":\"dismisal_kind\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"ipl_ball_by_ball_2008_2022\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"dismisal_kind\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'bowled'\"}}],[{\"Literal\":{\"Value\":\"'caught'\"}}],[{\"Literal\":{\"Value\":\"'caught and bowled'\"}}],[{\"Literal\":{\"Value\":\"'hit wicket'\"}}],[{\"Literal\":{\"Value\":\"'lbw'\"}}],[{\"Literal\":{\"Value\":\"'stumped'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{}}]",
+          "height": 40.80,
+          "width": 164.46,
+          "x": 585.18,
+          "y": 150.44,
+          "z": 13000.00
+        },
+        {
+          "config": "{\"name\":\"aa3f70b5b31c85392a72\",\"layouts\":[{\"id\":0,\"position\":{\"x\":1031.394422310757,\"y\":94.34262948207171,\"z\":42000,\"width\":85.41832669322709,\"height\":95.61752988047809,\"tabOrder\":42000}}],\"singleVisual\":{\"visualType\":\"image\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"imageUrl\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"Four_Image2604752044121794.png\"}}}}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 95.62,
+          "width": 85.42,
+          "x": 1031.39,
+          "y": 94.34,
+          "z": 42000.00
+        },
+        {
+          "config": "{\"name\":\"ae33accf2e1530440443\",\"layouts\":[{\"id\":0,\"position\":{\"x\":446.2151394422311,\"y\":212.90836653386452,\"z\":16000,\"width\":415.61752988047806,\"height\":164.4621513944223,\"tabOrder\":16000}}],\"singleVisual\":{\"visualType\":\"shape\",\"drillFilterOtherVisuals\":true,\"objects\":{\"shape\":[{\"properties\":{\"tileShape\":{\"expr\":{\"Literal\":{\"Value\":\"'rectangleRounded'\"}}},\"rectangleRoundedCurve\":{\"expr\":{\"Literal\":{\"Value\":\"5L\"}}}}}],\"rotation\":[{\"properties\":{\"shapeAngle\":{\"expr\":{\"Literal\":{\"Value\":\"0L\"}}}}}],\"fill\":[{\"properties\":{\"fillColor\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#414FB1'\"}}}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"70D\"}}}},\"selector\":{\"id\":\"default\"}}],\"outline\":[{\"properties\":{\"lineColor\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#41A4FF'\"}}}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"50D\"}}}},\"selector\":{\"id\":\"default\"}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 164.46,
+          "width": 415.62,
+          "x": 446.22,
+          "y": 212.91,
+          "z": 16000.00
+        },
+        {
+          "config": "{\"name\":\"b091179b58ba702d0e1a\",\"layouts\":[{\"id\":0,\"position\":{\"x\":1082.3904382470118,\"y\":12.749003984063744,\"z\":4000,\"width\":174.6613545816733,\"height\":59.9203187250996,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Calender Table.Year\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"c\",\"Entity\":\"Calender Table\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Year\"},\"Name\":\"Calender Table.Year\",\"NativeReferenceName\":\"Year\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"orientation\":{\"expr\":{\"Literal\":{\"Value\":\"0D\"}}},\"filter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"c\",\"Entity\":\"Calender Table\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Year\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"2022L\"}}]]}}}]}}}}],\"header\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Select Season'\"}}},\"textSize\":{\"expr\":{\"Literal\":{\"Value\":\"10D\"}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}},\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'''Segoe UI Semibold'', wf_segoe-ui_semibold, helvetica, arial, sans-serif'\"}}}}}],\"selection\":[{\"properties\":{\"selectAllCheckboxEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"items\":[{\"properties\":{\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}]},\"vcObjects\":{\"background\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 59.92,
+          "width": 174.66,
+          "x": 1082.39,
+          "y": 12.75,
+          "z": 4000.00
+        },
+        {
+          "config": "{\"name\":\"b782387cac378e2b0277\",\"layouts\":[{\"id\":0,\"position\":{\"x\":10.199203187250996,\"y\":82.86852589641434,\"z\":39000,\"width\":121.11553784860557,\"height\":118.56573705179282,\"tabOrder\":39000}}],\"singleVisual\":{\"visualType\":\"image\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"imageUrl\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"Trophy6157858291115472.png\"}}}}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 118.57,
+          "width": 121.12,
+          "x": 10.20,
+          "y": 82.87,
+          "z": 39000.00
+        },
+        {
+          "config": "{\"name\":\"b7ddb2c08990c5e4b083\",\"layouts\":[{\"id\":0,\"position\":{\"x\":517.5119617224881,\"y\":257.22488038277515,\"z\":29000,\"width\":134.73684210526318,\"height\":38.27751196172249,\"tabOrder\":29000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"Select Bowler\",\"textStyle\":{\"fontWeight\":\"bold\",\"fontFamily\":\"Segoe (Bold)\",\"fontSize\":\"12pt\",\"color\":\"#41a4ff\"}}],\"horizontalTextAlignment\":\"center\"}]}}]},\"vcObjects\":{\"background\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 38.28,
+          "width": 134.74,
+          "x": 517.51,
+          "y": 257.22,
+          "z": 29000.00
+        },
+        {
+          "config": "{\"name\":\"ba03a8f10a3391105963\",\"layouts\":[{\"id\":0,\"position\":{\"x\":26.772908366533862,\"y\":0,\"z\":46000,\"width\":80.3187250996016,\"height\":90.51792828685258,\"tabOrder\":46000}}],\"singleVisual\":{\"visualType\":\"image\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"imageUrl\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"CSK7068956136451054.png\"}}}}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 90.52,
+          "width": 80.32,
+          "x": 26.77,
+          "y": 0.00,
+          "z": 46000.00
+        },
+        {
+          "config": "{\"name\":\"c794d79da889a1e24c9a\",\"layouts\":[{\"id\":0,\"position\":{\"x\":15.298804780876493,\"y\":87.96812749003983,\"z\":2000,\"width\":239.6812749003984,\"height\":108.36653386454182,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"shape\",\"drillFilterOtherVisuals\":true,\"objects\":{\"shape\":[{\"properties\":{\"tileShape\":{\"expr\":{\"Literal\":{\"Value\":\"'rectangleRounded'\"}}},\"rectangleRoundedCurve\":{\"expr\":{\"Literal\":{\"Value\":\"5L\"}}}}}],\"rotation\":[{\"properties\":{\"shapeAngle\":{\"expr\":{\"Literal\":{\"Value\":\"0L\"}}}}}],\"fill\":[{\"properties\":{\"fillColor\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#414FB1'\"}}}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"70D\"}}}},\"selector\":{\"id\":\"default\"}}],\"outline\":[{\"properties\":{\"lineColor\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#41A4FF'\"}}}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"50D\"}}}},\"selector\":{\"id\":\"default\"}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 108.37,
+          "width": 239.68,
+          "x": 15.30,
+          "y": 87.97,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"cfb8b55b2e5707196c42\",\"layouts\":[{\"id\":0,\"position\":{\"x\":15.298804780876493,\"y\":14.02390438247012,\"z\":0,\"width\":1249.402390438247,\"height\":59.9203187250996,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"shape\",\"drillFilterOtherVisuals\":true,\"objects\":{\"shape\":[{\"properties\":{\"tileShape\":{\"expr\":{\"Literal\":{\"Value\":\"'rectangleRounded'\"}}},\"rectangleRoundedCurve\":{\"expr\":{\"Literal\":{\"Value\":\"5L\"}}}}}],\"rotation\":[{\"properties\":{\"shapeAngle\":{\"expr\":{\"Literal\":{\"Value\":\"0L\"}}}}}],\"fill\":[{\"properties\":{\"fillColor\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#AD5129'\"}}}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"25D\"}}}},\"selector\":{\"id\":\"default\"}}],\"outline\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 59.92,
+          "width": 1249.40,
+          "x": 15.30,
+          "y": 14.02,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"d01a44291d2ee3c7b00a\",\"layouts\":[{\"id\":0,\"position\":{\"x\":1025.019920318725,\"y\":87.96812749003983,\"z\":8000,\"width\":239.6812749003984,\"height\":108.36653386454182,\"tabOrder\":8000}}],\"singleVisual\":{\"visualType\":\"shape\",\"drillFilterOtherVisuals\":true,\"objects\":{\"shape\":[{\"properties\":{\"tileShape\":{\"expr\":{\"Literal\":{\"Value\":\"'rectangleRounded'\"}}},\"rectangleRoundedCurve\":{\"expr\":{\"Literal\":{\"Value\":\"5L\"}}}}}],\"rotation\":[{\"properties\":{\"shapeAngle\":{\"expr\":{\"Literal\":{\"Value\":\"0L\"}}}}}],\"fill\":[{\"properties\":{\"fillColor\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#414FB1'\"}}}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"70D\"}}}},\"selector\":{\"id\":\"default\"}}],\"outline\":[{\"properties\":{\"lineColor\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#41A4FF'\"}}}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"50D\"}}}},\"selector\":{\"id\":\"default\"}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 108.37,
+          "width": 239.68,
+          "x": 1025.02,
+          "y": 87.97,
+          "z": 8000.00
+        },
+        {
+          "config": "{\"name\":\"e4edf0e36098c5abac28\",\"layouts\":[{\"id\":0,\"position\":{\"x\":1002.0717131474103,\"y\":12.749003984063744,\"z\":53000,\"width\":85.41832669322709,\"height\":59.9203187250996,\"tabOrder\":53000}}],\"singleVisual\":{\"visualType\":\"image\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"imageUrl\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"RCB3413085457383582.png\"}}}}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 59.92,
+          "width": 85.42,
+          "x": 1002.07,
+          "y": 12.75,
+          "z": 53000.00
+        },
+        {
+          "config": "{\"name\":\"e567e5804a200d849825\",\"layouts\":[{\"id\":0,\"position\":{\"x\":886.0557768924302,\"y\":219.2828685258964,\"z\":33000,\"width\":374.82071713147405,\"height\":211.63346613545815,\"tabOrder\":32000}}],\"singleVisual\":{\"visualType\":\"donutChart\",\"projections\":{\"Y\":[{\"queryRef\":\"ipl_matches_2008_2022.Matches won on toss decision\"}],\"Category\":[{\"queryRef\":\"ipl_matches_2008_2022.toss_decision\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"ipl_matches_2008_2022\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"Matches won on toss decision\"},\"Name\":\"ipl_matches_2008_2022.Matches won on toss decision\",\"NativeReferenceName\":\"Matches won on toss decision\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"toss_decision\"},\"Name\":\"ipl_matches_2008_2022.toss_decision\",\"NativeReferenceName\":\"toss decision\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"Matches won on toss decision\"}}}]},\"columnProperties\":{\"ipl_matches_2008_2022.toss_decision\":{\"displayName\":\"toss decision\"}},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#FFFFFF'\"}}}}}},\"selector\":{\"data\":[{\"dataViewWildcard\":{\"matchingOption\":1}}]}},{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"10D\"}}}}}],\"legend\":[{\"properties\":{\"position\":{\"expr\":{\"Literal\":{\"Value\":\"'TopCenter'\"}}},\"labelColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":-0.1}}}}}}}],\"dataPoint\":[{\"properties\":{\"fill\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":8,\"Percent\":0}}}}}},\"selector\":{\"data\":[{\"scopeId\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"ipl_matches_2008_2022\"}},\"Property\":\"toss_decision\"}},\"Right\":{\"Literal\":{\"Value\":\"'field'\"}}}}}]}},{\"properties\":{\"fill\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":4,\"Percent\":0}}}}}},\"selector\":{\"data\":[{\"scopeId\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"ipl_matches_2008_2022\"}},\"Property\":\"toss_decision\"}},\"Right\":{\"Literal\":{\"Value\":\"'bat'\"}}}}}]}}]},\"vcObjects\":{\"background\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Matches Won Based Toss Decision'\"}}},\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'''Segoe UI Semibold'', wf_segoe-ui_semibold, helvetica, arial, sans-serif'\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"12D\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":4,\"Percent\":0.6}}}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 211.63,
+          "width": 374.82,
+          "x": 886.06,
+          "y": 219.28,
+          "z": 33000.00
+        },
+        {
+          "config": "{\"name\":\"ece9e026218078288213\",\"layouts\":[{\"id\":0,\"position\":{\"x\":768.6124401913876,\"y\":307.7511961722488,\"z\":28000,\"width\":84,\"height\":59.71291866028709,\"tabOrder\":28000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"ipl_ball_by_ball_2008_2022.Bowling SR\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"ipl_ball_by_ball_2008_2022\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"Bowling SR\"},\"Name\":\"ipl_ball_by_ball_2008_2022.Bowling SR\",\"NativeReferenceName\":\"Bowling SR\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"Bowling SR\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"16D\"}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}],\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Bowling SR'\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"12D\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}],\"background\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":7,\"Percent\":0.2}}}}}}}]}}}",
+          "filters": "[]",
+          "height": 59.71,
+          "width": 84.00,
+          "x": 768.61,
+          "y": 307.75,
+          "z": 28000.00
+        },
+        {
+          "config": "{\"name\":\"efeb2ad03c9534de1d9b\",\"layouts\":[{\"id\":0,\"position\":{\"x\":880.9561752988047,\"y\":458.9641434262948,\"z\":32000,\"width\":383.7450199203187,\"height\":228.20717131474103,\"tabOrder\":33000}}],\"singleVisual\":{\"visualType\":\"shape\",\"drillFilterOtherVisuals\":true,\"objects\":{\"shape\":[{\"properties\":{\"tileShape\":{\"expr\":{\"Literal\":{\"Value\":\"'rectangleRounded'\"}}},\"rectangleRoundedCurve\":{\"expr\":{\"Literal\":{\"Value\":\"5L\"}}}}}],\"rotation\":[{\"properties\":{\"shapeAngle\":{\"expr\":{\"Literal\":{\"Value\":\"0L\"}}}}}],\"fill\":[{\"properties\":{\"fillColor\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#414FB1'\"}}}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"70D\"}}}},\"selector\":{\"id\":\"default\"}}],\"outline\":[{\"properties\":{\"lineColor\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#41A4FF'\"}}}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"50D\"}}}},\"selector\":{\"id\":\"default\"}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 228.21,
+          "width": 383.75,
+          "x": 880.96,
+          "y": 458.96,
+          "z": 32000.00
+        },
+        {
+          "config": "{\"name\":\"f30f7d30c607bc7473e5\",\"layouts\":[{\"id\":0,\"position\":{\"x\":93.06772908366533,\"y\":95.61752988047809,\"z\":3000,\"width\":154.26294820717132,\"height\":94.34262948207171,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"ipl_matches_2008_2022.Title Winner\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"ipl_matches_2008_2022\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"Title Winner\"},\"Name\":\"ipl_matches_2008_2022.Title Winner\",\"NativeReferenceName\":\"Title Winner\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"labels\":[{\"properties\":{\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'Arial'\"}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"18D\"}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#F0E199'\"}}}}}}}],\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Tile Winner'\"}}},\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'''Segoe UI Semibold'', wf_segoe-ui_semibold, helvetica, arial, sans-serif'\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"12D\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":2,\"Percent\":0.6}}}}}}}],\"background\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 94.34,
+          "width": 154.26,
+          "x": 93.07,
+          "y": 95.62,
+          "z": 3000.00
+        },
+        {
+          "config": "{\"name\":\"f4c9f19c2121302bd550\",\"layouts\":[{\"id\":0,\"position\":{\"x\":419.44223107569724,\"y\":0,\"z\":50000,\"width\":80.3187250996016,\"height\":90.51792828685258,\"tabOrder\":50000}}],\"singleVisual\":{\"visualType\":\"image\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"imageUrl\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"RR6546076367253801.png\"}}}}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 90.52,
+          "width": 80.32,
+          "x": 419.44,
+          "y": 0.00,
+          "z": 50000.00
+        },
+        {
+          "config": "{\"name\":\"fe047e5d0aad91097804\",\"layouts\":[{\"id\":0,\"position\":{\"x\":520.1593625498008,\"y\":87.96812749003983,\"z\":6000,\"width\":239.6812749003984,\"height\":108.36653386454182,\"tabOrder\":6000}}],\"singleVisual\":{\"visualType\":\"shape\",\"drillFilterOtherVisuals\":true,\"objects\":{\"shape\":[{\"properties\":{\"tileShape\":{\"expr\":{\"Literal\":{\"Value\":\"'rectangleRounded'\"}}},\"rectangleRoundedCurve\":{\"expr\":{\"Literal\":{\"Value\":\"5L\"}}}}}],\"rotation\":[{\"properties\":{\"shapeAngle\":{\"expr\":{\"Literal\":{\"Value\":\"0L\"}}}}}],\"fill\":[{\"properties\":{\"fillColor\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#414FB1'\"}}}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"70D\"}}}},\"selector\":{\"id\":\"default\"}}],\"outline\":[{\"properties\":{\"lineColor\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#41A4FF'\"}}}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"50D\"}}}},\"selector\":{\"id\":\"default\"}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 108.37,
+          "width": 239.68,
+          "x": 520.16,
+          "y": 87.97,
+          "z": 6000.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}

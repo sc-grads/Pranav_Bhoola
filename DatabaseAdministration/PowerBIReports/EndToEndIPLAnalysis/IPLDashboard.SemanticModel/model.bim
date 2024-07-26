@@ -1,0 +1,733 @@
+{
+  "compatibilityLevel": 1550,
+  "model": {
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      },
+      {
+        "name": "PBIDesktopVersion",
+        "value": "2.131.1126.0 (24.07)"
+      },
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"ipl_ball_by_ball_2008_2022\",\"ipl_matches_2008_2022\"]"
+      },
+      {
+        "name": "PBI_ProTooling",
+        "value": "[\"DevMode\"]"
+      }
+    ],
+    "culture": "en-US",
+    "cultures": [
+      {
+        "name": "en-US",
+        "linguisticMetadata": {
+          "content": {
+            "Language": "en-US",
+            "Version": "1.0.0"
+          },
+          "contentType": "json"
+        }
+      }
+    ],
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "relationships": [
+      {
+        "name": "a3136249-4f07-874b-36bd-b76ae2b0b625",
+        "fromColumn": "id",
+        "fromTable": "ipl_ball_by_ball_2008_2022",
+        "toColumn": "id",
+        "toTable": "ipl_matches_2008_2022"
+      },
+      {
+        "name": "57b2c8a0-30a3-7091-e7ae-b80138738d6f",
+        "fromColumn": "match_date",
+        "fromTable": "ipl_matches_2008_2022",
+        "toColumn": "Date",
+        "toTable": "Calender Table"
+      }
+    ],
+    "sourceQueryCulture": "en-ZA",
+    "tables": [
+      {
+        "name": "ipl_ball_by_ball_2008_2022",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "946f099f-4d60-4915-a454-09d2f972b2b2",
+            "sourceColumn": "id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "innings",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "6fd4b96d-151f-4d42-a9e6-697779f79fc9",
+            "sourceColumn": "innings",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "overs",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "0a1eab01-19d0-48bc-b2b3-8d0252fc9b6e",
+            "sourceColumn": "overs",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "ball_number",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "f47f2d63-8f5c-4e88-afeb-73f325b533bb",
+            "sourceColumn": "ball_number",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "batter",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "e4ba335b-d77c-4d87-856b-4132ad00ebc9",
+            "sourceColumn": "batter",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "bowler",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "4d0a5a68-dc2f-4e0a-8798-3b2a5bf6f00d",
+            "sourceColumn": "bowler",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "non_striker",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "67180779-7e28-4af8-b077-20dfd988db51",
+            "sourceColumn": "non_striker",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "extra_type",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "d5d345a7-7388-4ad2-9eb0-97bb6894e093",
+            "sourceColumn": "extra_type",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "batsman_run",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "7a3109ea-5788-4214-9e97-a9e48fdc99a5",
+            "sourceColumn": "batsman_run",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "extras_run",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "f6acfc97-a251-4faf-b8a0-81e5759ff829",
+            "sourceColumn": "extras_run",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "total_run",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "786995f6-5bb6-47d9-8305-65d889beb631",
+            "sourceColumn": "total_run",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "non_boundary",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "f2a572aa-e4b8-425a-ac72-aec85629b168",
+            "sourceColumn": "non_boundary",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "iswicket_delivery",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "4ce21908-deb4-4ac2-a497-63b8aa36a476",
+            "sourceColumn": "iswicket_delivery",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "player_out",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "418a43c3-5eb4-4e72-97fd-01ce2b0e1f97",
+            "sourceColumn": "player_out",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "dismisal_kind",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "a800d90e-a8a5-4690-8336-7d85e5dab29d",
+            "sourceColumn": "dismisal_kind",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "fielders_involved",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "be48938f-9614-4780-95c0-83dc13149166",
+            "sourceColumn": "fielders_involved",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "batting_team",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "1cad3237-39e8-4f8d-ac02-d152794dd814",
+            "sourceColumn": "batting_team",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "c9fda051-4eaa-4b94-96ff-200f5356e5bd",
+        "measures": [
+          {
+            "name": "Batter Runs",
+            "expression": "CONCATENATE(SUM(ipl_ball_by_ball_2008_2022[batsman_run]),\" Runs\")",
+            "lineageTag": "711ffd01-e4d9-4474-97fc-e2e20f865e03"
+          },
+          {
+            "name": "Baller Wickets",
+            "expression": "CONCATENATE(SUM(ipl_ball_by_ball_2008_2022[iswicket_delivery]), \" Wickets\")",
+            "lineageTag": "3c484ece-b5ed-4bd0-87d2-88ca7b7de758"
+          },
+          {
+            "name": "Strike Rate for Batsman",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": "(SUM(ipl_ball_by_ball_2008_2022[batsman_run])/COUNT(ipl_ball_by_ball_2008_2022[ball_number]))* 100",
+            "lineageTag": "ab51445c-cadd-48f3-86fc-1085dbd25e26"
+          },
+          {
+            "name": "Economy",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": [
+              "DIVIDE(",
+              "    SUMX(",
+              "        FILTER(ipl_ball_by_ball_2008_2022,ipl_ball_by_ball_2008_2022[extra_type]<>\"legbyes\" && ipl_ball_by_ball_2008_2022[extra_type]<>\"byes\"),",
+              "    ipl_ball_by_ball_2008_2022[total_run]),(COUNT(ipl_ball_by_ball_2008_2022[overs]))/6)"
+            ],
+            "lineageTag": "9726a801-5b1a-45fe-afda-18329a887f07"
+          },
+          {
+            "name": "Average by Bowler",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": [
+              "DIVIDE(",
+              "    SUMX(",
+              "        FILTER(ipl_ball_by_ball_2008_2022,ipl_ball_by_ball_2008_2022[extra_type]<>\"legbyes\" && ipl_ball_by_ball_2008_2022[extra_type]<>\"byes\"),",
+              "    ipl_ball_by_ball_2008_2022[total_run]), SUM(ipl_ball_by_ball_2008_2022[iswicket_delivery]))"
+            ],
+            "lineageTag": "8bc8037b-2c14-47c5-a085-785bb0fa3c64"
+          },
+          {
+            "name": "Bowling SR",
+            "annotations": [
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "expression": "COUNT(ipl_ball_by_ball_2008_2022[bowler])/SUM(ipl_ball_by_ball_2008_2022[iswicket_delivery])",
+            "lineageTag": "b2ee2da6-d995-4bca-aaa0-6c57fd94e3f3"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "ipl_ball_by_ball_2008_2022",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Sql.Database(\"DESKTOP-3949U90\", \"IPL_Database\"),",
+                "    dbo_ipl_ball_by_ball_2008_2022 = Source{[Schema=\"dbo\",Item=\"ipl_ball_by_ball_2008_2022\"]}[Data]",
+                "in",
+                "    dbo_ipl_ball_by_ball_2008_2022"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "ipl_matches_2008_2022",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          }
+        ],
+        "columns": [
+          {
+            "name": "id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "962d7cfb-2ce7-49b4-80c4-90a526473033",
+            "sourceColumn": "id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "city",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "3406c988-c98f-4f85-9243-dc354c9eb687",
+            "sourceColumn": "city",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "match_date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Long Date",
+            "lineageTag": "200e9093-257e-465c-8d8b-a72fb4a86ef7",
+            "sourceColumn": "match_date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "season",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "7d042d63-1851-4ebf-a691-c5e549e1f6b6",
+            "sourceColumn": "season",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "match_number",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "e0494750-6025-4a36-b09b-78f58ec66e31",
+            "sourceColumn": "match_number",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "team1",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "645cba6f-a2d7-4756-9094-4b9e07a9e9f7",
+            "sourceColumn": "team1",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "team2",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "75c14bc9-7407-4ff4-9155-c4c2c3590a36",
+            "sourceColumn": "team2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "venue",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "39b1cf72-ae31-4b1d-a7b1-6bcc177141ca",
+            "sourceColumn": "venue",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "toss_winner",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "3a2466a0-c378-45b4-aaf5-ac6c872742d9",
+            "sourceColumn": "toss_winner",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "toss_decision",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "7ba33cf0-984e-4bd1-9cb1-d2f8da606cdc",
+            "sourceColumn": "toss_decision",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "superover",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "ac37695c-6e79-4abd-b8b8-f77d74047a33",
+            "sourceColumn": "superover",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "winning_team",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "5f1fca1f-cd55-4bf4-a157-0519c34ca2dd",
+            "sourceColumn": "winning_team",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "won_by",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "3e6671ba-6b23-47d8-89d6-43a3ba8c5384",
+            "sourceColumn": "won_by",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "margin",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "2c614a66-c3f5-453a-9e86-0230c24904f9",
+            "sourceColumn": "margin",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "method",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "dc30739a-7053-4cfa-8e1c-927efa85671e",
+            "sourceColumn": "method",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "player_of_match",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "d91700d8-cb56-473d-a130-bb7ce9e7fd62",
+            "sourceColumn": "player_of_match",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "umpire1",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "3bab7786-111f-414d-9d1a-319d6be36749",
+            "sourceColumn": "umpire1",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "umpire2",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "4f79259e-d510-4761-bbd1-fbfcf750fa4b",
+            "sourceColumn": "umpire2",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "8554e4a8-3453-45cb-b219-251ce8fce559",
+        "measures": [
+          {
+            "name": "Title Winner",
+            "expression": [
+              "VAR max_date = CALCULATE(MAX('Calender Table'[Date]),ALLSELECTED(ipl_matches_2008_2022),VALUES(ipl_matches_2008_2022))",
+              "VAR title_winner = CALCULATE(SELECTEDVALUE(ipl_matches_2008_2022[winning_team]),'Calender Table'[Date] = max_date)",
+              "RETURN title_winner"
+            ],
+            "lineageTag": "6761e2ae-e933-4986-8929-1d072ea2f368"
+          },
+          {
+            "name": "Matches won on toss decision",
+            "expression": "CALCULATE(COUNTROWS(ipl_matches_2008_2022), ipl_matches_2008_2022[toss_winner] = ipl_matches_2008_2022[winning_team])",
+            "formatString": "0",
+            "lineageTag": "ac8a9c59-28a9-4f65-8e81-68c5cc11d441"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "ipl_matches_2008_2022",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Sql.Database(\"DESKTOP-3949U90\", \"IPL_Database\"),",
+                "    dbo_ipl_matches_2008_2022 = Source{[Schema=\"dbo\",Item=\"ipl_matches_2008_2022\"]}[Data],",
+                "    #\"Replaced Value\" = Table.ReplaceValue(dbo_ipl_matches_2008_2022,\"Rising Pune Supergiants\",\"Rising Pune Supergiant\",Replacer.ReplaceText,{\"team1\"}),",
+                "    #\"Replaced Value1\" = Table.ReplaceValue(#\"Replaced Value\",\"Rising Pune Supergiants\",\"Rising Pune Supergiant\",Replacer.ReplaceText,{\"team2\"}),",
+                "    #\"Replaced Value2\" = Table.ReplaceValue(#\"Replaced Value1\",\"Rising Pune Supergiants\",\"Rising Pune Supergiant\",Replacer.ReplaceText,{\"winning_team\"}),",
+                "    #\"Replaced Value3\" = Table.ReplaceValue(#\"Replaced Value2\",\"Rising Pune Supergiants\",\"Rising Pune Supergiant\",Replacer.ReplaceText,{\"toss_winner\"}),",
+                "    #\"Replaced Value4\" = Table.ReplaceValue(#\"Replaced Value3\",\"Bengaluru\",\"Bangalore\",Replacer.ReplaceText,{\"city\"})",
+                "in",
+                "    #\"Replaced Value4\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Calender Table",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "6e4b666cd644494dacc2b02650d4d3cc"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "004fccde-7e59-4e79-8743-59fa84e6c916",
+            "sourceColumn": "[Date]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "expression": "YEAR('Calender Table'[Date])",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "lineageTag": "aec53d9b-1adc-460c-86fb-d2c484b69a92",
+            "summarizeBy": "none",
+            "type": "calculated"
+          }
+        ],
+        "lineageTag": "04265b85-30ff-4c13-a6fd-ad9b302c56e7",
+        "partitions": [
+          {
+            "name": "Calender Table",
+            "mode": "import",
+            "source": {
+              "expression": "CALENDAR(MIN(ipl_matches_2008_2022[match_date]),MAX(ipl_matches_2008_2022[match_date]))",
+              "type": "calculated"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

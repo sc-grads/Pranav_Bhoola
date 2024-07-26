@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "IPLDashboard"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "fb5153d6-ac39-4365-990f-d7f54afae6c0"
+  }
+}
