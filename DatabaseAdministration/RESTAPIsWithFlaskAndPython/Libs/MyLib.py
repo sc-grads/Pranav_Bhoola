@@ -1,0 +1,1 @@
+print("MyLip.py: ", __name__)
