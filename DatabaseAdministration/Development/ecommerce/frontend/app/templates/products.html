@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - eCommerce</title>
+    <link rel="stylesheet" href="/static/style.css"> <!-- Link to your CSS file -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet"> <!-- Google Fonts -->
+    <style>
+        .pagination-controls button {
+            width: 100px;
+            margin: 0 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>Timekeepers</h1>
+            <nav>
+                <a href="/" class="btn">Home</a>
+                <a href="/login" class="btn">Login</a>
+                <a href="/register" class="btn">Register</a>
+                <a href="/cart" class="btn">Checkout</a> <!-- Checkout button -->
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <button class="btn add-product-btn" id="open-modal-btn">Add New Product</button>
+
+        <div id="product-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Add New Product</h2>
+                <form id="add-product-form" enctype="multipart/form-data">
+                    <input type="text" name="name" placeholder="Product Name" required>
+                    <input type="text" name="description" placeholder="Product Description" required>
+                    <input type="number" name="price" placeholder="Price" required step="0.01">
+                    <input type="text" name="category_name" placeholder="Type Category" required>
+                    <input type="text" name="brand_name" placeholder="Type Brand" required>
+                    <input type="file" name="file" accept="image/*" required>
+                    <button type="submit" class="btn">Add Product</button>
+                </form>
+            </div>
+        </div>
+
+        <section class="product-section">
+            <h2>Product List</h2>
+
+            <div>
+                <select id="category-select">
+                    <option value="">Select Category</option>
+                    <!-- Categories will be populated here -->
+                </select>
+
+                <select id="brand-select">
+                    <option value="">Select Brand</option>
+                    <!-- Brands will be populated here -->
+                </select>
+
+                <button class="btn" id="filter-button">Filter Products</button>
+            </div>
+
+            <div id="product-list" class="product-list"></div>
+
+            <div id="pagination-controls" class="pagination-controls" style="margin-top: 20px;">
+                <button class="btn" id="prev-page" onclick="changePage(-1)" disabled>Previous</button>
+                <span id="page-info">Page 1</span>
+                <button class="btn" id="next-page" onclick="changePage(1)">Next</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Timekeepers. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const productList = document.getElementById('product-list');
+        const addProductForm = document.getElementById('add-product-form');
+        const modal = document.getElementById('product-modal');
+        const openModalBtn = document.getElementById('open-modal-btn');
+        const closeModalBtn = document.querySelector('.close');
+        const categorySelect = document.getElementById('category-select');
+        const brandSelect = document.getElementById('brand-select');
+        const filterButton = document.getElementById('filter-button');
+        let currentPage = 1;
+        const pageSize = 10;
+
+        openModalBtn.onclick = function () {
+            modal.style.display = 'block';
+        };
+
+        closeModalBtn.onclick = function () {
+            modal.style.display = 'none';
+        };
+
+        window.onclick = function (event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        };
+
+        async function fetchProducts(categoryId = '', brandId = '') {
+            try {
+                const response = await fetch(`http://localhost:8001/api/products?page=${currentPage}&page_size=${pageSize}${categoryId ? `&category_id=${categoryId}` : ''}${brandId ? `&brand_id=${brandId}` : ''}`);
+                const products = await response.json();
+                productList.innerHTML = '';
+
+                if (products.length === 0) {
+                    productList.innerHTML = '<p>No products available</p>';
+                } else {
+                    products.forEach(product => {
+                        const productCard = document.createElement('div');
+                        productCard.classList.add('product-card');
+                        const formattedPrice = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'ZAR' }).format(product.price);
+                        productCard.innerHTML = `
+                            <h3>${product.name}</h3>
+                            <p>${product.description}</p>
+                            <p>Price: ${formattedPrice}</p>
+                            <img src="${product.image_url || '/static/default-product.jpg'}" alt="${product.name}" class="product-image"/>
+                            <div class="product-actions">
+                                <button class="btn" onclick="addToCart(${product.id})">Add to Cart</button> <!-- Add to Cart button -->
+                                <button class="btn" onclick="deleteProduct(${product.id})">Delete</button>
+                                <button class="btn" onclick="updateProduct(${product.id}, '${product.name}', '${product.description}', ${product.price})">Update</button>
+                            </div>
+                        `;
+                        productList.appendChild(productCard);
+                    });
+                }
+
+                updatePaginationControls();
+            } catch (error) {
+                console.error('Error fetching products:', error);
+                productList.innerHTML = '<p>Error loading products</p>';
+            }
+        }
+
+        function updatePaginationControls() {
+            document.getElementById('page-info').innerText = `Page ${currentPage}`;
+            document.getElementById('prev-page').disabled = currentPage === 1;
+            fetchTotalProducts();
+        }
+
+        async function fetchTotalProducts() {
+            try {
+                const response = await fetch('http://localhost:8001/api/products/count');
+                const data = await response.json();
+                const totalCount = data.total_count;
+                document.getElementById('next-page').disabled = (currentPage * pageSize) >= totalCount;
+            } catch (error) {
+                console.error('Error fetching total product count:', error);
+            }
+        }
+
+        function changePage(direction) {
+            currentPage += direction;
+            fetchProducts(categorySelect.value, brandSelect.value); // Fetch products with selected category and brand
+        }
+
+        addProductForm.onsubmit = async (e) => {
+            e.preventDefault();
+            const formData = new FormData(addProductForm);
+
+            try {
+                const response = await fetch('http://localhost:8001/api/products/', {
+                    method: 'POST',
+                    body: formData,
+                });
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                fetchProducts(categorySelect.value, brandSelect.value); // Fetch products with selected category and brand
+                modal.style.display = 'none';
+                addProductForm.reset();
+            } catch (error) {
+                console.error('There was a problem with the fetch operation:', error);
+            }
+        };
+
+        async function deleteProduct(productId) {
+            try {
+                await fetch(`http://localhost:8001/api/products/${productId}`, {
+                    method: 'DELETE',
+                });
+                fetchProducts(categorySelect.value, brandSelect.value); // Fetch products with selected category and brand
+            } catch (error) {
+                console.error('Error deleting product:', error);
+            }
+        }
+
+        async function updateProduct(productId, currentName, currentDescription, currentPrice) {
+            const newName = prompt("Update Product Name:", currentName);
+            const newDescription = prompt("Update Product Description:", currentDescription);
+            const newPrice = prompt("Update Product Price:", currentPrice);
+
+            if (newName && newDescription && newPrice) {
+                const data = {
+                    name: newName,
+                    description: newDescription,
+                    price: parseFloat(newPrice),
+                };
+
+                try {
+                    await fetch(`http://localhost:8001/api/products/${productId}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data),
+                    });
+                    fetchProducts(categorySelect.value, brandSelect.value); // Fetch products with selected category and brand
+                } catch (error) {
+                    console.error('Error updating product:', error);
+                }
+            }
+        }
+
+        async function addToCart(productId) {
+            try {
+                await fetch(`http://localhost:8002/api/cart`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ product_id: productId }),
+                });
+                alert('Product added to cart!');
+            } catch (error) {
+                console.error('Error adding product to cart:', error);
+            }
+        }
+
+        async function fetchCategories() {
+            try {
+                const response = await fetch('http://localhost:8001/api/categories');
+                const categories = await response.json();
+                categories.forEach(category => {
+                    const option = document.createElement('option');
+                    option.value = category.id;
+                    option.textContent = category.name;
+                    categorySelect.appendChild(option);
+                });
+            } catch (error) {
+                console.error('Error fetching categories:', error);
+            }
+        }
+
+        async function fetchBrands() {
+            try {
+                const response = await fetch('http://localhost:8001/api/brands');
+                const brands = await response.json();
+                brands.forEach(brand => {
+                    const option = document.createElement('option');
+                    option.value = brand.id;
+                    option.textContent = brand.name;
+                    brandSelect.appendChild(option);
+                });
+            } catch (error) {
+                console.error('Error fetching brands:', error);
+            }
+        }
+
+        filterButton.onclick = () => {
+            fetchProducts(categorySelect.value, brandSelect.value);
+        };
+
+        fetchCategories();
+        fetchBrands();
+        fetchProducts(); // Initial fetch of products
+    </script>
+</body>
+
+</html>

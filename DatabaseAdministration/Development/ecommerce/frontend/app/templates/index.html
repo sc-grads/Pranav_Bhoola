@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Timekeepers</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <span class="menu-toggle" onclick="toggleSidebar()">&#9776;</span>
+            <!-- Logo Image -->
+            <img src="/static/images/logo.png" alt="Timekeepers Logo" class="logo">
+        </div>
+    </header>
+
+    <div id="sidebar" class="sidebar">
+        <a href="javascript:void(0)" class="close-btn" onclick="toggleSidebar()">&times;</a>
+        <a href="/products">Products</a>
+        <a href="/register">Register</a>
+        <a href="/login">Login</a>
+    </div>
+
+    <main class="container">
+        <section class="hero">
+            <h2>Your one-stop shop for all your timepiece needs!</h2>
+            <p>Join us today and explore the best deals on the market.</p>
+            <a href="/products" class="cta-btn">Explore Products</a>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Timekeepers. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleSidebar() {
+            var sidebar = document.getElementById("sidebar");
+            if (sidebar.style.width === "250px") {
+                sidebar.style.width = "0";
+            } else {
+                sidebar.style.width = "250px";
+            }
+        }
+    </script>
+</body>
+</html>

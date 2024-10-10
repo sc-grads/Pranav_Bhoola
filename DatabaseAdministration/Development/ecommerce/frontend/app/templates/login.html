@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - eCommerce</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Timekeepers</h1>
+            <nav>
+                <a href="/register" class="btn">Register</a>
+                <a href="/" class="btn">Home</a>
+            </nav>
+        </div>
+    </header>
+    <main class="container">
+        <section class="form-section">
+            <h2>Login</h2>
+            <p>Welcome back! Please log in to your account.</p>
+            <div class="form-container">
+                <form id="login-form">
+                    <input type="email" name="email" placeholder="Email" required class="input-field">
+                    <input type="password" name="password" placeholder="Password" required class="input-field">
+                    <button type="submit" class="btn">Login</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Timekeepers. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('login-form').onsubmit = async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const data = {
+                email: formData.get('email'),
+                password: formData.get('password'),
+            };
+
+            const response = await fetch('http://localhost:8000/api/users/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (response.ok) {
+                window.location.href = '/products';
+            } else {
+                const error = await response.json();
+                alert(`Error: ${error.detail}`);
+            }
+        };
+    </script>
+</body>
+</html>

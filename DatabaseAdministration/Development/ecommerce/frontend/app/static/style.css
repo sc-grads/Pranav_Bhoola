@@ -1,0 +1,336 @@
+/* Reset default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Ensures the body takes full height */
+html, body {
+    height: 100%;
+}
+
+/* Body styling */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #000; /* Black background */
+    color: #FFF; /* White text color */
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column; /* Make body a flex container */
+}
+
+/* Container class for centering content */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header styling */
+header {
+    background-color: #1a1a1a; /* Dark gray header */
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1); /* Light shadow for depth */
+}
+
+header h1 {
+    font-size: 2.5em;
+    color: #FFF; /* White for contrast */
+    font-weight: 600;
+}
+
+nav {
+    margin-top: 10px;
+}
+
+nav .btn {
+    background-color: #333; /* Dark gray button */
+    color: #FFF; /* White text */
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: none;
+    font-weight: 600;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+nav .btn:hover {
+    background-color: #555; /* Lighter gray on hover */
+    color: #FFF; /* White text on hover */
+}
+
+/* Sidebar styling */
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #1a1a1a; /* Dark gray sidebar */
+    overflow-x: hidden;
+    transition: 0.3s;
+    padding-top: 60px;
+    box-shadow: 2px 0 5px rgba(255, 255, 255, 0.1); /* Light shadow for depth */
+}
+
+.sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #FFF; /* White text */
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background-color: #333; /* Dark gray on hover */
+}
+
+.sidebar .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 36px;
+    color: #FFF; /* White for close button */
+}
+
+.menu-toggle {
+    font-size: 30px;
+    cursor: pointer;
+    color: #FFF; /* White for menu toggle */
+    float: left;
+    margin-right: 20px;
+}
+
+/* Main content styling */
+main {
+    text-align: center; /* Center-align all text in the main content */
+    padding: 50px 0;
+    flex: 1; /* Take up all available space */
+}
+
+.intro {
+    display: flex; /* Use flexbox to center content */
+    flex-direction: column; /* Align items in a column */
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+    height: 100%; /* Make it take full height */
+}
+
+.intro h2 {
+    font-size: 2em;
+    color: #FFF; /* White for heading */
+    margin-bottom: 10px; /* Add space below the heading */
+}
+
+.intro p {
+    font-size: 1.2em;
+    color: #CCC; /* Light gray for paragraph */
+}
+
+/* Footer styling */
+footer {
+    background-color: #1a1a1a; /* Dark gray footer */
+    color: #FFF; /* White text */
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 5px rgba(255, 255, 255, 0.1); /* Light shadow for depth */
+}
+
+footer p {
+    margin: 0;
+    font-size: 1em;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2em;
+    }
+
+    .intro h2 {
+        font-size: 1.5em;
+    }
+}
+
+/* Product List and Card Styling */
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.product-card {
+    width: auto; /* Fixed width */
+    height: auto; /* Fixed height */
+    border: none; /* Remove border for a cleaner look */
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #FFF; /* White background for product cards */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    color: #000; /* Black text */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    transition: transform 0.3s; /* Smooth hover effect */
+}
+
+.product-card:hover {
+    transform: translateY(-5px); /* Slightly lift on hover */
+}
+
+.product-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.product-card h3 {
+    margin-bottom: 5px;
+    font-size: 1.5em;
+    color: #000; /* Black for product titles */
+}
+
+.product-card p {
+    font-size: 1em;
+    color: #000; /* Black text for description */
+    margin: 5px 0;
+}
+
+.product-card .product-price {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-top: 5px; /* Adds space above the price */
+    color: #000; /* Black for price */
+}
+
+.product-actions {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-actions .btn {
+    margin-right: 5px;
+    padding: 12px 16px;
+    font-size: 1em;
+    border-radius: 5px;
+    background-color: #333; /* Dark gray buttons */
+    color: #FFF; /* White text */
+}
+
+.product-actions .btn:hover {
+    background-color: #555; /* Lighter gray on hover */
+}
+
+/* Add New Product Button */
+.add-product-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #FFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.add-product-btn:hover {
+    background-color: #555;
+    color: #FFF;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8); /* Dark background with opacity */
+}
+
+.modal-content {
+    background-color: #1a1a1a;
+    margin: 10% auto;
+    padding: 20px;
+    border: none;
+    width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(255, 255, 255, 0.1);
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    color: #FFF;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #333;
+}
+
+.modal-content button {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: #FFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal-content button:hover {
+    background-color: #555;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #FFF;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Logo styles */
+.logo {
+    height: 90px;
+    margin-right: 15px;
+    vertical-align: middle;
+}
+
+.cta-btn {
+    background-color: #000; /* Black background for button */
+    color: #FFF; /* White text */
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s, color 0.3s;
+}
+

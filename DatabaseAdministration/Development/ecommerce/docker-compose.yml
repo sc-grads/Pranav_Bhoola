@@ -1,0 +1,55 @@
+version: '3'
+
+services:
+  product_service:
+    build: ./product_service
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8001 --reload
+    env_file:
+      - ./product_service/.env
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./product_service:/app
+
+  user_service:
+    build: ./user_service
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    env_file:
+      - ./user_service/.env
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./user_service:/app
+
+  cart_service:
+    build: ./cart_service
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8003 --reload
+    env_file:
+      - ./cart_service/.env
+    ports:
+      - "8003:8003"
+    volumes:
+      - ./cart_service:/app
+    depends_on:
+      - product_service
+      - user_service
+
+  frontend:
+    build: ./frontend
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8002 --reload
+    ports:
+      - "8002:8002"
+    volumes:
+      - ./frontend:/app
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - frontend
+      - product_service
+      - user_service
+      - cart_service

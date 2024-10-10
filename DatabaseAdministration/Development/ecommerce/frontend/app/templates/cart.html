@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <link rel="stylesheet" href="/static/style.css"> <!-- Link to your CSS file -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet"> <!-- Google Fonts -->
+</head>
+<body>
+    <header>
+        <h1>Your Cart</h1>
+        <nav>
+            <a href="products.html" class="btn">Continue Shopping</a>
+            <button class="btn" onclick="checkout()">Checkout</button>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="product-section">
+            <ul id="cart-items" class="product-list"></ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Your E-Commerce Site. All rights reserved.</p>
+    </footer>
+
+    <script>
+        async function loadCart() {
+            const response = await fetch("/api/cart/items"); // Adjusted to match your cart service endpoint
+            const cart = await response.json();
+            const cartItems = document.getElementById("cart-items");
+
+            // Clear existing items
+            cartItems.innerHTML = '';
+
+            cart.items.forEach(item => {
+                const li = document.createElement("li");
+                li.className = "product-card"; // Add product-card class for styling
+                li.innerHTML = `
+                    <img src="${item.product_image || 'default-image.jpg'}" class="product-image" alt="${item.product_name}">
+                    <h3>${item.product_name}</h3>
+                    <p>Quantity: ${item.quantity}</p>
+                    <p class="product-price">Price: $${item.price.toFixed(2)}</p>
+                `;
+                cartItems.appendChild(li);
+            });
+        }
+
+        async function checkout() {
+            await fetch("/api/cart/checkout", { method: "POST" }); // Adjusted to match your cart service endpoint
+            alert("Checkout successful");
+            window.location.reload(); // Reload the page to refresh cart items
+        }
+
+        loadCart();
+    </script>
+</body>
+</html>
