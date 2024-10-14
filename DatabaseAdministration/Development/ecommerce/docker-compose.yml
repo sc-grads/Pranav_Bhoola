@@ -10,6 +10,7 @@ services:
       - "8001:8001"
     volumes:
       - ./product_service:/app
+      - ./database:/database  # Mount the database directory
 
   user_service:
     build: ./user_service
@@ -20,6 +21,7 @@ services:
       - "8000:8000"
     volumes:
       - ./user_service:/app
+      - ./database:/database  # Mount the database directory
 
   cart_service:
     build: ./cart_service
@@ -30,6 +32,7 @@ services:
       - "8003:8003"
     volumes:
       - ./cart_service:/app
+      - ./database:/database  # Mount the database directory
     depends_on:
       - product_service
       - user_service
