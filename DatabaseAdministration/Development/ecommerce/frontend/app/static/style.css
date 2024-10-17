@@ -18,6 +18,7 @@ body {
     line-height: 1.6;
     display: flex;
     flex-direction: column; /* Make body a flex container */
+    min-height: 100vh; /* Ensure body takes at least the full viewport height */
 }
 
 /* Container class for centering content */
@@ -71,9 +72,19 @@ nav .btn:hover {
     left: 0;
     background-color: #1a1a1a; /* Dark gray sidebar */
     overflow-x: hidden;
-    transition: 0.3s;
+    transition: width 0.3s; /* Change to width transition for better effect */
     padding-top: 60px;
     box-shadow: 2px 0 5px rgba(255, 255, 255, 0.1); /* Light shadow for depth */
+    z-index: 1000; /* Ensure it overlaps content */
+}
+
+/* Ensure the main content does not get cut off when sidebar opens */
+main {
+    transition: margin-left 0.3s; /* Add transition for smoothness */
+}
+
+.sidebar.open ~ main {
+    margin-left: 250px; /* Adjust margin when sidebar is open */
 }
 
 .sidebar a {
@@ -107,9 +118,12 @@ nav .btn:hover {
 
 /* Main content styling */
 main {
-    text-align: center; /* Center-align all text in the main content */
-    padding: 50px 0;
-    flex: 1; /* Take up all available space */
+    flex: 1; /* Allows it to take up available space */
+    display: flex; /* Added display flex */
+    flex-direction: column; /* Column alignment */
+    justify-content: center; /* Center content vertically */
+    padding: 50px 0; /* Ensure there's padding to separate content from the footer */
+    text-align: center; 
 }
 
 .intro {
@@ -137,8 +151,6 @@ footer {
     color: #FFF; /* White text */
     padding: 20px 0;
     text-align: center;
-    position: relative;
-    bottom: 0;
     width: 100%;
     box-shadow: 0 -2px 5px rgba(255, 255, 255, 0.1); /* Light shadow for depth */
 }
@@ -334,3 +346,211 @@ footer p {
     transition: background-color 0.3s, color 0.3s;
 }
 
+
+
+
+/* For the index page product cards */
+.index-page {
+    position: relative; /* Set position relative for positioning the arrows */
+    margin: 40px 0; /* Increase margin above and below the product cards section for more spacing */
+    text-align: center; /* Center align the cards */
+}
+
+/* Arrow container to position arrows outside the card area */
+.arrow-container {
+    display: flex; /* Use flexbox to layout arrows and card container */
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Space arrows to the sides */
+    width: 100%; /* Full width of the section */
+}
+
+/* Updated arrow styles */
+.index-page .arrow {
+    position: absolute; /* Position the arrows absolutely */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust to center properly */
+    color: #333; /* Darker color for better contrast */
+    padding: 12px; /* Slightly larger padding */
+    cursor: pointer; /* Change cursor to pointer */
+    z-index: 1; /* Ensure the arrows are above other elements */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+}
+
+.index-page .arrow.left {
+    left: -50px; /* Position the left arrow */
+}
+
+.index-page .arrow.right {
+    right: -50px; /* Position the right arrow */
+}
+
+.index-page .arrow:hover {
+    background-color: #555; /* Darker background on hover */
+    color: #FFF; /* White arrow on hover */
+}
+
+/* Existing Product Card styles */
+.index-page .product-card {
+    min-width: 300px;        /* Minimum width for each card */
+    height: 400px;          /* Adjust the height to make the card taller */
+    margin: 0 10px;         /* Spacing between cards */
+    margin-top: 20px;       /* Add space above each card for equal gap */
+    transition: transform 0.3s; /* Smooth transition */
+    overflow: hidden;       /* Ensure image fits within card bounds */
+    border: none;           /* Remove border for a cleaner look */
+    background-color: transparent; /* Make background transparent */
+}
+
+.index-page .product-card img {
+    width: 100%;             /* Ensure the image takes the full width of the card */
+    height: 100%;            /* Make the image take the full height of the card */
+    object-fit: cover;       /* Ensure the image covers the area without distortion */
+    border-radius: 5px;      /* Rounded corners for the image */
+    margin-bottom: 15px;     /* Space below the image */
+}
+
+
+/* Input field styling */
+.input-field {
+    width: 100%; /* Full width */
+    padding: 12px; /* Padding for better touch target */
+    margin: 10px 0; /* Space between fields */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Font size for readability */
+    transition: border-color 0.3s, box-shadow 0.3s; /* Transition for focus effect */
+}
+
+/* Input field focus effect */
+.input-field:focus {
+    border-color: #789391; /* Change border color on focus */
+    box-shadow: 0 0 5px rgba(120, 147, 145, 0.5); /* Subtle shadow effect on focus */
+    outline: none; /* Remove default outline */
+}
+
+/* Additional styling for the form container */
+.form-container {
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    padding: 20px; /* Padding around the form */
+    border-radius: 10px; /* Rounded corners for the form */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+}
+
+/* Button styling */
+.btn {
+    background-color: #333; /* Dark gray for button background */
+    color: #FFF; /* White text for contrast */
+    padding: 12px; /* Padding for the button */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Pointer cursor */
+    transition: background-color 0.3s, transform 0.3s; /* Transition for hover effect */
+}
+
+/* Button hover effect */
+.btn:hover {
+    background-color: #555; /* Slightly lighter gray on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+
+/* Top Brands Section */
+.top-brands {
+    margin: 40px 0;
+}
+
+.brand-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* Creates 6 equal columns */
+    gap: 20px; /* Adds space between the cards */
+    margin-top: 20px;
+    justify-items: center; /* Center-aligns the items */
+}
+
+.brand-card {
+    width: 100%; /* Make the card take up the full width of its grid cell */
+    max-width: 15rem; /* Set a max width for the card */
+    height: auto; /* Adjust height automatically based on the content */
+    text-align: center;
+    transition: transform 0.3s;
+    overflow: hidden; /* Prevents overflow */
+    border-radius: 8px;
+}
+
+.brand-card img {
+    width: 100%; /* Image fills the width of the card */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Cover the card with the image */
+    border-radius: 8px;
+}
+
+.brand-card:hover {
+    transform: scale(1.05);
+}
+
+
+.new-arrivals {
+    position: relative; /* Allow absolute positioning for arrows */
+    margin: 40px 0; /* Add spacing above and below */
+    text-align: center; /* Center align text */
+}
+
+.new-arrivals .arrow-container {
+    display: flex; /* Use flexbox to layout arrows */
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Space arrows to the sides */
+    width: 100%; /* Full width of the section */
+}
+
+.new-arrivals .arrow {
+    position: absolute; /* Position the arrows absolutely */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust to center properly */
+    color: #333; /* Darker color for better contrast */
+    padding: 12px; /* Slightly larger padding */
+    cursor: pointer; /* Change cursor to pointer */
+    z-index: 1; /* Ensure the arrows are above other elements */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+.new-arrivals .arrow.left {
+    left: -50px; /* Position the left arrow */
+}
+
+.new-arrivals .arrow.right {
+    right: -50px; /* Position the right arrow */
+}
+
+.new-arrivals .arrow:hover {
+    background-color: #555; /* Darker background on hover */
+    color: #FFF; /* White arrow on hover */
+}
+
+.new-arrivals .product-card {
+    min-width: 250px; /* Minimum width for each card */
+    height: 400px; /* Fixed height for each card */
+    margin: 0 10px; /* Spacing between cards */
+    margin-top: 20px; /* Space above each card */
+    transition: transform 0.3s; /* Smooth transition */
+    overflow: hidden; /* Ensure image fits within card bounds */
+    background-color: transparent; /* Make background transparent */
+    display: flex; /* Use flexbox to center image */
+    justify-content: center; /* Center the image horizontally */
+    align-items: center; /* Center the image vertically */
+}
+
+.new-arrivals .product-card img {
+    width: 100%; /* Ensure the image takes the full width of the card */
+    height: 100%; /* Make the image take the full height of the card */
+    object-fit: cover; /* Ensure the image covers the area without distortion */
+    border-radius: 5px; /* Rounded corners for the image */
+    margin-bottom: 15px; /* Space below the image */
+}
+
+.new-arrivals .card-container {
+    display: flex; /* Use flexbox for horizontal layout */
+    overflow: hidden; /* Hide overflowing items */
+    scroll-behavior: smooth; /* Smooth scrolling for next/prev actions */
+}

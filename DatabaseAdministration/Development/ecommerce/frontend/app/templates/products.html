@@ -18,7 +18,7 @@
 <body>
     <header>
         <div class="container">
-            <h1>Timekeepers</h1>
+            <img src="/static/images/logo.png" alt="Timekeepers Logo" class="logo">
             <nav>
                 <a href="/" class="btn">Home</a>
                 <a href="/login" class="btn">Login</a>
@@ -43,6 +43,21 @@
                     <input type="text" name="brand_name" placeholder="Type Brand" required>
                     <input type="file" name="file" accept="image/*" required>
                     <button type="submit" class="btn">Add Product</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="update-product-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Update Product</h2>
+                <form id="update-product-form" enctype="multipart/form-data">
+                    <input type="hidden" name="product_id" id="update-product-id">
+                    <input type="text" name="name" id="update-product-name" placeholder="Product Name" required>
+                    <input type="text" name="description" id="update-product-description" placeholder="Product Description" required>
+                    <input type="number" name="price" id="update-product-price" placeholder="Price" required step="0.01">
+                    <input type="file" name="file" accept="image/*">
+                    <button type="submit" class="btn">Update Product</button>
                 </form>
             </div>
         </div>
@@ -81,9 +96,11 @@
     <script>
         const productList = document.getElementById('product-list');
         const addProductForm = document.getElementById('add-product-form');
+        const updateProductForm = document.getElementById('update-product-form');
         const modal = document.getElementById('product-modal');
+        const updateModal = document.getElementById('update-product-modal');
         const openModalBtn = document.getElementById('open-modal-btn');
-        const closeModalBtn = document.querySelector('.close');
+        const closeModalBtn = document.querySelectorAll('.close');
         const categorySelect = document.getElementById('category-select');
         const brandSelect = document.getElementById('brand-select');
         const filterButton = document.getElementById('filter-button');
@@ -94,13 +111,17 @@
             modal.style.display = 'block';
         };
 
-        closeModalBtn.onclick = function () {
-            modal.style.display = 'none';
-        };
+        closeModalBtn.forEach(btn => {
+            btn.onclick = function () {
+                modal.style.display = 'none';
+                updateModal.style.display = 'none';
+            };
+        });
 
         window.onclick = function (event) {
-            if (event.target === modal) {
+            if (event.target === modal || event.target === updateModal) {
                 modal.style.display = 'none';
+                updateModal.style.display = 'none';
             }
         };
 
@@ -123,9 +144,9 @@
                             <p>Price: ${formattedPrice}</p>
                             <img src="${product.image_url || '/static/default-product.jpg'}" alt="${product.name}" class="product-image"/>
                             <div class="product-actions">
-                                <button class="btn" onclick="addToCart(${product.id})">Add to Cart</button> <!-- Add to Cart button -->
+                                <button class="btn" onclick="addToCart(${product.id})">Add to Cart</button>
                                 <button class="btn" onclick="deleteProduct(${product.id})">Delete</button>
-                                <button class="btn" onclick="updateProduct(${product.id}, '${product.name}', '${product.description}', ${product.price})">Update</button>
+                                <button class="btn" onclick="updateProduct(${product.id}, '${product.name}', '${product.description}', ${product.price}, '${product.image_url}')">Update</button>
                             </div>
                         `;
                         productList.appendChild(productCard);
@@ -158,7 +179,7 @@
 
         function changePage(direction) {
             currentPage += direction;
-            fetchProducts(categorySelect.value, brandSelect.value); // Fetch products with selected category and brand
+            fetchProducts(categorySelect.value, brandSelect.value);
         }
 
         addProductForm.onsubmit = async (e) => {
@@ -173,7 +194,7 @@
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
-                fetchProducts(categorySelect.value, brandSelect.value); // Fetch products with selected category and brand
+                fetchProducts(categorySelect.value, brandSelect.value);
                 modal.style.display = 'none';
                 addProductForm.reset();
             } catch (error) {
@@ -186,37 +207,38 @@
                 await fetch(`http://localhost:8001/api/products/${productId}`, {
                     method: 'DELETE',
                 });
-                fetchProducts(categorySelect.value, brandSelect.value); // Fetch products with selected category and brand
+                fetchProducts(categorySelect.value, brandSelect.value);
             } catch (error) {
                 console.error('Error deleting product:', error);
             }
         }
 
-        async function updateProduct(productId, currentName, currentDescription, currentPrice) {
-            const newName = prompt("Update Product Name:", currentName);
-            const newDescription = prompt("Update Product Description:", currentDescription);
-            const newPrice = prompt("Update Product Price:", currentPrice);
+        async function updateProduct(productId, currentName, currentDescription, currentPrice, currentImageUrl) {
+            document.getElementById('update-product-id').value = productId;
+            document.getElementById('update-product-name').value = currentName;
+            document.getElementById('update-product-description').value = currentDescription;
+            document.getElementById('update-product-price').value = currentPrice;
+            
+            updateModal.style.display = 'block';
 
-            if (newName && newDescription && newPrice) {
-                const data = {
-                    name: newName,
-                    description: newDescription,
-                    price: parseFloat(newPrice),
-                };
+            updateProductForm.onsubmit = async (e) => {
+                e.preventDefault();
+                const formData = new FormData(updateProductForm);
 
                 try {
-                    await fetch(`http://localhost:8001/api/products/${productId}`, {
+                    const response = await fetch(`http://localhost:8001/api/products/${productId}`, {
                         method: 'PUT',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(data),
+                        body: formData,
                     });
-                    fetchProducts(categorySelect.value, brandSelect.value); // Fetch products with selected category and brand
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    updateModal.style.display = 'none';
+                    fetchProducts(categorySelect.value, brandSelect.value);
                 } catch (error) {
                     console.error('Error updating product:', error);
                 }
-            }
+            };
         }
 
         async function addToCart(productId) {

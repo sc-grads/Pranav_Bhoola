@@ -6,12 +6,12 @@
     <title>Welcome to Timekeepers</title>
     <link rel="stylesheet" href="/static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <header>
         <div class="container">
-            <span class="menu-toggle" onclick="toggleSidebar()">&#9776;</span>
-            <!-- Logo Image -->
+            <span class="menu-toggle" style="margin-left: 1px;" onclick="toggleSidebar()">&#9776;</span>
             <img src="/static/images/logo.png" alt="Timekeepers Logo" class="logo">
         </div>
     </header>
@@ -29,6 +29,102 @@
             <p>Join us today and explore the best deals on the market.</p>
             <a href="/products" class="cta-btn">Explore Products</a>
         </section>
+
+        <!-- Product Cards Section -->
+        <section class="product-cards index-page">
+            <div class="arrow-container">
+                <button class="arrow left" onclick="showPrevious()">&#10094;</button>
+                <button class="arrow right" onclick="showNext()">&#10095;</button>
+            </div>
+            <div class="card-container">
+                <div class="product-card">
+                    <img src="/static/images/product2.webp" alt="Product 2">
+                </div>
+                <div class="product-card">
+                    <img src="/static/images/product1.jpg" alt="Product 1">
+                </div>
+                <div class="product-card">
+                    <img src="/static/images/product3.jpg" alt="Product 3">
+                </div>
+                <div class="product-card">
+                    <img src="/static/images/product4.webp" alt="Product 4">
+                </div>
+                <div class="product-card">
+                    <img src="/static/images/product5.webp" alt="Product 5">
+                </div>
+                <!-- Add more product cards as needed -->
+            </div>
+        </section>
+
+        <!-- New Arrivals Section -->
+        <section class="new-arrivals">
+            <h2>New Arrivals</h2>
+            <div class="arrow-container">
+                <button class="arrow left" onclick="showPreviousNew()">&#10094;</button>
+                <button class="arrow right" onclick="showNextNew()">&#10095;</button>
+            </div>
+            <div class="card-container">
+                <div class="product-card new-arrival">
+                    <img src="/static/images/Rolex GMT-Master II Red Blue.png" alt="New Product 1">
+                </div>
+                <div class="product-card new-arrival">
+                    <img src="/static/images/Rolex Sky-Dweller Rose gold Blue.png" alt="New Product 2">
+                </div>
+                <div class="product-card new-arrival">
+                    <img src="/static/images/Rolex Day Date Oyster, 40 mm, Everose gold.png" alt="New Product 3">
+                </div>
+                <div class="product-card new-arrival">
+                    <img src="/static/images/Rolex Day Date Oyster, 40 mm, white gold Green.png" alt="New Product 4">
+                </div>
+                <div class="product-card new-arrival">
+                    <img src="/static/images/Rolex GMT-Master II .png" alt="New Product 5">
+                </div>
+                <div class="product-card new-arrival">
+                    <img src="/static/images/Rolex Day Date 40mm Yellow Gold.png" alt="New Product 6">
+                </div>
+                <div class="product-card new-arrival">
+                    <img src="/static/images/Rolex Day Date 36mm white gold.png" alt="New Product 7">
+                </div>
+                <div class="product-card new-arrival">
+                    <img src="/static/images/Rolex Day Date Oyster, 40 mm, Everose gold and diamonds.png" alt="New Product 8">
+                </div>
+                <div class="product-card new-arrival">
+                    <img src="/static/images/Rolex GMT-Master II Black Blue.png" alt="New Product 9">
+                </div>
+                <div class="product-card new-arrival">
+                    <img src="/static/images/Oyster, 40 mm, Oystersteel Green Black.png" alt="New Product 10">
+                </div>
+                <div class="product-card new-arrival">
+                    <img src="/static/images/Rolex Day Date Oyster, 40 mm, white gold.png" alt="New Product 11">
+                </div>
+                <!-- Add more product cards as needed -->
+            </div>
+        </section>
+
+        <!-- Top Brands Section -->
+        <section class="top-brands">
+            <h2>Our Top Brands</h2>
+            <div class="brand-container">
+                <a href="/products?brand=brand1/Rolex" class="brand-card">
+                    <img src="/static/images/Rolex.jpg" alt="Brand 1">
+                </a>
+                <a href="/products?brand=brand2" class="brand-card">
+                    <img src="/static/images/omega.jpg" alt="Brand 2">
+                </a>
+                <a href="/products?brand=brand3" class="brand-card">
+                    <img src="/static/images/AudemarsPiguet.png" alt="Brand 3">
+                </a>
+                <a href="/products?brand=brand4" class="brand-card">
+                    <img src="/static/images/patek-philippe.svg" alt="Brand 4">
+                </a>
+                <a href="/products?brand=brand5" class="brand-card">
+                    <img src="/static/images/IWC.jpg" alt="Brand 5">
+                </a>
+                <a href="/products?brand=brand6" class="brand-card">
+                    <img src="/static/images/Vacheron.jpg" alt="Brand 6">
+                </a>
+            </div>
+        </section>
     </main>
     
     <footer>
@@ -38,12 +134,63 @@
     <script>
         function toggleSidebar() {
             var sidebar = document.getElementById("sidebar");
-            if (sidebar.style.width === "250px") {
-                sidebar.style.width = "0";
-            } else {
-                sidebar.style.width = "250px";
-            }
+            sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
         }
+
+        // Card Navigation
+        let currentIndex = 0; // For product cards
+        let currentIndexNew = 0; // For new arrivals
+        const cards = document.querySelectorAll('.product-card:not(.new-arrival)');
+        const newArrivalCards = document.querySelectorAll('.new-arrival');
+        const totalCards = cards.length;
+        const totalNewArrivalCards = newArrivalCards.length;
+
+        function updateCardVisibility() {
+            cards.forEach((card, index) => {
+                card.style.display = (index === currentIndex) ? 'block' : 'none';
+            });
+        }
+
+        function updateNewArrivalVisibility() {
+            newArrivalCards.forEach((card, index) => {
+                card.style.display = (index >= currentIndexNew && index < currentIndexNew + 4) ? 'block' : 'none';
+            });
+        }
+
+        function showNext() {
+            currentIndex = (currentIndex + 1) % totalCards;
+            updateCardVisibility();
+        }
+
+        function showPrevious() {
+            currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+            updateCardVisibility();
+        }
+
+        function showNextNew() {
+            if (currentIndexNew + 4 < totalNewArrivalCards) {
+                currentIndexNew += 4;
+            } else {
+                currentIndexNew = 0; // Reset to first
+            }
+            updateNewArrivalVisibility();
+        }
+
+        function showPreviousNew() {
+            if (currentIndexNew - 4 >= 0) {
+                currentIndexNew -= 4;
+            } else {
+                currentIndexNew = Math.max(0, totalNewArrivalCards - 4); // Stay on last group if at start
+            }
+            updateNewArrivalVisibility();
+        }
+
+        // Auto-transition for product cards every 5 seconds
+        setInterval(showNext, 5000);
+
+        // Initial visibility setup
+        updateCardVisibility();
+        updateNewArrivalVisibility();
     </script>
 </body>
 </html>

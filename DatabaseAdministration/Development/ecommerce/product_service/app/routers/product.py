@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form
 from sqlalchemy.orm import Session
 from app.database import SessionLocal
-from .. import models, schemas # Assuming models.py and schemas.py are in the same app directory
+from .. import models, schemas  # Assuming models.py and schemas.py are in the same app directory
 from ..utils import save_image  # Ensure this function is defined properly
 from ..schemas import ProductCreate, ProductUpdate
 from ..models import Category, Brand
@@ -78,6 +78,7 @@ def count_products(db: Session = Depends(get_db)):
     total_count = db.query(models.Product).count()
     return {"total_count": total_count}
 
+
 @router.get("/{product_id}", response_model=schemas.Product)
 def read_product(product_id: int, db: Session = Depends(get_db)):
     product = db.query(models.Product).filter(models.Product.id == product_id).first()
@@ -85,23 +86,34 @@ def read_product(product_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Product not found")
     return product
 
+
 @router.put("/{product_id}", response_model=schemas.Product)
-def update_product(product_id: int, product: ProductUpdate, db: Session = Depends(get_db)):
+async def update_product(
+    product_id: int,
+    name: str = Form(None),
+    description: str = Form(None),
+    price: float = Form(None),
+    file: UploadFile = File(None),
+    db: Session = Depends(get_db),
+):
     db_product = db.query(models.Product).filter(models.Product.id == product_id).first()
     if db_product is None:
         raise HTTPException(status_code=404, detail="Product not found")
 
-    # Update only the fields that are provided
-    if product.name is not None:
-        db_product.name = product.name
-    if product.description is not None:
-        db_product.description = product.description
-    if product.price is not None:
-        db_product.price = product.price
+    # Update fields if provided
+    if name is not None:
+        db_product.name = name
+    if description is not None:
+        db_product.description = description
+    if price is not None:
+        db_product.price = price
+    if file:
+        db_product.image_url = save_image(file)  # Update the image URL
 
     db.commit()
     db.refresh(db_product)
     return db_product
+
 
 @router.delete("/{product_id}")
 def delete_product(product_id: int, db: Session = Depends(get_db)):
