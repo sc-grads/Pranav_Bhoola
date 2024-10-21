@@ -554,3 +554,25 @@ footer p {
     overflow: hidden; /* Hide overflowing items */
     scroll-behavior: smooth; /* Smooth scrolling for next/prev actions */
 }
+
+.about-us {
+    background-color: #f9f9f9; /* Light background */
+    padding: 20px;
+    margin-top: 10px; /* Spacing above the section */
+    margin-bottom: 20px; /* Spacing below the section */
+    border-radius: 8px; /* Optional rounded corners */
+    color: #000000; /* Set text color to black */
+}
+
+.about-us h2 {
+    font-size: 24px; /* Heading style */
+    margin-bottom: 10px; /* Spacing below the heading */
+    color: #000000; /* Set heading color to black */
+}
+
+.about-us p {
+    font-size: 16px; /* Paragraph style */
+    line-height: 1.5; /* Line height for readability */
+    color: #333333; /* Set paragraph color to very dark grey */
+}
+
