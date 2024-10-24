@@ -1,3 +1,4 @@
+# routers/cart.py
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from ..database import SessionLocal
@@ -15,21 +16,28 @@ def get_db():
 @router.post("/", response_model=schemas.Cart)
 def create_cart(cart: schemas.CartCreate, db: Session = Depends(get_db)):
     db_cart = models.Cart(user_id=cart.user_id)
-    db.add(db_cart)
-    db.commit()
-    db.refresh(db_cart)
-    
-    for item in cart.items:
-        db_cart_item = models.CartItem(
-            product_id=item.product_id,
-            quantity=item.quantity,
-            price=item.price,
-            cart_id=db_cart.id
-        )
-        db.add(db_cart_item)
-    
-    db.commit()
-    return db_cart
+    total = 0.0
+
+    try:
+        db.add(db_cart)
+        for item in cart.items:
+            db_cart_item = models.CartItem(
+                product_id=item.product_id,
+                quantity=item.quantity,
+                price=item.price,
+                cart_id=db_cart.id
+            )
+            total += item.quantity * item.price
+            db.add(db_cart_item)
+
+        db_cart.total = total
+        db.commit()
+        db.refresh(db_cart)
+        return db_cart
+    except Exception as e:
+        db.rollback()  # Roll back if there's any error
+        raise HTTPException(status_code=400, detail=str(e))  # Provide error details
+
 
 @router.get("/{cart_id}", response_model=schemas.Cart)
 def get_cart(cart_id: int, db: Session = Depends(get_db)):
@@ -44,17 +52,12 @@ def checkout(cart_id: int, db: Session = Depends(get_db)):
     if not db_cart:
         raise HTTPException(status_code=404, detail="Cart not found")
     
-    # Interact with product_service to remove or update product quantities
+    # Example logic for handling product stock updates would go here
     for item in db_cart.items:
-        # Pseudo-code to call product_service
-        # product_service.remove_product(item.product_id, item.quantity)
-
-        # Here you would send a request to the product_service API
-        # to decrement or remove the products from the stock.
-
-        pass  # Placeholder to prevent indentation error
+        # Call to product service to update stock goes here
+        pass  # Placeholder
 
     db.delete(db_cart)
     db.commit()
-    return {"message": "Checkout successful"}
+    return {"message": "Checkout successful", "total": db_cart.total}
 

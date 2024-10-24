@@ -6,7 +6,6 @@
     <title>Welcome to Timekeepers</title>
     <link rel="stylesheet" href="/static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-
 </head>
 <body>
     <header>
@@ -18,86 +17,36 @@
 
     <div id="sidebar" class="sidebar">
         <a href="javascript:void(0)" class="close-btn" onclick="toggleSidebar()">&times;</a>
-        <a href="/products">Products</a>
+        <a href="javascript:void(0)" id="products-link">Products</a> <!-- Updated Link -->
         <a href="/register">Register</a>
         <a href="/login">Login</a>
     </div>
 
     <main class="container">
         <section class="hero">
-            <h2>Your one-stop shop for all your timepiece needs!</h2>
-            <p>Join us today and explore the best deals on the market.</p>
-            <a href="/products" class="cta-btn">Explore Products</a>
+
         </section>
 
-        <!-- Product Cards Section -->
-        <section class="product-cards index-page">
-            <div class="arrow-container">
-                <button class="arrow left" onclick="showPrevious()">&#10094;</button>
-                <button class="arrow right" onclick="showNext()">&#10095;</button>
-            </div>
-            <div class="card-container">
-                <div class="product-card">
-                    <img src="/static/images/product2.webp" alt="Product 2">
-                </div>
-                <div class="product-card">
-                    <img src="/static/images/product1.jpg" alt="Product 1">
-                </div>
-                <div class="product-card">
-                    <img src="/static/images/product3.jpg" alt="Product 3">
-                </div>
-                <div class="product-card">
-                    <img src="/static/images/product4.webp" alt="Product 4">
-                </div>
-                <div class="product-card">
-                    <img src="/static/images/product5.webp" alt="Product 5">
-                </div>
-                <!-- Add more product cards as needed -->
+        <!-- Images Banner Section -->
+        <section class="images-banner">
+            <div class="banner-images">
+                <img src="/static/images/banner1.jpg" alt="Collection 1">
+                <img src="/static/images/banner2.webp" alt="Collection 2">
+                <img src="/static/images/banner3.webp" alt="Collection 3">
+                <img src="/static/images/banner4.webp" alt="Collection 4">
+                <img src="/static/images/banner5.jpg" alt="Collection 5">
             </div>
         </section>
 
         <!-- New Arrivals Section -->
         <section class="new-arrivals">
             <h2>New Arrivals</h2>
-            <div class="arrow-container">
-                <button class="arrow left" onclick="showPreviousNew()">&#10094;</button>
-                <button class="arrow right" onclick="showNextNew()">&#10095;</button>
-            </div>
-            <div class="card-container">
-                <div class="product-card new-arrival">
-                    <img src="/static/images/Rolex GMT-Master II Red Blue.png" alt="New Product 1">
+            <div class="new-arrivals-navigation">
+                <button id="prev-arrow" class="arrow-button" onclick="showPrevProducts()">&#10094;</button>
+                <div id="new-arrivals-list" class="new-arrivals-container">
+                    <p>Loading products...</p>
                 </div>
-                <div class="product-card new-arrival">
-                    <img src="/static/images/Rolex Sky-Dweller Rose gold Blue.png" alt="New Product 2">
-                </div>
-                <div class="product-card new-arrival">
-                    <img src="/static/images/Rolex Day Date Oyster, 40 mm, Everose gold.png" alt="New Product 3">
-                </div>
-                <div class="product-card new-arrival">
-                    <img src="/static/images/Rolex Day Date Oyster, 40 mm, white gold Green.png" alt="New Product 4">
-                </div>
-                <div class="product-card new-arrival">
-                    <img src="/static/images/Rolex GMT-Master II .png" alt="New Product 5">
-                </div>
-                <div class="product-card new-arrival">
-                    <img src="/static/images/Rolex Day Date 40mm Yellow Gold.png" alt="New Product 6">
-                </div>
-                <div class="product-card new-arrival">
-                    <img src="/static/images/Rolex Day Date 36mm white gold.png" alt="New Product 7">
-                </div>
-                <div class="product-card new-arrival">
-                    <img src="/static/images/Rolex Day Date Oyster, 40 mm, Everose gold and diamonds.png" alt="New Product 8">
-                </div>
-                <div class="product-card new-arrival">
-                    <img src="/static/images/Rolex GMT-Master II Black Blue.png" alt="New Product 9">
-                </div>
-                <div class="product-card new-arrival">
-                    <img src="/static/images/Oyster, 40 mm, Oystersteel Green Black.png" alt="New Product 10">
-                </div>
-                <div class="product-card new-arrival">
-                    <img src="/static/images/Rolex Day Date Oyster, 40 mm, white gold.png" alt="New Product 11">
-                </div>
-                <!-- Add more product cards as needed -->
+                <button id="next-arrow" class="arrow-button" onclick="showNextProducts()">&#10095;</button>
             </div>
         </section>
 
@@ -105,23 +54,23 @@
         <section class="top-brands">
             <h2>Our Top Brands</h2>
             <div class="brand-container">
-                <a href="/products?brand=brand1/Rolex" class="brand-card">
-                    <img src="/static/images/Rolex.jpg" alt="Brand 1">
+                <a href="/products?brand=Rolex" class="brand-card">
+                    <img src="/static/images/Rolex.jpg" alt="Rolex">
                 </a>
-                <a href="/products?brand=brand2" class="brand-card">
-                    <img src="/static/images/omega.jpg" alt="Brand 2">
+                <a href="/products?brand=Omega" class="brand-card">
+                    <img src="/static/images/omega.jpg" alt="Omega">
                 </a>
-                <a href="/products?brand=brand3" class="brand-card">
-                    <img src="/static/images/AudemarsPiguet.png" alt="Brand 3">
+                <a href="/products?brand=AudemarsPiguet" class="brand-card">
+                    <img src="/static/images/AudemarsPiguet.png" alt="Audemars Piguet">
                 </a>
-                <a href="/products?brand=brand4" class="brand-card">
-                    <img src="/static/images/patek-philippe.svg" alt="Brand 4">
+                <a href="/products?brand=PatekPhilippe" class="brand-card">
+                    <img src="/static/images/patek-philippe.svg" alt="Patek Philippe">
                 </a>
-                <a href="/products?brand=brand5" class="brand-card">
-                    <img src="/static/images/IWC.jpg" alt="Brand 5">
+                <a href="/products?brand=IWC" class="brand-card">
+                    <img src="/static/images/IWC.jpg" alt="IWC">
                 </a>
-                <a href="/products?brand=brand6" class="brand-card">
-                    <img src="/static/images/Vacheron.jpg" alt="Brand 6">
+                <a href="/products?brand=Vacheron" class="brand-card">
+                    <img src="/static/images/Vacheron.jpg" alt="Vacheron Constantin">
                 </a>
             </div>
         </section>
@@ -138,64 +87,146 @@
         <p>&copy; 2024 Timekeepers. All rights reserved.</p>
     </footer>
 
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Add New Product</h2>
+            <form id="add-product-form" enctype="multipart/form-data">
+                <input type="text" name="name" placeholder="Product Name" required>
+                <input type="text" name="description" placeholder="Product Description" required>
+                <input type="number" name="price" placeholder="Price" required step="0.01">
+                <input type="text" name="category_name" placeholder="Type Category" required>
+                <input type="text" name="brand_name" placeholder="Type Brand" required>
+                <input type="file" name="file" accept="image/*" required>
+                <button type="submit" class="btn">Add Product</button>
+            </form>
+        </div>
+    </div>
+
     <script>
+        const productList = document.getElementById('new-arrivals-list');
+        const addProductForm = document.getElementById('add-product-form');
+        const modal = document.getElementById('product-modal');
+
+        let currentIndex = 0; // Keeps track of the current product index
+        const productsToShow = 4; // Number of products to show at a time
+        const totalProductsLimit = 12; // Limit the total products shown to 12
+        let products = []; // Array to hold fetched products
+
         function toggleSidebar() {
-            var sidebar = document.getElementById("sidebar");
+            const sidebar = document.getElementById("sidebar");
             sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
         }
 
-        // Card Navigation
-        let currentIndex = 0; // For product cards
-        let currentIndexNew = 0; // For new arrivals
-        const cards = document.querySelectorAll('.product-card:not(.new-arrival)');
-        const newArrivalCards = document.querySelectorAll('.new-arrival');
-        const totalCards = cards.length;
-        const totalNewArrivalCards = newArrivalCards.length;
+        async function fetchProducts() {
+            try {
+                const response = await fetch('http://localhost:8001/api/products');
+                if (!response.ok) throw new Error('Network response was not ok');
+                products = await response.json();
 
-        function updateCardVisibility() {
-            cards.forEach((card, index) => {
-                card.style.display = (index === currentIndex) ? 'block' : 'none';
-            });
-        }
-
-        function updateNewArrivalVisibility() {
-            newArrivalCards.forEach((card, index) => {
-                card.style.display = (index >= currentIndexNew && index < currentIndexNew + 4) ? 'block' : 'none';
-            });
-        }
-
-        function showNext() {
-            currentIndex = (currentIndex + 1) % totalCards;
-            updateCardVisibility();
-        }
-
-        function showPrevious() {
-            currentIndex = (currentIndex - 1 + totalCards) % totalCards;
-            updateCardVisibility();
-        }
-
-        function showNextNew() {
-            if (currentIndexNew + 4 < totalNewArrivalCards) {
-                currentIndexNew += 4;
-            } else {
-                currentIndexNew = 0; // Reset to first
+                // Sort products by ID in descending order
+                products.sort((a, b) => b.id - a.id);
+                // Limit the products array to the most recent 12 items
+                products = products.slice(0, totalProductsLimit);
+                displayProducts();
+            } catch (error) {
+                console.error('Error fetching products:', error);
+                productList.innerHTML = '<p>Error loading products. Please try again later.</p>';
             }
-            updateNewArrivalVisibility();
         }
 
-        function showPreviousNew() {
-            if (currentIndexNew - 4 >= 0) {
-                currentIndexNew -= 4;
-            } else {
-                currentIndexNew = Math.max(0, totalNewArrivalCards - 4); // Stay on last group if at start
+        function displayProducts() {
+            productList.innerHTML = ''; // Clear current products
+
+            // Display products based on the current index
+            for (let i = currentIndex; i < currentIndex + productsToShow && i < products.length; i++) {
+                const product = products[i];
+                const productCard = `<a href="/product/${product.id}" class="new-arrivals-card">
+                                        <img src="${product.image_url || '/static/default-product.jpg'}" alt="${product.name}">
+                                        <div class="product-info">
+                                            <h3>${product.name}</h3>
+                                        </div>
+                                    </a>`;
+                productList.innerHTML += productCard; // Append product card
             }
-            updateNewArrivalVisibility();
         }
 
-        // Auto-transition for product cards every 5 seconds
-        setInterval(showNext, 5000);
-        updateCardVisibility();
-        updateNewArrivalVisibility();
+        function showNextProducts() {
+            currentIndex += productsToShow; // Move to the next set of products
+            if (currentIndex >= products.length) {
+                currentIndex = 0; // Loop back to the start if we exceed the product count
+            }
+            displayProducts();
+        }
+
+        function showPrevProducts() {
+            currentIndex -= productsToShow; // Move to the previous set of products
+            if (currentIndex < 0) {
+                currentIndex = Math.max(0, products.length - productsToShow); // Prevent going below 0
+            }
+            displayProducts();
+        }
+
+        addProductForm.onsubmit = async (e) => {
+            e.preventDefault();
+            const formData = new FormData(addProductForm);
+            await fetch('http://localhost:8001/api/products/', {
+                method: 'POST',
+                body: formData,
+            });
+            modal.style.display = 'none';
+            addProductForm.reset();
+            fetchProducts(); 
+        };
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        window.onclick = function (event) {
+            if (event.target === modal) {
+                closeModal();
+            }
+        };
+
+        window.onload = () => {
+            fetchProducts(); // Ensure this runs when the page loads
+            setup(); // Call setup to configure the link based on user role
+        };
+
+        async function fetchUserData() {
+            const token = sessionStorage.getItem('token'); // or wherever you store your token
+            if (!token) return null;
+
+            const response = await fetch('http://localhost:8001/api/users/me', {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+
+            if (response.ok) {
+                return await response.json();
+            } else {
+                return null;
+            }
+        }
+
+        async function setup() {
+            const user = await fetchUserData();
+            const productsLink = document.getElementById("products-link");
+
+            if (user) {
+                // Check user role
+                if (user.role === 'admin') {
+                    productsLink.href = "/products"; // Admin link
+                } else {
+                    productsLink.href = "/products_customer"; // Customer link
+                }
+            } else {
+                productsLink.href = "/login"; // Guest link
+            }
+        }
+
     </script>
 </body>
 </html>

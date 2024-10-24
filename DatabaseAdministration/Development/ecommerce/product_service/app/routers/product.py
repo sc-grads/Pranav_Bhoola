@@ -59,7 +59,7 @@ async def create_product(
 
 
 @router.get("/", response_model=list[schemas.Product])
-def read_products(page: int = 1, page_size: int = 10, category_id: int = None, brand_id: int = None, db: Session = Depends(get_db)):
+def read_products(page: int = 1, page_size: int = 100, category_id: int = None, brand_id: int = None, db: Session = Depends(get_db)):
     skip = (page - 1) * page_size
     query = db.query(models.Product)
 

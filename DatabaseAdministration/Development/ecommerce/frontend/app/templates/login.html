@@ -51,11 +51,20 @@
                 body: JSON.stringify(data),
             });
 
+            const result = await response.json();
+
             if (response.ok) {
-                window.location.href = '/products';
+                // Store the token in session storage
+                sessionStorage.setItem('token', result.access_token);
+                
+                // Redirect based on user role
+                if (result.role === 'admin') {
+                    window.location.href = '/products';  // Admins go to products.html
+                } else {
+                    window.location.href = '/customer';  // Change to the customer page URL
+                }
             } else {
-                const error = await response.json();
-                alert(`Error: ${error.detail}`);
+                alert(`Error: ${result.detail}`);
             }
         };
     </script>

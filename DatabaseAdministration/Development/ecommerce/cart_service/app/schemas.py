@@ -1,3 +1,4 @@
+# schemas.py
 from pydantic import BaseModel
 from typing import List
 
@@ -24,6 +25,7 @@ class CartCreate(CartBase):
 
 class Cart(CartBase):
     id: int
+    total: float  # Add total here
     items: List[CartItem]
 
     class Config:

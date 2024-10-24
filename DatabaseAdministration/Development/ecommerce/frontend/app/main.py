@@ -30,6 +30,16 @@ async def read_register(request: Request):
 async def read_products(request: Request):
     return templates.TemplateResponse("products.html", {"request": request})
 
+@app.get("/customer", response_class=HTMLResponse)  # New endpoint for customer page
+async def read_customer_page(request: Request):
+    return templates.TemplateResponse("customer.html", {"request": request})  # Create this template
+
 @app.get("/cart", response_class=HTMLResponse)
 async def read_cart(request: Request):
     return templates.TemplateResponse("cart.html", {"request": request})
+
+@app.get("/product/{product_id}", response_class=HTMLResponse)
+async def read_product_detail(request: Request, product_id: int):
+    return templates.TemplateResponse("products.html", {"request": request, "product_id": product_id})
+
+

@@ -7,12 +7,7 @@
     <title>Products - eCommerce</title>
     <link rel="stylesheet" href="/static/style.css"> <!-- Link to your CSS file -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet"> <!-- Google Fonts -->
-    <style>
-        .pagination-controls button {
-            width: 100px;
-            margin: 0 5px;
-        }
-    </style>
+
 </head>
 
 <body>
@@ -23,7 +18,6 @@
                 <a href="/" class="btn">Home</a>
                 <a href="/login" class="btn">Login</a>
                 <a href="/register" class="btn">Register</a>
-                <a href="/cart" class="btn">Checkout</a> <!-- Checkout button -->
             </nav>
         </div>
     </header>
@@ -43,6 +37,7 @@
                     <input type="text" name="brand_name" placeholder="Type Brand" required>
                     <input type="file" name="file" accept="image/*" required>
                     <button type="submit" class="btn">Add Product</button>
+                    <div id="add-product-message" class="success-message"></div>
                 </form>
             </div>
         </div>
@@ -58,6 +53,7 @@
                     <input type="number" name="price" id="update-product-price" placeholder="Price" required step="0.01">
                     <input type="file" name="file" accept="image/*">
                     <button type="submit" class="btn">Update Product</button>
+                    <div id="update-product-message" class="success-message"></div>
                 </form>
             </div>
         </div>
@@ -104,8 +100,10 @@
         const categorySelect = document.getElementById('category-select');
         const brandSelect = document.getElementById('brand-select');
         const filterButton = document.getElementById('filter-button');
+        const addProductMessage = document.getElementById('add-product-message');
+        const updateProductMessage = document.getElementById('update-product-message');
         let currentPage = 1;
-        const pageSize = 10;
+        const pageSize = 12;
 
         openModalBtn.onclick = function () {
             modal.style.display = 'block';
@@ -115,6 +113,8 @@
             btn.onclick = function () {
                 modal.style.display = 'none';
                 updateModal.style.display = 'none';
+                addProductMessage.innerText = '';
+                updateProductMessage.innerText = '';
             };
         });
 
@@ -122,6 +122,8 @@
             if (event.target === modal || event.target === updateModal) {
                 modal.style.display = 'none';
                 updateModal.style.display = 'none';
+                addProductMessage.innerText = '';
+                updateProductMessage.innerText = '';
             }
         };
 
@@ -144,7 +146,6 @@
                             <p>Price: ${formattedPrice}</p>
                             <img src="${product.image_url || '/static/default-product.jpg'}" alt="${product.name}" class="product-image"/>
                             <div class="product-actions">
-                                <button class="btn" onclick="addToCart(${product.id})">Add to Cart</button>
                                 <button class="btn" onclick="deleteProduct(${product.id})">Delete</button>
                                 <button class="btn" onclick="updateProduct(${product.id}, '${product.name}', '${product.description}', ${product.price}, '${product.image_url}')">Update</button>
                             </div>
@@ -194,10 +195,12 @@
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
+                addProductMessage.innerText = 'Product added successfully!';
                 fetchProducts(categorySelect.value, brandSelect.value);
                 modal.style.display = 'none';
                 addProductForm.reset();
             } catch (error) {
+                addProductMessage.innerText = 'Error adding product: ' + error.message;
                 console.error('There was a problem with the fetch operation:', error);
             }
         };
@@ -233,27 +236,14 @@
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
                     }
+                    updateProductMessage.innerText = 'Product updated successfully!';
                     updateModal.style.display = 'none';
                     fetchProducts(categorySelect.value, brandSelect.value);
                 } catch (error) {
+                    updateProductMessage.innerText = 'Error updating product: ' + error.message;
                     console.error('Error updating product:', error);
                 }
             };
-        }
-
-        async function addToCart(productId) {
-            try {
-                await fetch(`http://localhost:8002/api/cart`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ product_id: productId }),
-                });
-                alert('Product added to cart!');
-            } catch (error) {
-                console.error('Error adding product to cart:', error);
-            }
         }
 
         async function fetchCategories() {
