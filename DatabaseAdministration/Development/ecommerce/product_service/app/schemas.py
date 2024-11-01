@@ -32,15 +32,18 @@ class ProductCreate(BaseModel):
     price: float
     image_url: str
     category_id: int  # Add category_id to ProductCreate
+    stock: int  # Add stock to ProductCreate
 
 class ProductUpdate(BaseModel):
     name: Optional[str] = None
     description: Optional[str] = None
     price: Optional[float] = None
     category_id: Optional[int] = None  # Add category_id to ProductUpdate
+    stock: Optional[int] = None  # Add stock to ProductUpdate
 
 class Product(ProductCreate):
     id: int
+    category: Category  # Include the category
 
     class Config:
         orm_mode = True

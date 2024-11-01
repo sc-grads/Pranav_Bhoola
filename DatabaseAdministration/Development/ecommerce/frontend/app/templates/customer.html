@@ -5,37 +5,99 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Page</title>
     <link rel="stylesheet" href="/static/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet"> <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Add styles for the floating cart icon */
+        #cart-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #dee3e9;
+            color: black;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            font-size: 24px;
+            z-index: 1000;
+        }
+        #cart-count {
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 12px;
+        }
+        /* Popup styles */
+        #cart-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 2000;
+            display: none;
+            padding: 20px;
+            width: 300px;
+            max-height: 400px;
+            overflow-y: auto;
+            color: black; /* Set text color to black */
+        }
+        #cart-popup h3 {
+            margin: 0 0 10px;
+        }
+        #close-popup {
+            cursor: pointer;
+            color: red;
+            float: right;
+        }
+        .checkout-btn {
+            display: block;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
     <header>
         <div class="container">
+            <span class="menu-toggle" onclick="toggleSidebar()">&#9776;</span>
             <img src="/static/images/logo.png" alt="Timekeepers Logo" class="logo">
-            <nav>
-                <a href="/" class="btn">Home</a>
-                <a href="/login" class="btn">Login</a>
-                <a href="/register" class="btn">Register</a>
-                <a href="/products" class="btn">Products</a> <!-- Link to products page -->
-            </nav>
         </div>
     </header>
 
+    <div id="sidebar" class="sidebar">
+        <a href="javascript:void(0)" class="close-btn" onclick="toggleSidebar()">&times;</a>
+        <a href="/" id="index-link">Home</a>
+        <a href="/update_profile">Update Profile</a>
+        <a href="/cart.html" id="view-cart-btn">View Cart</a>
+        <a href="/logout">Logout</a>
+    </div>
+
     <main class="container">
-        <h1>Welcome, Customer!</h1>
-        <p>This is the customer page.</p>
-        
         <section class="product-section">
             <h2>Available Products</h2>
-
             <div>
-                <select id="category-select">
+                <select id="category-select" class="filter-select">
                     <option value="">Select Category</option>
-                    <!-- Categories will be populated here -->
                 </select>
 
-                <select id="brand-select">
+                <select id="brand-select" class="filter-select">
                     <option value="">Select Brand</option>
-                    <!-- Brands will be populated here -->
                 </select>
 
                 <button class="btn" id="filter-button">Filter Products</button>
@@ -55,7 +117,118 @@
         <p>&copy; 2024 Timekeepers. All rights reserved.</p>
     </footer>
 
+    <!-- Floating Cart Icon -->
+    <div id="cart-icon" onclick="showCart()">
+        <span id="cart-count">0</span>
+        🛒
+    </div>
+
+    <!-- Cart Popup -->
+    <div id="cart-popup">
+        <span id="close-popup" onclick="closeCart()">✖</span>
+        <h3>Your Cart</h3>
+        <div id="cart-items"></div>
+        <a href="/cart.html" class="checkout-btn">Checkout</a>
+    </div>
+
     <script>
+        let cartItemCount = 0; // Track the number of items in the cart
+        let cartItems = []; // Track the items in the cart
+
+        async function fetchCartCount() {
+            const token = localStorage.getItem('token');
+            if (!token) return; // Exit if not logged in
+
+            try {
+                const response = await fetch('http://localhost:8003/api/cart/cart', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                const cart = await response.json();
+                cartItemCount = cart.items.reduce((sum, item) => sum + item.quantity, 0); // Calculate total item count
+
+                cartItems = await Promise.all(cart.items.map(async item => {
+                    // Fetch product name if not included in the cart response
+                    const productResponse = await fetch(`http://localhost:8001/api/products/${item.product_id}`);
+                    const productData = await productResponse.json();
+
+                    return {
+                        productId: item.product_id,
+                        quantity: item.quantity,
+                        productName: productData.name || 'Unknown Product', // Fallback if name is not found
+                        price: item.price
+                    };
+                }));
+                updateCartCount();
+            } catch (error) {
+                console.error('Error fetching cart count:', error);
+            }
+        }
+
+        async function addToCart(productId, quantity, price, productName) {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                alert('Please log in to add items to your cart');
+                return;
+            }
+
+            try {
+                const response = await fetch('http://localhost:8003/api/cart/add-to-cart', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ product_id: productId, quantity: quantity, price: price })
+                });
+
+                if (response.ok) {
+                    cartItemCount += quantity; // Increment cart item count
+                    cartItems.push({ productId, quantity, productName, price }); // Add item to cart
+                    updateCartCount();
+                    alert('Product added to cart successfully!');
+                } else {
+                    alert('Failed to add product to cart');
+                }
+            } catch (error) {
+                console.error('Error adding product to cart:', error);
+            }
+        }
+
+        function updateCartCount() {
+            document.getElementById('cart-count').innerText = cartItemCount;
+        }
+
+        function showCart() {
+            const cartItemsDiv = document.getElementById('cart-items');
+            cartItemsDiv.innerHTML = ''; // Clear previous items
+
+            if (cartItems.length === 0) {
+                cartItemsDiv.innerHTML = '<p>Your cart is empty.</p>';
+            } else {
+                cartItems.forEach(item => {
+                    const itemElement = document.createElement('div');
+                    itemElement.innerText = `${item.productName} - Quantity: ${item.quantity} - Price: ${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'ZAR' }).format(item.price)}`;
+                    cartItemsDiv.appendChild(itemElement);
+                });
+            }
+
+            document.getElementById('cart-popup').style.display = 'block'; // Show popup
+        }
+
+        function closeCart() {
+            document.getElementById('cart-popup').style.display = 'none'; // Hide popup
+        }
+
+        // Call fetchCartCount on page load to set initial cart count
+        fetchCartCount();
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.style.width = sidebar.style.width === '250px' ? '0' : '250px';
+        }
+
         const productList = document.getElementById('product-list');
         const categorySelect = document.getElementById('category-select');
         const brandSelect = document.getElementById('brand-select');
@@ -81,6 +254,7 @@
                             <p>${product.description}</p>
                             <p>Price: ${formattedPrice}</p>
                             <img src="${product.image_url || '/static/default-product.jpg'}" alt="${product.name}" class="product-image"/>
+                            <button class="btn add-to-cart-btn" onclick="addToCart(${product.id}, 1, ${product.price}, '${product.name}')">Add to Cart</button>
                         `;
                         productList.appendChild(productCard);
                     });
@@ -146,12 +320,13 @@
         }
 
         filterButton.onclick = () => {
+            currentPage = 1; // Reset to first page on filter
             fetchProducts(categorySelect.value, brandSelect.value);
         };
 
         fetchCategories();
         fetchBrands();
-        fetchProducts(); // Initial fetch of products
+        fetchProducts();
     </script>
 </body>
 </html>

@@ -1,24 +1,19 @@
+# cart_service/app/main.py
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-from dotenv import load_dotenv
-import os
+from app.database import Base, engine
 from .routers import cart
-from .database import Base, engine
+from fastapi.middleware.cors import CORSMiddleware
 
-load_dotenv()
-
-# Create all tables in the database
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
-# Enable CORS for all origins (adjust as needed)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Change this to your frontend URL if necessary
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-app.include_router(cart.router, prefix="/api/carts", tags=["carts"])
+app.include_router(cart.router, prefix="/api/cart", tags=["cart"])

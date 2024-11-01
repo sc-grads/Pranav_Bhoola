@@ -1,10 +1,9 @@
-from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-from dotenv import load_dotenv
 import os
+from dotenv import load_dotenv
 
-# Load environment variables from the .env file
 load_dotenv()
 
 DATABASE_URL = os.getenv("DATABASE_URL")

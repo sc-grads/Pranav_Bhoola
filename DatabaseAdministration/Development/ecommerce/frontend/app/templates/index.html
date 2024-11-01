@@ -54,22 +54,22 @@
         <section class="top-brands">
             <h2>Our Top Brands</h2>
             <div class="brand-container">
-                <a href="/products?brand=Rolex" class="brand-card">
+                <a href="/customer?brand=Rolex" class="brand-card">
                     <img src="/static/images/Rolex.jpg" alt="Rolex">
                 </a>
-                <a href="/products?brand=Omega" class="brand-card">
+                <a href="/customer?brand=Omega" class="brand-card">
                     <img src="/static/images/omega.jpg" alt="Omega">
                 </a>
-                <a href="/products?brand=AudemarsPiguet" class="brand-card">
+                <a href="/customer?brand=AudemarsPiguet" class="brand-card">
                     <img src="/static/images/AudemarsPiguet.png" alt="Audemars Piguet">
                 </a>
-                <a href="/products?brand=PatekPhilippe" class="brand-card">
+                <a href="/customer?brand=PatekPhilippe" class="brand-card">
                     <img src="/static/images/patek-philippe.svg" alt="Patek Philippe">
                 </a>
-                <a href="/products?brand=IWC" class="brand-card">
+                <a href="/customer?brand=IWC" class="brand-card">
                     <img src="/static/images/IWC.jpg" alt="IWC">
                 </a>
-                <a href="/products?brand=Vacheron" class="brand-card">
+                <a href="/customer?brand=Vacheron" class="brand-card">
                     <img src="/static/images/Vacheron.jpg" alt="Vacheron Constantin">
                 </a>
             </div>
@@ -141,7 +141,7 @@
             // Display products based on the current index
             for (let i = currentIndex; i < currentIndex + productsToShow && i < products.length; i++) {
                 const product = products[i];
-                const productCard = `<a href="/product/${product.id}" class="new-arrivals-card">
+                const productCard = `<a href="/customer?id=${product.id}" class="new-arrivals-card">
                                         <img src="${product.image_url || '/static/default-product.jpg'}" alt="${product.name}">
                                         <div class="product-info">
                                             <h3>${product.name}</h3>

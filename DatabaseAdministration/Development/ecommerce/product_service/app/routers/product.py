@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, joinedload
 from app.database import SessionLocal
 from .. import models, schemas  # Assuming models.py and schemas.py are in the same app directory
 from ..utils import save_image  # Ensure this function is defined properly
@@ -22,6 +22,7 @@ async def create_product(
     price: float = Form(...),
     category_name: str = Form(...),
     brand_name: str = Form(...),  # Add brand_name
+    stock: int = Form(...),  # Add stock
     file: UploadFile = File(...),
     db: Session = Depends(get_db),
 ):
@@ -43,14 +44,15 @@ async def create_product(
         db.commit()
         db.refresh(db_brand)
 
-    # Create the product with category and brand IDs
+    # Create the product with category, brand IDs, and stock
     db_product = models.Product(
         name=name,
         description=description,
         price=price,
         image_url=image_url,
         category_id=db_category.id,
-        brand_id=db_brand.id  # Use the ID of the existing or newly created brand
+        brand_id=db_brand.id,  # Use the ID of the existing or newly created brand
+        stock=stock  # Set stock value
     )
     db.add(db_product)
     db.commit()
@@ -61,13 +63,13 @@ async def create_product(
 @router.get("/", response_model=list[schemas.Product])
 def read_products(page: int = 1, page_size: int = 100, category_id: int = None, brand_id: int = None, db: Session = Depends(get_db)):
     skip = (page - 1) * page_size
-    query = db.query(models.Product)
+    query = db.query(models.Product).options(joinedload(models.Product.category))  # Eager load the category
 
     if category_id:
-        query = query.filter(models.Product.category_id == category_id)  # Filter by category ID
+        query = query.filter(models.Product.category_id == category_id)
     
     if brand_id:
-        query = query.filter(models.Product.brand_id == brand_id)  # Filter by brand ID
+        query = query.filter(models.Product.brand_id == brand_id)
 
     products = query.offset(skip).limit(page_size).all()
     return products
@@ -93,6 +95,7 @@ async def update_product(
     name: str = Form(None),
     description: str = Form(None),
     price: float = Form(None),
+    stock: int = Form(None),  # Add stock for update
     file: UploadFile = File(None),
     db: Session = Depends(get_db),
 ):
@@ -107,6 +110,8 @@ async def update_product(
         db_product.description = description
     if price is not None:
         db_product.price = price
+    if stock is not None:  # Update stock if provided
+        db_product.stock = stock
     if file:
         db_product.image_url = save_image(file)  # Update the image URL
 
@@ -124,4 +129,3 @@ def delete_product(product_id: int, db: Session = Depends(get_db)):
     db.delete(db_product)
     db.commit()
     return {"detail": "Product deleted"}
-

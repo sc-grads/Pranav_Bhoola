@@ -4,57 +4,162 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Cart</title>
-    <link rel="stylesheet" href="/static/style.css"> <!-- Link to your CSS file -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet"> <!-- Google Fonts -->
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        .cart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .cart-item img {
+            max-width: 100px; /* Set a fixed width for images */
+            margin-right: 10px;
+        }
+        .cart-item-details {
+            flex-grow: 1; /* Allow this div to take up the remaining space */
+        }
+        .total {
+            font-size: 1.5em;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .btn-delete {
+            background-color: #f5eceb; /* Red color for delete button */
+            color: rgb(0, 0, 0);
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn-delete:hover {
+            background-color: #c0392b; /* Darker red on hover */
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Your Cart</h1>
-        <nav>
-            <a href="products.html" class="btn">Continue Shopping</a>
-            <button class="btn" onclick="checkout()">Checkout</button>
-        </nav>
+        <div class="container">
+            <span class="menu-toggle" onclick="toggleSidebar()">&#9776;</span>
+            <img src="/static/images/logo.png" alt="Timekeepers Logo" class="logo">
+        </div>
     </header>
 
+    <div id="sidebar" class="sidebar">
+        <a href="javascript:void(0)" class="close-btn" onclick="toggleSidebar()">&times;</a>
+        <a href="/" id="index-link">Home</a>
+        <a href="/update_profile">Update Profile</a>
+        <a href="/logout">Logout</a>
+    </div>
+
     <main class="container">
-        <section class="product-section">
-            <ul id="cart-items" class="product-list"></ul>
+        <section id="cart-section">
+            <h2>Your Cart</h2>
+            <div id="cart-list"></div>
+            <div class="total" id="total-price">Total: ZAR 0.00</div>
+            <button class="btn" onclick="goToCheckout()">Proceed to Checkout</button>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 Your E-Commerce Site. All rights reserved.</p>
+        <p>&copy; 2024 Timekeepers. All rights reserved.</p>
     </footer>
 
     <script>
-        async function loadCart() {
-            const response = await fetch("/api/cart/items"); // Adjusted to match your cart service endpoint
-            const cart = await response.json();
-            const cartItems = document.getElementById("cart-items");
-
-            // Clear existing items
-            cartItems.innerHTML = '';
-
-            cart.items.forEach(item => {
-                const li = document.createElement("li");
-                li.className = "product-card"; // Add product-card class for styling
-                li.innerHTML = `
-                    <img src="${item.product_image || 'default-image.jpg'}" class="product-image" alt="${item.product_name}">
-                    <h3>${item.product_name}</h3>
-                    <p>Quantity: ${item.quantity}</p>
-                    <p class="product-price">Price: $${item.price.toFixed(2)}</p>
-                `;
-                cartItems.appendChild(li);
-            });
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.style.width = sidebar.style.width === '250px' ? '0' : '250px';
         }
 
-        async function checkout() {
-            await fetch("/api/cart/checkout", { method: "POST" }); // Adjusted to match your cart service endpoint
-            alert("Checkout successful");
-            window.location.reload(); // Reload the page to refresh cart items
+        async function fetchCart() {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                alert('Please log in to view your cart');
+                return;
+            }
+
+            try {
+                const response = await fetch('http://localhost:8003/api/cart/cart', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                const cart = await response.json();
+                const cartList = document.getElementById('cart-list');
+                const totalPriceElement = document.getElementById('total-price');
+                cartList.innerHTML = '';
+
+                let total = 0;
+
+                if (cart.items.length === 0) {
+                    cartList.innerHTML = '<p>Your cart is empty.</p>';
+                    totalPriceElement.innerText = 'Total: ZAR 0.00';
+                } else {
+                    for (const item of cart.items) {
+                        const productResponse = await fetch(`http://localhost:8001/api/products/${item.product_id}`);
+                        const productData = await productResponse.json();
+                        const productImageUrl = productData.image_url || '/static/images/default-product.jpg'; // Use default image if not set
+                        const itemTotal = item.price * item.quantity; // Calculate item total
+                        total += itemTotal; // Add to overall total
+
+                        const cartItem = document.createElement('div');
+                        cartItem.classList.add('cart-item');
+                        cartItem.innerHTML = `
+                            <img src="${productImageUrl}" alt="${productData.name}">
+                            <div class="cart-item-details">
+                                <p>Product Name: ${productData.name || 'Unknown Product'}</p>
+                                <p>Product ID: ${item.product_id}</p>
+                                <p>Quantity: ${item.quantity}</p>
+                                <p>Price: ${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'ZAR' }).format(item.price)}</p>
+                                <p>Total: ${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'ZAR' }).format(itemTotal)}</p>
+                            </div>
+                            <button class="btn-delete" onclick="deleteCartItem(${item.id})">Delete</button>
+                        `;
+                        cartList.appendChild(cartItem);
+                    }
+
+                    totalPriceElement.innerText = `Total: ${new Intl.NumberFormat('en-US', { style: 'currency', currency: 'ZAR' }).format(total)}`; // Update total display
+                }
+            } catch (error) {
+                console.error('Error fetching cart:', error);
+            }
         }
 
-        loadCart();
+        async function deleteCartItem(itemId) {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                alert('Please log in to delete items from your cart');
+                return;
+            }
+
+            if (confirm('Are you sure you want to delete this item from your cart?')) {
+                try {
+                    const response = await fetch(`http://localhost:8003/api/cart/cart-item/${itemId}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Authorization': `Bearer ${token}`
+                        }
+                    });
+
+                    if (response.ok) {
+                        fetchCart(); // Refresh the cart after deletion
+                    } else {
+                        alert('Failed to delete item from cart');
+                    }
+                } catch (error) {
+                    console.error('Error deleting cart item:', error);
+                }
+            }
+        }
+
+        function goToCheckout() {
+            window.location.href = '/checkout'; // Adjust URL as needed
+        }
+
+        fetchCart();
     </script>
 </body>
 </html>

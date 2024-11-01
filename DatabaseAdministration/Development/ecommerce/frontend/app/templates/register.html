@@ -19,13 +19,30 @@
     </header>
     <main class="container">
         <section class="form-section">
-            <h2>Register</h2>
-            <p>Create your account and start shopping!</p>
-            <div class="form-container">
+            <div class="form-box">
+                <h2>Register</h2>
+                <p>Create your account and start shopping!</p>
                 <form id="register-form">
-                    <input type="text" name="name" placeholder="Name" required class="input-field">
-                    <input type="email" name="email" placeholder="Email" required class="input-field">
-                    <input type="password" name="password" placeholder="Password" required class="input-field">
+                    <div class="input-group">
+                        <label for="first_name">First Name</label>
+                        <input type="text" name="first_name" id="first_name" required class="input-field">
+                    </div>
+                    <div class="input-group">
+                        <label for="last_name">Last Name</label>
+                        <input type="text" name="last_name" id="last_name" required class="input-field">
+                    </div>
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" required class="input-field">
+                    </div>
+                    <div class="input-group">
+                        <label for="phone_number">Phone Number</label>
+                        <input type="tel" name="phone_number" id="phone_number" required class="input-field">
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" required class="input-field">
+                    </div>
                     <button type="submit" class="btn">Register</button>
                 </form>
             </div>
@@ -34,17 +51,17 @@
     <footer>
         <p>&copy; 2024 Timekeepers. All rights reserved.</p>
     </footer>
-
     <script>
         document.getElementById('register-form').onsubmit = async (e) => {
             e.preventDefault();
             const formData = new FormData(e.target);
             const data = {
-                name: formData.get('name'),
+                first_name: formData.get('first_name'),
+                last_name: formData.get('last_name'),
                 email: formData.get('email'),
-                password: formData.get('password'),
+                phone_number: formData.get('phone_number'),
+                password: formData.get('password')
             };
-
             const response = await fetch('http://localhost:8000/api/users/register', {
                 method: 'POST',
                 headers: {
@@ -52,14 +69,11 @@
                 },
                 body: JSON.stringify(data),
             });
-
             if (response.ok) {
-                const result = await response.json();
-                alert(`User created: ${result.name}`);
+                alert("Registration successful! Please log in.");
                 window.location.href = '/login';
             } else {
-                const error = await response.json();
-                alert(`Error: ${error.detail}`);
+                alert("Registration failed. Please try again.");
             }
         };
     </script>

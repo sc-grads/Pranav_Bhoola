@@ -33,4 +33,3 @@ app.add_middleware(
 )
 
 app.include_router(user.router, prefix="/api/users", tags=["users"])
-

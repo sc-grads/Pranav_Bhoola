@@ -7,7 +7,86 @@
     <title>Products - eCommerce</title>
     <link rel="stylesheet" href="/static/style.css"> <!-- Link to your CSS file -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet"> <!-- Google Fonts -->
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
 
+        table th, table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+            color: black;
+        }
+
+        .product-img {
+            max-width: 50px;
+            height: auto;
+        }
+
+        .btn-action {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-edit {
+            color: #007BFF;
+        }
+
+        .btn-delete {
+            color: #FF0000;
+        }
+
+        .status-stock {
+            color: green;
+        }
+
+        .status-sold-out {
+            color: red;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
@@ -18,13 +97,16 @@
                 <a href="/" class="btn">Home</a>
                 <a href="/login" class="btn">Login</a>
                 <a href="/register" class="btn">Register</a>
+                <a href="/logout" class="btn">Logout</a>
             </nav>
         </div>
     </header>
 
     <main class="container">
+        <button class="btn" onclick="window.location.href='/update_profile'">Update Profile</button>
         <button class="btn add-product-btn" id="open-modal-btn">Add New Product</button>
 
+        <!-- Add New Product Modal -->
         <div id="product-modal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
@@ -35,6 +117,7 @@
                     <input type="number" name="price" placeholder="Price" required step="0.01">
                     <input type="text" name="category_name" placeholder="Type Category" required>
                     <input type="text" name="brand_name" placeholder="Type Brand" required>
+                    <input type="number" name="stock" placeholder="Stock Quantity" required min="0"> <!-- New Stock Input -->
                     <input type="file" name="file" accept="image/*" required>
                     <button type="submit" class="btn">Add Product</button>
                     <div id="add-product-message" class="success-message"></div>
@@ -58,6 +141,7 @@
             </div>
         </div>
 
+        <!-- Product Table Layout -->
         <section class="product-section">
             <h2>Product List</h2>
 
@@ -75,7 +159,19 @@
                 <button class="btn" id="filter-button">Filter Products</button>
             </div>
 
-            <div id="product-list" class="product-list"></div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID Code</th>
+                        <th>Product Name</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="product-list"></tbody>
+            </table>
 
             <div id="pagination-controls" class="pagination-controls" style="margin-top: 20px;">
                 <button class="btn" id="prev-page" onclick="changePage(-1)" disabled>Previous</button>
@@ -91,42 +187,12 @@
 
     <script>
         const productList = document.getElementById('product-list');
-        const addProductForm = document.getElementById('add-product-form');
-        const updateProductForm = document.getElementById('update-product-form');
-        const modal = document.getElementById('product-modal');
-        const updateModal = document.getElementById('update-product-modal');
-        const openModalBtn = document.getElementById('open-modal-btn');
-        const closeModalBtn = document.querySelectorAll('.close');
         const categorySelect = document.getElementById('category-select');
         const brandSelect = document.getElementById('brand-select');
-        const filterButton = document.getElementById('filter-button');
-        const addProductMessage = document.getElementById('add-product-message');
-        const updateProductMessage = document.getElementById('update-product-message');
-        let currentPage = 1;
         const pageSize = 12;
+        let currentPage = 1;
 
-        openModalBtn.onclick = function () {
-            modal.style.display = 'block';
-        };
-
-        closeModalBtn.forEach(btn => {
-            btn.onclick = function () {
-                modal.style.display = 'none';
-                updateModal.style.display = 'none';
-                addProductMessage.innerText = '';
-                updateProductMessage.innerText = '';
-            };
-        });
-
-        window.onclick = function (event) {
-            if (event.target === modal || event.target === updateModal) {
-                modal.style.display = 'none';
-                updateModal.style.display = 'none';
-                addProductMessage.innerText = '';
-                updateProductMessage.innerText = '';
-            }
-        };
-
+        // Fetch Products Function
         async function fetchProducts(categoryId = '', brandId = '') {
             try {
                 const response = await fetch(`http://localhost:8001/api/products?page=${currentPage}&page_size=${pageSize}${categoryId ? `&category_id=${categoryId}` : ''}${brandId ? `&brand_id=${brandId}` : ''}`);
@@ -134,30 +200,34 @@
                 productList.innerHTML = '';
 
                 if (products.length === 0) {
-                    productList.innerHTML = '<p>No products available</p>';
+                    productList.innerHTML = '<tr><td colspan="7">No products available</td></tr>';
                 } else {
                     products.forEach(product => {
-                        const productCard = document.createElement('div');
-                        productCard.classList.add('product-card');
                         const formattedPrice = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'ZAR' }).format(product.price);
-                        productCard.innerHTML = `
-                            <h3>${product.name}</h3>
-                            <p>${product.description}</p>
-                            <p>Price: ${formattedPrice}</p>
-                            <img src="${product.image_url || '/static/default-product.jpg'}" alt="${product.name}" class="product-image"/>
-                            <div class="product-actions">
-                                <button class="btn" onclick="deleteProduct(${product.id})">Delete</button>
-                                <button class="btn" onclick="updateProduct(${product.id}, '${product.name}', '${product.description}', ${product.price}, '${product.image_url}')">Update</button>
-                            </div>
+                        const productRow = `
+                            <tr>
+                                <td>#${product.id}</td>
+                                <td>
+                                    <img src="${product.image_url || '/static/default-product.jpg'}" alt="${product.name}" class="product-img"/>
+                                    ${product.name}
+                                </td>
+                                 <td>${product.category.name}</td> <!-- Access the category name -->
+                                <td>${formattedPrice}</td>
+                                <td><span class="${product.stock > 0 ? 'status-stock' : 'status-sold-out'}">${product.stock > 0 ? 'In Stock' : 'Sold Out'}</span></td>
+                                <td>
+                                    <button class="btn-action btn-edit" onclick="openUpdateModal(${product.id}, '${product.name}', '${product.description}', ${product.price}, '${product.image_url}')">&#9998;</button>
+                                    <button class="btn-action btn-delete" onclick="deleteProduct(${product.id})">&#128465;</button>
+                                </td>
+                            </tr>
                         `;
-                        productList.appendChild(productCard);
+                        productList.insertAdjacentHTML('beforeend', productRow);
                     });
                 }
 
                 updatePaginationControls();
             } catch (error) {
                 console.error('Error fetching products:', error);
-                productList.innerHTML = '<p>Error loading products</p>';
+                productList.innerHTML = '<tr><td colspan="7">Error loading products</td></tr>';
             }
         }
 
@@ -171,8 +241,9 @@
             try {
                 const response = await fetch('http://localhost:8001/api/products/count');
                 const data = await response.json();
-                const totalCount = data.total_count;
-                document.getElementById('next-page').disabled = (currentPage * pageSize) >= totalCount;
+                const totalCount = data.total;
+                const totalPages = Math.ceil(totalCount / pageSize);
+                document.getElementById('next-page').disabled = currentPage >= totalPages;
             } catch (error) {
                 console.error('Error fetching total product count:', error);
             }
@@ -183,88 +254,108 @@
             fetchProducts(categorySelect.value, brandSelect.value);
         }
 
-        addProductForm.onsubmit = async (e) => {
+        // Add Product
+        document.getElementById('add-product-form').onsubmit = async (e) => {
             e.preventDefault();
-            const formData = new FormData(addProductForm);
-
+            const formData = new FormData(e.target);
             try {
                 const response = await fetch('http://localhost:8001/api/products/', {
                     method: 'POST',
                     body: formData,
                 });
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                addProductMessage.innerText = 'Product added successfully!';
+                if (!response.ok) throw new Error('Network response was not ok');
+                document.getElementById('add-product-message').innerText = 'Product added successfully!';
                 fetchProducts(categorySelect.value, brandSelect.value);
-                modal.style.display = 'none';
-                addProductForm.reset();
+                closeModals();
+                e.target.reset();
             } catch (error) {
-                addProductMessage.innerText = 'Error adding product: ' + error.message;
-                console.error('There was a problem with the fetch operation:', error);
+                document.getElementById('add-product-message').innerText = 'Error adding product: ' + error.message;
             }
         };
 
-        async function deleteProduct(productId) {
+        // Update Product
+        document.getElementById('update-product-form').onsubmit = async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const productId = document.getElementById('update-product-id').value;
+
             try {
                 await fetch(`http://localhost:8001/api/products/${productId}`, {
-                    method: 'DELETE',
+                    method: 'PUT',
+                    body: formData,
                 });
+                document.getElementById('update-product-message').innerText = 'Product updated successfully!';
                 fetchProducts(categorySelect.value, brandSelect.value);
+                closeModals();
+                e.target.reset();
             } catch (error) {
-                console.error('Error deleting product:', error);
+                document.getElementById('update-product-message').innerText = 'Error updating product: ' + error.message;
+            }
+        };
+
+        // Delete Product
+        async function deleteProduct(productId) {
+            if (confirm('Are you sure you want to delete this product?')) {
+                try {
+                    await fetch(`http://localhost:8001/api/products/${productId}`, {
+                        method: 'DELETE',
+                    });
+                    fetchProducts(categorySelect.value, brandSelect.value);
+                } catch (error) {
+                    console.error('Error deleting product:', error);
+                }
             }
         }
 
-        async function updateProduct(productId, currentName, currentDescription, currentPrice, currentImageUrl) {
+        // Open Update Product Modal
+        function openUpdateModal(productId, name, description, price, imageUrl) {
             document.getElementById('update-product-id').value = productId;
-            document.getElementById('update-product-name').value = currentName;
-            document.getElementById('update-product-description').value = currentDescription;
-            document.getElementById('update-product-price').value = currentPrice;
-            
-            updateModal.style.display = 'block';
-
-            updateProductForm.onsubmit = async (e) => {
-                e.preventDefault();
-                const formData = new FormData(updateProductForm);
-
-                try {
-                    const response = await fetch(`http://localhost:8001/api/products/${productId}`, {
-                        method: 'PUT',
-                        body: formData,
-                    });
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    updateProductMessage.innerText = 'Product updated successfully!';
-                    updateModal.style.display = 'none';
-                    fetchProducts(categorySelect.value, brandSelect.value);
-                } catch (error) {
-                    updateProductMessage.innerText = 'Error updating product: ' + error.message;
-                    console.error('Error updating product:', error);
-                }
-            };
+            document.getElementById('update-product-name').value = name;
+            document.getElementById('update-product-description').value = description;
+            document.getElementById('update-product-price').value = price;
+            document.getElementById('update-product-modal').style.display = 'block';
         }
 
-        async function fetchCategories() {
+        // Close Modals
+        function closeModals() {
+            document.getElementById('product-modal').style.display = 'none';
+            document.getElementById('update-product-modal').style.display = 'none';
+            document.querySelectorAll('.success-message').forEach(msg => msg.innerText = '');
+        }
+
+        document.getElementById('open-modal-btn').onclick = () => {
+            document.getElementById('product-modal').style.display = 'block';
+        };
+
+        document.querySelectorAll('.close').forEach(btn => {
+            btn.onclick = closeModals;
+        });
+
+        window.onclick = (event) => {
+            if (event.target === document.getElementById('product-modal') || event.target === document.getElementById('update-product-modal')) {
+                closeModals();
+            }
+        };
+
+        function logout() {
+            window.location.href = '/logout';
+        }
+
+        // Fetch Categories and Brands
+        async function fetchCategoriesAndBrands() {
             try {
-                const response = await fetch('http://localhost:8001/api/categories');
-                const categories = await response.json();
+                const categoryResponse = await fetch('http://localhost:8001/api/categories/');
+                const brandResponse = await fetch('http://localhost:8001/api/brands/');
+                const categories = await categoryResponse.json();
+                const brands = await brandResponse.json();
+
                 categories.forEach(category => {
                     const option = document.createElement('option');
                     option.value = category.id;
                     option.textContent = category.name;
                     categorySelect.appendChild(option);
                 });
-            } catch (error) {
-                console.error('Error fetching categories:', error);
-            }
-        }
 
-        async function fetchBrands() {
-            try {
-                const response = await fetch('http://localhost:8001/api/brands');
-                const brands = await response.json();
                 brands.forEach(brand => {
                     const option = document.createElement('option');
                     option.value = brand.id;
@@ -272,17 +363,18 @@
                     brandSelect.appendChild(option);
                 });
             } catch (error) {
-                console.error('Error fetching brands:', error);
+                console.error('Error fetching categories or brands:', error);
             }
         }
 
-        filterButton.onclick = () => {
+        // Filter Products
+        document.getElementById('filter-button').onclick = () => {
             fetchProducts(categorySelect.value, brandSelect.value);
         };
 
-        fetchCategories();
-        fetchBrands();
-        fetchProducts(); // Initial fetch of products
+        // Initial Fetch
+        fetchCategoriesAndBrands();
+        fetchProducts();
     </script>
 </body>
 

@@ -1,32 +1,24 @@
-# schemas.py
+# cart_service/app/schemas.py
 from pydantic import BaseModel
-from typing import List
 
 class CartItemBase(BaseModel):
     product_id: int
-    quantity: int
-    price: float
+    quantity: int = 1
 
 class CartItemCreate(CartItemBase):
-    pass
+    price: float
 
-class CartItem(CartItemBase):
+class CartItem(CartItemCreate):
     id: int
     cart_id: int
 
     class Config:
         orm_mode = True
 
-class CartBase(BaseModel):
-    user_id: int
-
-class CartCreate(CartBase):
-    items: List[CartItemCreate]
-
-class Cart(CartBase):
+class Cart(BaseModel):
     id: int
-    total: float  # Add total here
-    items: List[CartItem]
+    user_id: int
+    items: list[CartItem] = []
 
     class Config:
         orm_mode = True

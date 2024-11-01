@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Profile - eCommerce</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <span class="menu-toggle" style="margin-left: 1px;" onclick="toggleSidebar()">&#9776;</span>
+            <img src="/static/images/logo.png" alt="Timekeepers Logo" class="logo">
+            <nav>
+            </nav>
+        </div>
+    </header>
+
+    <div id="sidebar" class="sidebar">
+        <a href="javascript:void(0)" class="close-btn" onclick="toggleSidebar()">&times;</a>
+        <a href="/" id="index-link">Home</a>
+        <a href="/update_profile" id="update-profile-link">Update Profile</a>
+    </div>
+
+    <main class="container">
+        <section class="form-section">
+            <div class="form-box">
+                <h2>Update Profile</h2>
+                <p>Keep your profile information up to date!</p>
+                <form id="update-profile-form">
+                    <div class="input-group">
+                        <label for="first-name">First Name</label>
+                        <input type="text" id="first-name" name="first-name" required class="input-field">
+                    </div>
+                    <div class="input-group">
+                        <label for="last-name">Last Name</label>
+                        <input type="text" id="last-name" name="last-name" required class="input-field">
+                    </div>
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required class="input-field">
+                    </div>
+                    <div class="input-group">
+                        <label for="phone-number">Phone Number</label>
+                        <input type="tel" id="phone-number" name="phone-number" class="input-field">
+                    </div>
+                    <button type="submit" class="btn">Update Profile</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Timekeepers. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Sidebar toggle functions
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.style.width = sidebar.style.width === '250px' ? '0' : '250px';
+        }
+
+        async function fetchCurrentUser() {
+            const token = sessionStorage.getItem('token');
+            try {
+                const response = await fetch('http://localhost:8001/api/users/me', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                    },
+                });
+
+                if (!response.ok) throw new Error('Failed to fetch current user data');
+
+                const userData = await response.json();
+                document.getElementById('first-name').value = userData.first_name;
+                document.getElementById('last-name').value = userData.last_name;
+                document.getElementById('email').value = userData.email;
+                document.getElementById('phone-number').value = userData.phone_number || '';
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+            }
+        }
+
+        document.getElementById('update-profile-form').onsubmit = async function(event) {
+            event.preventDefault();
+            const firstName = document.getElementById('first-name').value;
+            const lastName = document.getElementById('last-name').value;
+            const email = document.getElementById('email').value;
+            const phoneNumber = document.getElementById('phone-number').value;
+
+            const token = sessionStorage.getItem('token');
+
+            try {
+                const response = await fetch('http://localhost:8000/api/users/update', {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        first_name: firstName,
+                        last_name: lastName,
+                        email: email,
+                        phone_number: phoneNumber,
+                    }),
+                });
+
+                if (!response.ok) throw new Error('Failed to update profile');
+
+                alert('Profile updated successfully!');
+            } catch (error) {
+                console.error('Error updating profile:', error);
+                alert('Error updating profile. Please try again.');
+            }
+        };
+
+        // Fetch current user data on page load
+        window.onload = fetchCurrentUser;
+    </script>
+</body>
+</html>

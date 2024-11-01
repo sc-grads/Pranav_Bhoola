@@ -347,10 +347,105 @@ footer p {
 }
 
 
+/* category-select and brand-select  */
+
+.filter-select {
+    margin: 10px 5px; /* Adds space around the selects */
+    padding: 10px; /* Adds padding inside the select */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 5px; /* Rounded corners */
+    font-family: 'Montserrat', sans-serif; /* Consistent font */
+    font-size: 16px; /* Adjust font size */
+    background-color: #f9f9f9; /* Light background color */
+    transition: border-color 0.3s; /* Smooth transition on focus */
+}
+
+.filter-select:focus {
+    border-color: #333; /* Darker border on focus */
+    outline: none; /* Remove default outline */
+}
+
+.filter-button {
+    padding: 10px 15px; /* Adjust button padding */
+    background-color: black; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    font-family: 'Montserrat', sans-serif; /* Consistent font */
+    font-size: 16px; /* Adjust font size */
+    cursor: pointer; /* Change cursor to pointer */
+    transition: background-color 0.3s; /* Smooth background color transition */
+}
+
+.filter-button:hover {
+    background-color: #555; /* Darker shade on hover */
+}
 
 
 
+/* Form Section Styling (shared by both login and register forms) */
+.form-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
 
+/* Shared form styling for both pages */
+.form-box, .form-container {
+    background-color: #1a1a1a;
+    padding: 40px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+    color: #FFF;
+}
+
+.form-box h2, .form-container h2 {
+    font-size: 2em;
+    font-weight: 600;
+    color: #FFF;
+    margin-bottom: 10px;
+}
+
+.form-box p, .form-container p {
+    color: #CCC;
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+
+/* Input fields styling */
+.input-group, .input-group-login {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.input-group label, .input-group-login label {
+    color: #FFF;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.input-field {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #333;
+    color: #FFF;
+    font-size: 1em;
+    outline: none;
+}
+
+.input-field::placeholder {
+    color: #AAA;
+}
 
 
 /* For the index page product cards */

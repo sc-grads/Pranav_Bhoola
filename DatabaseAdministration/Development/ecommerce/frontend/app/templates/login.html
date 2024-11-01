@@ -19,13 +19,18 @@
     </header>
     <main class="container">
         <section class="form-section">
-            <h2>Login</h2>
-            <p>Welcome back! Please log in to your account.</p>
             <div class="form-container">
+                <h2>Login</h2>
+                <p>Please log in to your account to continue shopping.</p>
                 <form id="login-form">
-                    <input type="email" name="email" placeholder="Email" required class="input-field">
-                    <input type="password" name="password" placeholder="Password" required class="input-field">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Email" required class="input-field">
+                    
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Password" required class="input-field">
+                    
                     <button type="submit" class="btn">Login</button>
+                    <div id="error-message" style="color:red;"></div> <!-- Placeholder for error messages -->
                 </form>
             </div>
         </section>
@@ -36,7 +41,7 @@
 
     <script>
         document.getElementById('login-form').onsubmit = async (e) => {
-            e.preventDefault();
+            e.preventDefault(); // Prevent default form submission
             const formData = new FormData(e.target);
             const data = {
                 email: formData.get('email'),
@@ -54,17 +59,19 @@
             const result = await response.json();
 
             if (response.ok) {
-                // Store the token in session storage
-                sessionStorage.setItem('token', result.access_token);
+                // Store the token in localStorage
+                localStorage.setItem('token', result.access_token); // Change sessionStorage to localStorage
+                console.log("Token stored:", result.access_token); // Log the token
                 
                 // Redirect based on user role
                 if (result.role === 'admin') {
-                    window.location.href = '/products';  // Admins go to products.html
+                    window.location.href = '/products';
                 } else {
-                    window.location.href = '/customer';  // Change to the customer page URL
+                    window.location.href = '/customer';
                 }
             } else {
-                alert(`Error: ${result.detail}`);
+                // Show error message in the div instead of alert
+                document.getElementById('error-message').innerText = `Error: ${result.detail}`;
             }
         };
     </script>

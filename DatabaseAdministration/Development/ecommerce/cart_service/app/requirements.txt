@@ -3,3 +3,6 @@ uvicorn
 sqlalchemy
 databases
 python-dotenv
+python-jose
+pydantic
+PyJWT

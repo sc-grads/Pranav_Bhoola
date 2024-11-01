@@ -25,6 +25,7 @@ class Product(Base):
     name = Column(String, index=True)
     description = Column(String)
     price = Column(Float)
+    stock = Column(Integer, default=0)  # Make sure this line exists
     image_url = Column(String, default='static/default-product.jpg')
     category_id = Column(Integer, ForeignKey("category.id"))
     brand_id = Column(Integer, ForeignKey("brand.id"))
